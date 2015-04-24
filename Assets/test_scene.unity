@@ -252,6 +252,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 870760346}
+  - 114: {fileID: 870760347}
   m_Layer: 0
   m_Name: master_control_program
   m_TagString: Untagged
@@ -271,6 +272,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &870760347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 870760345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8106a54555b23b41af0ccfa5ca36848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlUnit: {fileID: 1229652863}
 --- !u!1 &1229652863
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitMoveSpeed: 20
+  unitStoppingDistance: 3
 --- !u!54 &1229652869
 Rigidbody:
   m_ObjectHideFlags: 0
