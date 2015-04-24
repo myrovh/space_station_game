@@ -3,13 +3,30 @@ using System.Collections;
 
 public class unit : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+	public float unitMoveSpeed = 1;
+	delegate void MultiDelegate();
+
+	MultiDelegate passiveOrderQueue;
 	
+	void Start () {
+
+	}
+
+	void OnEnable(){
+		passiveOrderQueue = turnUnit;
+	}
+
+	void OnDisable(){
+		passiveOrderQueue = null;
+	}
+
+	void turnUnit(){
+		transform.Rotate ((Vector3.right * unitMoveSpeed) * Time.deltaTime);
 	}
 	
-	// Update is called once per frame
 	void Update () {
-	
+		if (passiveOrderQueue != null) {
+			passiveOrderQueue ();
+		}
 	}
 }
