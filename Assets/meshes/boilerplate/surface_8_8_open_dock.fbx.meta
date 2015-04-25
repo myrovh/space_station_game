@@ -32,7 +32,7 @@ ModelImporter:
     4300008: surface_8_8_open_dock_4
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
