@@ -6,6 +6,8 @@ public class unit : MonoBehaviour {
 	NavMeshAgent agent;
 	public float unitMoveSpeed = 1;
     public float unitStoppingDistance = 3;
+	public bool isSelected = false;
+	public bool selectedByClick = false;
 
 	public List<data.unitOrder> activeOrderQueue = new List<data.unitOrder>();
 
@@ -19,6 +21,11 @@ public class unit : MonoBehaviour {
     //Adds new order to the bottom of the queue
 	public void queueOrder(data.unitOrder newOrder){
 		activeOrderQueue.Add (newOrder);
+	}
+
+	//Clears the active order queue
+	public void clearQueue(){
+		activeOrderQueue.Clear ();
 	}
 
     //If current order is completed delete current order from queue
@@ -68,5 +75,28 @@ public class unit : MonoBehaviour {
 		}
         //Executes the first order on the active order queue
 		currentOrder ();
+	}
+
+	public void SelectionStatus(bool select){
+		if (select) {
+			GetComponent<Renderer>().material.color = Color.red;
+			isSelected = true;
+		}
+		else {
+			GetComponent<Renderer>().material.color = Color.white;
+			isSelected = false;
+		}
+	}
+
+	void OnMouseDown(){
+		selectedByClick = true;
+		SelectionStatus (true);
+	}
+	
+	void OnMouseUp(){
+		if (selectedByClick)
+			SelectionStatus (true);
+		
+		selectedByClick = false;
 	}
 }
