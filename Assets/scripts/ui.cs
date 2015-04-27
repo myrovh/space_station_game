@@ -5,6 +5,7 @@ public class ui : MonoBehaviour
 {
     //reference to a test unit
     public GameObject controlUnit;
+    public GameObject controlResource;
     private Vector3 startClick = -Vector3.one;
     public Texture2D selectionHighlight = null;
     public static Rect selection = new Rect(0, 0, 0, 0);
@@ -50,7 +51,19 @@ public class ui : MonoBehaviour
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                addToQueue(hit.point, data.unitAction.STAND);
+                if (hit.collider.tag == "Resource")
+                {
+                    controlUnit.GetComponent<unit>().target = controlResource;
+                    addToQueue(hit.point, data.unitAction.PICKUP);
+                }
+                else
+                {
+                    addToQueue(hit.point, data.unitAction.STAND);
+                }
+            }
+            if (controlUnit.GetComponent<unit>().isCarrying)
+            {
+                addToQueue(hit.point, data.unitAction.DROP);
             }
         }
     }

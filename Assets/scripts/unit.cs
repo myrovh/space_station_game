@@ -21,7 +21,7 @@ public class unit : MonoBehaviour
     #region Variables
     //Setting Variables
     public float unitMoveSpeed = 1;
-    public float unitStoppingDistance = 3;
+    public float unitStoppingDistance = 1.75f;
 
     //State Tracking Variables
     public bool isSelected = false;
@@ -32,6 +32,11 @@ public class unit : MonoBehaviour
     private List<unitOrder> activeOrderQueue = new List<unitOrder>();
     delegate void MultiDelegate();
     MultiDelegate passiveOrderQueue;
+
+    //Hauling Variables
+    public GameObject target;
+    GameObject inventory;
+    public bool isCarrying = false;
     #endregion
 
     #region MonoBehaviour Functions
@@ -103,6 +108,14 @@ public class unit : MonoBehaviour
                     case data.unitAction.STAND:
                         isComplete = true;
                         break;
+                    case data.unitAction.PICKUP:
+                        PickUp(target);
+                        isComplete = true;
+                        break;
+                    case data.unitAction.DROP:
+                        Drop();
+                        isComplete = true;
+                        break;
                     default:
                         isComplete = true;
                         break;
@@ -126,5 +139,21 @@ public class unit : MonoBehaviour
             GetComponent<Renderer>().material.color = Color.white;
             isSelected = false;
         }
+    }
+
+    void PickUp(GameObject newObject)
+    {
+        inventory = newObject;
+        inventory.GetComponent<resource>().PickedUp(transform.gameObject);
+        isCarrying = true;
+        agent.destination = transform.position;
+    }
+
+    void Drop()
+    {
+        inventory.GetComponent<resource>().Dropped();
+        inventory = null;
+        isCarrying = false;
+        agent.destination = transform.position;
     }
 }

@@ -4,5 +4,5 @@ using System.Collections;
 public static class data
 {
     //Defines unit action upon reaching destination
-    public enum unitAction { STAND };
+    public enum unitAction { STAND, PICKUP, DROP };
 }
