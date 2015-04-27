@@ -15,9 +15,9 @@ public class ui : MonoBehaviour
     }
 
     //Takes an order as a parameter and adds it to the units queue
-    void addToQueue(data.unitOrder tempOrder)
+    void addToQueue(Vector3 moveTo, data.unitAction actAt)
     {
-        controlUnit.GetComponent<unit>().queueOrder(tempOrder);
+        controlUnit.GetComponent<unit>().queueOrder(moveTo, actAt);
     }
 
     void Update()
@@ -40,8 +40,7 @@ public class ui : MonoBehaviour
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                data.unitOrder tempOrder = new data.unitOrder(hit.point, data.unitAction.STAND);
-                addToQueue(tempOrder);
+                addToQueue(hit.point, data.unitAction.STAND);
             }
         }
         else if (Input.GetButton("Interact") && controlUnit.GetComponent<unit>().isSelected)
@@ -51,8 +50,7 @@ public class ui : MonoBehaviour
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                data.unitOrder tempOrder = new data.unitOrder(hit.point, data.unitAction.STAND);
-                addToQueue(tempOrder);
+                addToQueue(hit.point, data.unitAction.STAND);
             }
         }
     }

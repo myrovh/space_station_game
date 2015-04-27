@@ -3,6 +3,21 @@ using System.Collections.Generic;
 
 public class unit : MonoBehaviour
 {
+    #region Data Classes
+    //Use this data container to give orders to units
+    private class unitOrder
+    {
+        public Vector3 moveTo;
+        public data.unitAction actAt;
+
+        public unitOrder(Vector3 moveTo, data.unitAction actAt)
+        {
+            this.moveTo = moveTo;
+            this.actAt = actAt;
+        }
+    }
+    #endregion
+
     #region Variables
     //Setting Variables
     public float unitMoveSpeed = 1;
@@ -14,7 +29,7 @@ public class unit : MonoBehaviour
     NavMeshAgent agent;
 
     //Order Queue Variables
-    public List<data.unitOrder> activeOrderQueue = new List<data.unitOrder>();
+    private List<unitOrder> activeOrderQueue = new List<unitOrder>();
     delegate void MultiDelegate();
     MultiDelegate passiveOrderQueue;
     #endregion
@@ -41,34 +56,18 @@ public class unit : MonoBehaviour
         currentOrder();
     }
 
-    //Clears the passive order queue
     void OnDisable()
     {
+        //Clears the passive order queue
         passiveOrderQueue = null;
     }
-
-    /*
-    void OnMouseDown()
-    {
-        selectedByClick = true;
-        SelectionStatus(true);
-    }
-
-    void OnMouseUp()
-    {
-        if (selectedByClick)
-            SelectionStatus(true);
-
-        selectedByClick = false;
-    }
-    */
     #endregion
 
     #region Active Queue Manipulation
     //Adds new order to the bottom of the queue
-    public void queueOrder(data.unitOrder newOrder)
+    public void queueOrder(Vector3 moveTo, data.unitAction actAt)
     {
-        activeOrderQueue.Add(newOrder);
+        activeOrderQueue.Add(new unitOrder(moveTo, actAt));
     }
 
     //Clears the active order queue
@@ -93,7 +92,7 @@ public class unit : MonoBehaviour
         bool isComplete = false;
         if (activeOrderQueue.Count > 0)
         {
-            data.unitOrder tempOrder = activeOrderQueue[0];
+            unitOrder tempOrder = activeOrderQueue[0];
 
             agent.destination = tempOrder.moveTo;
 
