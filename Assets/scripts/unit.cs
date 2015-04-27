@@ -1,50 +1,103 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class unit : MonoBehaviour {
-
-	NavMeshAgent agent;
-	public float unitMoveSpeed = 1;
+public class unit : MonoBehaviour
+{
+    #region Variables
+    //Setting Variables
+    public float unitMoveSpeed = 1;
     public float unitStoppingDistance = 3;
-	public bool isSelected = false;
-	public bool selectedByClick = false;
 
-	public List<data.unitOrder> activeOrderQueue = new List<data.unitOrder>();
+    //State Tracking Variables
+    public bool isSelected = false;
+    public bool selectedByClick = false;
+    NavMeshAgent agent;
 
-	delegate void MultiDelegate();
-	MultiDelegate passiveOrderQueue;
-	
-	void Start () {
-		agent = GetComponent<NavMeshAgent>();
-	}
+    //Order Queue Variables
+    public List<data.unitOrder> activeOrderQueue = new List<data.unitOrder>();
+    delegate void MultiDelegate();
+    MultiDelegate passiveOrderQueue;
+    #endregion
 
+    #region MonoBehaviour Functions
+    void OnEnable()
+    {
+        //Add passive functions here
+    }
+
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+
+    void Update()
+    {
+        //Executes any asigned passive orders
+        if (passiveOrderQueue != null)
+        {
+            passiveOrderQueue();
+        }
+        //Executes the first order on the active order queue
+        currentOrder();
+    }
+
+    //Clears the passive order queue
+    void OnDisable()
+    {
+        passiveOrderQueue = null;
+    }
+
+    /*
+    void OnMouseDown()
+    {
+        selectedByClick = true;
+        SelectionStatus(true);
+    }
+
+    void OnMouseUp()
+    {
+        if (selectedByClick)
+            SelectionStatus(true);
+
+        selectedByClick = false;
+    }
+    */
+    #endregion
+
+    #region Active Queue Manipulation
     //Adds new order to the bottom of the queue
-	public void queueOrder(data.unitOrder newOrder){
-		activeOrderQueue.Add (newOrder);
-	}
+    public void queueOrder(data.unitOrder newOrder)
+    {
+        activeOrderQueue.Add(newOrder);
+    }
 
-	//Clears the active order queue
-	public void clearQueue(){
-		activeOrderQueue.Clear ();
-	}
+    //Clears the active order queue
+    public void clearQueue()
+    {
+        activeOrderQueue.Clear();
+    }
+    #endregion
 
     //If current order is completed delete current order from queue
-	void currentOrder(){
-		if (executeOrder ()) {
-			activeOrderQueue.RemoveAt(0);
-		}
-	}
+    void currentOrder()
+    {
+        if (executeOrder())
+        {
+            activeOrderQueue.RemoveAt(0);
+        }
+    }
 
     //returns true when current order is completed
-	bool executeOrder(){
-		bool isComplete = false;
+    bool executeOrder()
+    {
+        bool isComplete = false;
         if (activeOrderQueue.Count > 0)
         {
             data.unitOrder tempOrder = activeOrderQueue[0];
 
             agent.destination = tempOrder.moveTo;
 
-            if ((transform.position - agent.destination).magnitude <= unitStoppingDistance )
+            if ((transform.position - agent.destination).magnitude <= unitStoppingDistance)
             {
                 switch (tempOrder.actAt)
                 {
@@ -57,46 +110,22 @@ public class unit : MonoBehaviour {
                 }
             }
         }
-		return isComplete;
-	}
+        return isComplete;
+    }
 
-	void OnEnable(){
-		//Add passive functions here
-	}
-
-	void OnDisable(){
-		passiveOrderQueue = null;
-	}
-
-	void Update () {
-        //Executes any asigned passive orders
-		if (passiveOrderQueue != null) {
-			passiveOrderQueue ();
-		}
-        //Executes the first order on the active order queue
-		currentOrder ();
-	}
-
-	public void SelectionStatus(bool select){
-		if (select) {
-			GetComponent<Renderer>().material.color = Color.red;
-			isSelected = true;
-		}
-		else {
-			GetComponent<Renderer>().material.color = Color.white;
-			isSelected = false;
-		}
-	}
-
-	void OnMouseDown(){
-		selectedByClick = true;
-		SelectionStatus (true);
-	}
-	
-	void OnMouseUp(){
-		if (selectedByClick)
-			SelectionStatus (true);
-		
-		selectedByClick = false;
-	}
+    //Call this function and pass a bool to tell the unit if it is selected or not
+    //Later these functions will be removed and selection tracking will be handled by the UI
+    public void SelectionStatus(bool select)
+    {
+        if (select)
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+            isSelected = true;
+        }
+        else
+        {
+            GetComponent<Renderer>().material.color = Color.white;
+            isSelected = false;
+        }
+    }
 }
