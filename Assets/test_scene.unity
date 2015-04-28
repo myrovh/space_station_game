@@ -283,7 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8106a54555b23b41af0ccfa5ca36848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlUnit: {fileID: 1229652863}
   controlResource: {fileID: 1563513360}
   selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
 --- !u!1 &1229652863
@@ -357,7 +356,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1229652863}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0500000007, y: 1, z: 0}
+  m_LocalPosition: {x: .00999999978, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -376,7 +375,6 @@ MonoBehaviour:
   unitMoveSpeed: 20
   unitStoppingDistance: 1.75
   isSelected: 0
-  selectedByClick: 0
   target: {fileID: 0}
   isCarrying: 0
 --- !u!54 &1229652869

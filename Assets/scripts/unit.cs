@@ -24,6 +24,7 @@ public class unit : MonoBehaviour
     public float unitStoppingDistance = 1.75f;
 
     //State Tracking Variables
+    public bool isSelected = false;
     NavMeshAgent agent;
 
     //Order Queue Variables
@@ -143,7 +144,7 @@ public class unit : MonoBehaviour
 
     //Call this function and pass a bool to tell the unit if it is selected or not
     //Later these functions will be removed and selection tracking will be handled by the UI
-    public void SelectionStatus(bool select)
+    public void selectionStatus(bool select)
     {
         if (select)
         {
