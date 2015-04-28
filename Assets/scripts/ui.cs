@@ -21,10 +21,8 @@ public class ui : MonoBehaviour
         controlUnit.GetComponent<unit>().queueOrder(moveTo, actAt);
     }
 
-    void Update()
+    void selecionCheck()
     {
-        CheckCamera();
-
         if (Input.GetButton("Select"))
         {
             if (controlUnit.GetComponent<unit>().selectedByClick != true)
@@ -34,7 +32,10 @@ public class ui : MonoBehaviour
                 controlUnit.GetComponent<unit>().SelectionStatus(selection.Contains(camPos));
             }
         }
+    }
 
+    void giveOrders()
+    {
         if (Input.GetButton("Interact") && Input.GetButton("Queue") && controlUnit.GetComponent<unit>().isSelected)
         {
             RaycastHit hit;
@@ -68,9 +69,18 @@ public class ui : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        checkCamera();
+
+        selecionCheck();
+
+        giveOrders();
+    }
+
     //Checking if the select button is being pressed and setting the values of the selection box
     //based on the start click and current mouse position
-    void CheckCamera()
+    void checkCamera()
     {
         if (Input.GetButtonDown("Select"))
         {
