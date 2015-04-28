@@ -82,6 +82,7 @@ public class unit : MonoBehaviour
     }
     #endregion
 
+    #region Order Execution
     //If current order is completed delete current order from queue
     void currentOrder()
     {
@@ -125,22 +126,6 @@ public class unit : MonoBehaviour
         return isComplete;
     }
 
-    //Call this function and pass a bool to tell the unit if it is selected or not
-    //Later these functions will be removed and selection tracking will be handled by the UI
-    public void SelectionStatus(bool select)
-    {
-        if (select)
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-            isSelected = true;
-        }
-        else
-        {
-            GetComponent<Renderer>().material.color = Color.white;
-            isSelected = false;
-        }
-    }
-
     void PickUp(GameObject newObject)
     {
         inventory = newObject;
@@ -155,5 +140,22 @@ public class unit : MonoBehaviour
         inventory = null;
         isCarrying = false;
         agent.destination = transform.position;
+    }
+    #endregion
+
+    //Call this function and pass a bool to tell the unit if it is selected or not
+    //Later these functions will be removed and selection tracking will be handled by the UI
+    public void SelectionStatus(bool select)
+    {
+        if (select)
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+            isSelected = true;
+        }
+        else
+        {
+            GetComponent<Renderer>().material.color = Color.white;
+            isSelected = false;
+        }
     }
 }
