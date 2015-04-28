@@ -24,8 +24,6 @@ public class unit : MonoBehaviour
     public float unitStoppingDistance = 1.75f;
 
     //State Tracking Variables
-    public bool isSelected = false;
-    public bool selectedByClick = false;
     NavMeshAgent agent;
 
     //Order Queue Variables

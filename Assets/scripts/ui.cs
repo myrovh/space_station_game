@@ -7,6 +7,7 @@ public class ui : MonoBehaviour
     public GameObject controlUnit;
     public GameObject controlResource;
     private Vector3 startClick = -Vector3.one;
+    private float timer = 0;
     public Texture2D selectionHighlight = null;
     public static Rect selection = new Rect(0, 0, 0, 0);
 
@@ -25,13 +26,24 @@ public class ui : MonoBehaviour
     {
         if (Input.GetButton("Select"))
         {
-            if (controlUnit.GetComponent<unit>().selectedByClick != true)
+            Vector3 unitPos = Camera.main.WorldToScreenPoint(controlUnit.GetComponent<Collider>().transform.position);
+            unitPos.y = InvertMouseY(unitPos.y);
+            controlUnit.GetComponent<unit>().SelectionStatus(selection.Contains(unitPos));
+        }
+
+        if (Input.GetButtonUp("Select"))
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                Vector3 camPos = Camera.main.WorldToScreenPoint(controlUnit.transform.position);
-                camPos.y = InvertMouseY(camPos.y);
-                controlUnit.GetComponent<unit>().SelectionStatus(selection.Contains(camPos));
+                if (hit.collider.tag == "PlayerUnit")
+                {
+                    controlUnit.GetComponent<unit>().SelectionStatus(true);
+                }
             }
         }
+
     }
 
     void giveOrders()
