@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 08209d61a14295840804b8d4ea4387f3
-timeCreated: 1429955054
+guid: 5cd0745ff2439b0419b30c7d0394fc57
+timeCreated: 1430195131
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: surface_railway_straight
-    9500000: //RootNode
+    4300000: boilerplate_1x4_closed-thin
   materials:
     importMaterials: 0
     materialName: 0
@@ -64,7 +63,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

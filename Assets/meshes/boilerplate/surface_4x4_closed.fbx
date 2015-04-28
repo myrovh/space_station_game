@@ -12,8 +12,8 @@ FBXHeaderExtension:  {
 		Month: 04
 		Day: 28
 		Hour: 14
-		Minute: 22
-		Second: 24
+		Minute: 25
+		Second: 15
 		Millisecond: 0
 	}
 	Creator: "FBX SDK/FBX Plugins build 20070228"
@@ -21,7 +21,7 @@ FBXHeaderExtension:  {
 		FlagPLE: 0
 	}
 }
-CreationTime: "2015-04-28 14:22:24:000"
+CreationTime: "2015-04-28 14:25:15:000"
 Creator: "Blender version 2.74 (sub 0)"
 
 ; Object definitions
@@ -51,12 +51,12 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Model: "Model::boilerplate_4_corner", "Mesh" {
+	Model: "Model::boilerplate_4x4_closed", "Mesh" {
 		Version: 232
 		Properties60:  {
 			Property: "QuaternionInterpolate", "bool", "",0
 			Property: "Visibility", "Visibility", "A+",1
-			Property: "Lcl Translation", "Lcl Translation", "A+",-360.000000000000000,200.000000000000000,0.000000000000000
+			Property: "Lcl Translation", "Lcl Translation", "A+",0.000000000000000,200.000000000000000,0.000000000000000
 			Property: "Lcl Rotation", "Lcl Rotation", "A+",-90.000009334538021,0.000000000000000,0.000000000000000
 			Property: "Lcl Scaling", "Lcl Scaling", "A+",100.000000000000000,100.000000000000000,100.000000000000000
 			Property: "RotationOffset", "Vector3D", "",0,0,0
@@ -130,8 +130,8 @@ Objects:  {
 		MultiTake: 1
 		Shading: Y
 		Culling: "CullingOff"
-		Vertices: -0.200000,-0.200000,-2.000000,-0.200000,-0.200000,2.000000,-0.200000,0.200000,-2.000000,-0.200000,0.200000,2.000000,
-		          0.200000,-0.200000,-2.000000,0.200000,-0.200000,2.000000,0.200000,0.200000,-2.000000,0.200000,0.200000,2.000000
+		Vertices: -2.000000,-0.200000,-2.000000,-2.000000,-0.200000,2.000000,-2.000000,0.200000,-2.000000,-2.000000,0.200000,2.000000,
+		          2.000000,-0.200000,-2.000000,2.000000,-0.200000,2.000000,2.000000,0.200000,-2.000000,2.000000,0.200000,2.000000
 		PolygonVertexIndex: 1,3,2,-1,3,7,6,-3,7,5,4,-7,5,1,0,-5,0,2,6,-5,5,7,3,-2
 		GeometryVersion: 124
 		LayerElementNormal: 0 {
@@ -206,8 +206,8 @@ Objects:  {
 		}
 		NbPoseNodes: 1
 		PoseNode:  {
-			Node: "Model::boilerplate_4_corner"
-			Matrix: 0.000007549790098,0.000000000000000,-100.000000000000000,0.000000000000000,-100.000000000000000,0.000000000000000,-0.000007549790098,0.000000000000000,0.000000000000000,100.000000000000000,0.000000000000000,0.000000000000000,-360.000000000000000,200.000000000000000,0.000000000000000,1.000000000000000
+			Node: "Model::boilerplate_4x4_closed"
+			Matrix: 0.000007549790098,0.000000000000000,-100.000000000000000,0.000000000000000,-100.000000000000000,0.000000000000000,-0.000007549790098,0.000000000000000,0.000000000000000,100.000000000000000,0.000000000000000,0.000000000000000,0.000000000000000,200.000000000000000,0.000000000000000,1.000000000000000
 		}
 	}
 	GlobalSettings:  {
@@ -228,7 +228,7 @@ Objects:  {
 ;------------------------------------------------------------------
 
 Relations:  {
-	Model: "Model::boilerplate_4_corner", "Mesh" {
+	Model: "Model::boilerplate_4x4_closed", "Mesh" {
 	}
 	Model: "Model::Producer Perspective", "Camera" {
 	}
@@ -254,8 +254,8 @@ Relations:  {
 ;------------------------------------------------------------------
 
 Connections:  {
-	Connect: "OO", "Model::boilerplate_4_corner", "Model::Scene"
-	Connect: "OO", "Material::unnamed", "Model::boilerplate_4_corner"
+	Connect: "OO", "Model::boilerplate_4x4_closed", "Model::Scene"
+	Connect: "OO", "Material::unnamed", "Model::boilerplate_4x4_closed"
 }
 ;Takes and animation section
 ;----------------------------------------------------
