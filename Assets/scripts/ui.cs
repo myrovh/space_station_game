@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class ui : MonoBehaviour
 {
     //reference to a test unit
-    //private List<GameObject> selectedUnitList = new List<GameObject>();
     private GameObject[] allPlayerUnits;
     public GameObject controlResource;
     private Vector3 startClick = -Vector3.one;
@@ -29,39 +28,33 @@ public class ui : MonoBehaviour
         {
             if (Input.GetButton("Select"))
             {
-
                 Vector3 unitPos = Camera.main.WorldToScreenPoint(unit.transform.position);
                 unitPos.y = InvertMouseY(unitPos.y);
 
+                //Select unit if unit is inside selection box
                 if (selection.Contains(unitPos))
                 {
                     unit.GetComponent<unit>().selectionStatus(true);
                 }
             }
+
             if (Input.GetButtonDown("Select"))
             {
                 RaycastHit hit;
 
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                //Selects unit if is clicked while underneath mouse cursor
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag == "PlayerUnit")
                 {
-                    if (hit.collider.tag == "PlayerUnit")
-                    {
                         unit.GetComponent<unit>().selectionStatus(false);
                         hit.rigidbody.GetComponent<unit>().selectionStatus(true);
-                    }
-                    else
-                    {
-                        unit.GetComponent<unit>().selectionStatus(false);
-                    }
                 }
+                //Deselects all units that are not hit by raycast
                 else
                 {
                     unit.GetComponent<unit>().selectionStatus(false);
                 }
             }
         }
-
-
     }
 
     void generateOrders()
