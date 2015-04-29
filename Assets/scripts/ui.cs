@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public class ui : MonoBehaviour
 {
     //reference to a test unit
-    private List<GameObject> selectedUnitList = new List<GameObject>();
+    //private List<GameObject> selectedUnitList = new List<GameObject>();
+    private GameObject[] allPlayerUnits;
     public GameObject controlResource;
     private Vector3 startClick = -Vector3.one;
     public Texture2D selectionHighlight = null;
@@ -13,56 +14,49 @@ public class ui : MonoBehaviour
     //Test for input data (gives 2 orders to control unit)
     void Start()
     {
+        allPlayerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
     }
 
     //Takes an order as a parameter and adds it to the units queue
-    void addToQueue(Vector3 moveTo, data.unitAction actAt)
+    void addToQueue(Vector3 moveTo, data.unitAction actAt, GameObject unit)
     {
-        foreach (GameObject unit in selectedUnitList)
-        {
-            unit.GetComponent<unit>().queueOrder(moveTo, actAt);
-        }
+        unit.GetComponent<unit>().queueOrder(moveTo, actAt);
     }
 
     void selecionCheck()
     {
-        GameObject[] allPlayerUnits;
-        allPlayerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
-        if (Input.GetButton("Select"))
+        foreach (GameObject unit in allPlayerUnits)
         {
-            foreach (GameObject unit in allPlayerUnits)
+            if (Input.GetButton("Select"))
             {
+
                 Vector3 unitPos = Camera.main.WorldToScreenPoint(unit.transform.position);
                 unitPos.y = InvertMouseY(unitPos.y);
 
                 if (selection.Contains(unitPos))
                 {
-                    selectedUnitList.Add(unit);
                     unit.GetComponent<unit>().selectionStatus(true);
                 }
             }
-
-        }
-
-        if (Input.GetButtonUp("Select"))
-        {
-            RaycastHit hit;
-            foreach (GameObject unit in selectedUnitList)
+            if (Input.GetButtonDown("Select"))
             {
+                RaycastHit hit;
 
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
                     if (hit.collider.tag == "PlayerUnit")
                     {
-                        selectedUnitList.Add(unit);
-                        unit.GetComponent<unit>().selectionStatus(true);
+                        unit.GetComponent<unit>().selectionStatus(false);
+                        hit.rigidbody.GetComponent<unit>().selectionStatus(true);
+                    }
+                    else
+                    {
+                        unit.GetComponent<unit>().selectionStatus(false);
                     }
                 }
                 else
                 {
                     unit.GetComponent<unit>().selectionStatus(false);
-                    selectedUnitList.Clear();
-                    startClick = -Vector3.one;
                 }
             }
         }
@@ -72,7 +66,7 @@ public class ui : MonoBehaviour
 
     void generateOrders()
     {
-        foreach (GameObject unit in selectedUnitList)
+        foreach (GameObject unit in allPlayerUnits)
         {
             if (Input.GetButton("Interact") && Input.GetButton("Queue") && unit.GetComponent<unit>().isSelected)
             {
@@ -80,7 +74,7 @@ public class ui : MonoBehaviour
 
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    addToQueue(hit.point, data.unitAction.STAND);
+                    addToQueue(hit.point, data.unitAction.STAND, unit);
                 }
             }
             else if (Input.GetButton("Interact") && unit.GetComponent<unit>().isSelected)
@@ -93,16 +87,16 @@ public class ui : MonoBehaviour
                     if (hit.collider.tag == "Resource")
                     {
                         unit.GetComponent<unit>().target = controlResource;
-                        addToQueue(hit.point, data.unitAction.PICKUP);
+                        addToQueue(hit.point, data.unitAction.PICKUP, unit);
                     }
                     else
                     {
-                        addToQueue(hit.point, data.unitAction.STAND);
+                        addToQueue(hit.point, data.unitAction.STAND, unit);
                     }
                 }
                 if (unit.GetComponent<unit>().isCarrying)
                 {
-                    addToQueue(hit.point, data.unitAction.DROP);
+                    addToQueue(hit.point, data.unitAction.DROP, unit);
                 }
             }
         }
@@ -125,7 +119,10 @@ public class ui : MonoBehaviour
         {
             startClick = Input.mousePosition;
         }
-
+        else if (Input.GetButtonUp("Select"))
+        {
+            startClick = -Vector3.one;
+        }
         if (Input.GetButton("Select"))
         {
             selection = new Rect(startClick.x, InvertMouseY(startClick.y), Input.mousePosition.x - startClick.x, InvertMouseY(Input.mousePosition.y) - InvertMouseY(startClick.y));
