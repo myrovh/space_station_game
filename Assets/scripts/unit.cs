@@ -22,6 +22,7 @@ public class unit : MonoBehaviour
     //Setting Variables
     public float unitMoveSpeed = 1;
     public float unitStoppingDistance = 1.75f;
+    private int baseAvoidance = 89;
 
     //State Tracking Variables
     public bool isSelected = false;
@@ -47,6 +48,7 @@ public class unit : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.stoppingDistance = unitStoppingDistance - 0.75f;
     }
 
     void Update()
@@ -97,9 +99,9 @@ public class unit : MonoBehaviour
         bool isComplete = false;
         if (activeOrderQueue.Count > 0)
         {
-            unitOrder tempOrder = activeOrderQueue[0];
-
-            agent.destination = tempOrder.moveTo;
+            unitOrder tempOrder = activeOrderQueue[0]; //Get the order on the top of the list
+            agent.destination = tempOrder.moveTo; //Tell NavMeshAgent to move to order location
+            agent.avoidancePriority = baseAvoidance - activeOrderQueue.Count; //Set the movement priority of this unit based on the number of orders it has queued
 
             if ((transform.position - agent.destination).magnitude <= unitStoppingDistance)
             {
@@ -121,6 +123,12 @@ public class unit : MonoBehaviour
                         break;
                 }
             }
+        }
+
+        //If the order has been compleated then increase the avoidancePriority so this unit will move out of the way of units with orders
+        if (activeOrderQueue.Count == 0)
+        {
+            agent.avoidancePriority = baseAvoidance + 10;
         }
         return isComplete;
     }
