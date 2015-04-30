@@ -61,7 +61,7 @@ public class ui : MonoBehaviour
     {
         foreach (GameObject unit in allPlayerUnits)
         {
-            if (Input.GetButton("Interact") && Input.GetButton("Queue") && unit.GetComponent<unit>().isSelected)
+            if (Input.GetButtonDown("Interact") && Input.GetButtonDown("Queue") && unit.GetComponent<unit>().isSelected)
             {
                 RaycastHit hit;
 
@@ -70,7 +70,7 @@ public class ui : MonoBehaviour
                     addToQueue(hit.point, data.unitAction.STAND, unit);
                 }
             }
-            else if (Input.GetButton("Interact") && unit.GetComponent<unit>().isSelected)
+            else if (Input.GetButtonDown("Interact") && unit.GetComponent<unit>().isSelected)
             {
                 unit.GetComponent<unit>().clearQueue();
                 RaycastHit hit;

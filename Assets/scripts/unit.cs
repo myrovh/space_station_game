@@ -21,21 +21,21 @@ public class unit : MonoBehaviour
     #region Variables
     //Setting Variables
     public float unitMoveSpeed = 1;
-    public float unitStoppingDistance = 1.75f;
+    public float unitStoppingDistance = 1.5f;
     private int baseAvoidance = 89;
 
     //State Tracking Variables
     public bool isSelected = false;
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
 
     //Order Queue Variables
     private List<unitOrder> activeOrderQueue = new List<unitOrder>();
     delegate void MultiDelegate();
-    MultiDelegate passiveOrderQueue;
+    private MultiDelegate passiveOrderQueue;
 
     //Hauling Variables
     public GameObject target;
-    GameObject inventory;
+    private GameObject inventory;
     public bool isCarrying = false;
     #endregion
 
@@ -111,11 +111,11 @@ public class unit : MonoBehaviour
                         isComplete = true;
                         break;
                     case data.unitAction.PICKUP:
-                        PickUp(target);
+                        pickUp(target);
                         isComplete = true;
                         break;
                     case data.unitAction.DROP:
-                        Drop();
+                        drop();
                         isComplete = true;
                         break;
                     default:
@@ -133,7 +133,7 @@ public class unit : MonoBehaviour
         return isComplete;
     }
 
-    void PickUp(GameObject newObject)
+    void pickUp(GameObject newObject)
     {
         inventory = newObject;
         inventory.GetComponent<resource>().PickedUp(transform.gameObject);
@@ -141,7 +141,7 @@ public class unit : MonoBehaviour
         agent.destination = transform.position;
     }
 
-    void Drop()
+    void drop()
     {
         inventory.GetComponent<resource>().Dropped();
         inventory = null;

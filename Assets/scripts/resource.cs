@@ -11,11 +11,19 @@ public class resource : MonoBehaviour
         transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
+    void Update()
+    {
+        if (isCarried)
+        {
+            transform.position = (owner.transform.position + owner.transform.up);
+        }
+    }
+
     public void PickedUp(GameObject newOwner)
     {
         owner = newOwner;
         isCarried = true;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     public void Dropped()
@@ -23,6 +31,6 @@ public class resource : MonoBehaviour
         transform.position = (owner.transform.position + owner.transform.forward);
         owner = null;
         isCarried = false;
-        gameObject.SetActive(true);
+       //gameObject.SetActive(true);
     }
 }
