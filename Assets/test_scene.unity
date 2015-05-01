@@ -227,7 +227,7 @@ GameObject:
   - 114: {fileID: 331266531}
   m_Layer: 5
   m_Name: Button 2
-  m_TagString: Untagged
+  m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -672,7 +672,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlResource: {fileID: 1563513360}
   popup: {fileID: 1833589733}
-  orderNumber: 0
   selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
   moveButton: {fileID: 1041588454}
 --- !u!1 &938953243
@@ -754,7 +753,7 @@ GameObject:
   - 114: {fileID: 1041588454}
   m_Layer: 5
   m_Name: Move
-  m_TagString: Untagged
+  m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -912,7 +911,7 @@ GameObject:
   - 114: {fileID: 1422951101}
   m_Layer: 5
   m_Name: Button 1
-  m_TagString: Untagged
+  m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1236,7 +1235,7 @@ GameObject:
   - 114: {fileID: 1833589738}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1249,8 +1248,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1833589733}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &1833589735
 MonoBehaviour:
