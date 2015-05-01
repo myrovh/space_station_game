@@ -226,7 +226,7 @@ GameObject:
   - 114: {fileID: 331266532}
   - 114: {fileID: 331266531}
   m_Layer: 5
-  m_Name: Button 2
+  m_Name: drop
   m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -674,6 +674,8 @@ MonoBehaviour:
   popup: {fileID: 1833589733}
   selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
   moveButton: {fileID: 1041588454}
+  pickUpButton: {fileID: 1422951101}
+  dropButton: {fileID: 331266531}
 --- !u!1 &938953243
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +754,7 @@ GameObject:
   - 114: {fileID: 1041588455}
   - 114: {fileID: 1041588454}
   m_Layer: 5
-  m_Name: Move
+  m_Name: move
   m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -910,7 +912,7 @@ GameObject:
   - 114: {fileID: 1422951102}
   - 114: {fileID: 1422951101}
   m_Layer: 5
-  m_Name: Button 1
+  m_Name: pickUp
   m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1166,7 +1168,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
