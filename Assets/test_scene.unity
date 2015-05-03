@@ -226,7 +226,7 @@ GameObject:
   - 114: {fileID: 331266532}
   - 114: {fileID: 331266531}
   m_Layer: 5
-  m_Name: drop
+  m_Name: dropButton
   m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +754,7 @@ GameObject:
   - 114: {fileID: 1041588455}
   - 114: {fileID: 1041588454}
   m_Layer: 5
-  m_Name: move
+  m_Name: moveButton
   m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -912,7 +912,7 @@ GameObject:
   - 114: {fileID: 1422951102}
   - 114: {fileID: 1422951101}
   m_Layer: 5
-  m_Name: pickUp
+  m_Name: pickUpButton
   m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

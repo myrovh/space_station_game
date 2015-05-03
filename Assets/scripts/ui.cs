@@ -4,57 +4,70 @@ using System.Collections.Generic;
 public class ui : MonoBehaviour
 {
     //reference to a test unit
-    private GameObject[] allPlayerUnits;
+    List<GameObject> allPlayerUnits = new List<GameObject>(); 
+    //private GameObject[] allPlayerUnits;
     public GameObject controlResource;
     public GameObject popup;
     private GameObject currentUnit;
     private Vector3 orderPos;
-    private bool popupVisible = false;
     private Vector3 startClick = -Vector3.one;
     public Texture2D selectionHighlight = null;
     public static Rect selection = new Rect(0, 0, 0, 0);
     private RaycastHit hit;
 
     [SerializeField]
-    private UnityEngine.UI.Button moveButton = null;
+    public UnityEngine.UI.Button moveButton = null;
     [SerializeField]
-    private UnityEngine.UI.Button pickUpButton = null;
+    public UnityEngine.UI.Button pickUpButton = null;
     [SerializeField]
-    private UnityEngine.UI.Button dropButton = null;
+    public UnityEngine.UI.Button dropButton = null;
 
     //Test for input data (gives 2 orders to control unit)
     void Start()
     {
+        //Adding listeners for each of the buttons
+
         moveButton.onClick.AddListener(() => { moveOrder(); });
         pickUpButton.onClick.AddListener(() => { pickUpOrder(); });
         dropButton.onClick.AddListener(() => { dropOrder(); });
 
-        allPlayerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
+        allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
     }
+
 
     void moveOrder()
     {
         addToQueue(orderPos, data.unitAction.STAND, currentUnit);
-        popup.GetComponent<CanvasGroup>().alpha = 0;
-        popup.GetComponent<CanvasGroup>().interactable = false;
-        popupVisible = false;
+        showOrders(false);
     }
 
     void pickUpOrder()
     {
         currentUnit.GetComponent<unit>().target = controlResource;
         addToQueue(orderPos, data.unitAction.PICKUP, currentUnit);
-        popup.GetComponent<CanvasGroup>().alpha = 0;
-        popup.GetComponent<CanvasGroup>().interactable = false;
-        popupVisible = false;
+        showOrders(false);
     }
 
     void dropOrder()
     {
         addToQueue(orderPos, data.unitAction.DROP, currentUnit);
-        popup.GetComponent<CanvasGroup>().alpha = 0;
-        popup.GetComponent<CanvasGroup>().interactable = false;
-        popupVisible = false;
+        showOrders(false);
+    }
+
+    //Enables or disables unit order popup based on parameter given
+    void showOrders(bool isVisible)
+    {
+        if (isVisible)
+        {
+            popup.GetComponent<CanvasGroup>().alpha = 1;
+            popup.GetComponent<RectTransform>().position = Input.mousePosition;
+        }
+        else
+        {
+            popup.GetComponent<CanvasGroup>().alpha = 0;
+        }
+
+        popup.GetComponent<CanvasGroup>().interactable = isVisible;
     }
 
     //Takes an order as a parameter and adds it to the units queue
@@ -88,9 +101,9 @@ public class ui : MonoBehaviour
                     hit.rigidbody.GetComponent<unit>().selectionStatus(true);
                 }
                 //Deselects all units that are not hit by raycast
-                else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag == "PopupMenu")
+                else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag != "PopupMenu")
                 {
-                        unit.GetComponent<unit>().selectionStatus(false);
+                    unit.GetComponent<unit>().selectionStatus(false);
                 }
             }
         }
@@ -104,7 +117,25 @@ public class ui : MonoBehaviour
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    addToQueue(hit.point, data.unitAction.STAND, unit);
+                    if (hit.collider.tag == "Resource")
+                    {
+                        showOrders(true);
+                        orderPos = hit.point;
+                        currentUnit = unit;
+                    }
+                    else
+                    {
+                        if (unit.GetComponent<unit>().isCarrying)
+                        {
+                            showOrders(true);
+                            orderPos = hit.point;
+                            currentUnit = unit;
+                        }
+                        else
+                        {
+                            addToQueue(hit.point, data.unitAction.STAND, unit);
+                        }
+                    }
                 }
             }
             else if (Input.GetButtonDown("Interact") && unit.GetComponent<unit>().isSelected)
@@ -112,29 +143,19 @@ public class ui : MonoBehaviour
                unit.GetComponent<unit>().clearQueue();
                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    if (hit.collider.tag == "Resource" || hit.collider.tag == "PopupMenu")
+                    if (hit.collider.tag == "Resource")
                     {
-                        if (!popupVisible)
-                        {
-                            popup.GetComponent<CanvasGroup>().alpha = 1;
-                            popup.GetComponent<CanvasGroup>().interactable = true;
-                            popup.GetComponent<RectTransform>().position = Input.mousePosition;
+                            showOrders(true);
                             orderPos = hit.point;
                             currentUnit = unit;
-                            popupVisible = true;
-                        }
-
                     }
                     else
                     {
                         if (unit.GetComponent<unit>().isCarrying)
                         {
-                            popup.GetComponent<CanvasGroup>().alpha = 1;
-                            popup.GetComponent<CanvasGroup>().interactable = true;
-                            popup.GetComponent<RectTransform>().position = Input.mousePosition;
+                            showOrders(true);
                             orderPos = hit.point;
                             currentUnit = unit;
-                            popupVisible = true;
                         }
                         else
                         {
@@ -148,7 +169,7 @@ public class ui : MonoBehaviour
 
     void Update()
     {
-        checkCamera();
+        checkSelectionBox();
 
         selecionCheck();
 
@@ -158,7 +179,7 @@ public class ui : MonoBehaviour
 
     //Checking if the select button is being pressed and setting the values of the selection box
     //based on the start click and current mouse position
-    void checkCamera()
+    void checkSelectionBox()
     {
         if (Input.GetButtonDown("Select"))
         {
