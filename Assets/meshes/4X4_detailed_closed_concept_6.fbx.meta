@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d14b118f2fd7a004db58017434482f4e
-timeCreated: 1430639052
+guid: e528112e55269ca47b6fb10856dd34dd
+timeCreated: 1430722461
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -12,7 +12,7 @@ ModelImporter:
     4300000: boilerplate_4x4_closed
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

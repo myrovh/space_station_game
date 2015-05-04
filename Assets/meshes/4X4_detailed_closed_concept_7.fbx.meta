@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23c46a70b014424498c5debaad7bf544
+guid: cd254da1053484947818bd78f0dcab5b
 timeCreated: 1430722461
 licenseType: Free
 ModelImporter:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: boilerplate_4x4_closed1
+    4300000: boilerplate_4x4_closed
     9500000: //RootNode
   materials:
     importMaterials: 1
