@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 public class ui : MonoBehaviour
 {
-    //reference to a test unit
-    List<GameObject> allPlayerUnits = new List<GameObject>(); 
-    //private GameObject[] allPlayerUnits;
-    public GameObject controlResource;
+    List<GameObject> allPlayerUnits = new List<GameObject>();
+    private GameObject targetResource;
     public GameObject popup;
     private GameObject currentUnit;
     private Vector3 orderPos;
@@ -22,7 +20,6 @@ public class ui : MonoBehaviour
     [SerializeField]
     public UnityEngine.UI.Button dropButton = null;
 
-    //Test for input data (gives 2 orders to control unit)
     void Start()
     {
         //Adding listeners for each of the buttons
@@ -34,7 +31,6 @@ public class ui : MonoBehaviour
         allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
     }
 
-
     void moveOrder()
     {
         addToQueue(orderPos, data.unitAction.STAND, currentUnit);
@@ -43,7 +39,7 @@ public class ui : MonoBehaviour
 
     void pickUpOrder()
     {
-        currentUnit.GetComponent<unit>().target = controlResource;
+        currentUnit.GetComponent<unit>().target = targetResource;
         addToQueue(orderPos, data.unitAction.PICKUP, currentUnit);
         showOrders(false);
     }
@@ -122,6 +118,7 @@ public class ui : MonoBehaviour
                         showOrders(true);
                         orderPos = hit.point;
                         currentUnit = unit;
+                        targetResource = hit.collider.gameObject;
                     }
                     else
                     {
@@ -148,6 +145,7 @@ public class ui : MonoBehaviour
                             showOrders(true);
                             orderPos = hit.point;
                             currentUnit = unit;
+                            targetResource = hit.collider.gameObject;
                     }
                     else
                     {

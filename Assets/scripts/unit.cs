@@ -136,7 +136,7 @@ public class unit : MonoBehaviour
     void pickUp(GameObject newObject)
     {
         inventory = newObject;
-        inventory.GetComponent<resource>().PickedUp(transform.gameObject);
+        inventory.GetComponent<resource>().PickedUp(this.gameObject);
         isCarrying = true;
         agent.destination = transform.position;
     }
