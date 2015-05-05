@@ -21,20 +21,21 @@ public class unit : MonoBehaviour
     #region Variables
     //Setting Variables
     public float unitMoveSpeed = 1;
-    public float unitStoppingDistance = 1.75f;
+    public float unitStoppingDistance = 1.5f;
+    private int baseAvoidance = 89;
 
     //State Tracking Variables
     public bool isSelected = false;
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
 
     //Order Queue Variables
     private List<unitOrder> activeOrderQueue = new List<unitOrder>();
     delegate void MultiDelegate();
-    MultiDelegate passiveOrderQueue;
+    private MultiDelegate passiveOrderQueue;
 
     //Hauling Variables
     public GameObject target;
-    GameObject inventory;
+    private GameObject inventory;
     public bool isCarrying = false;
     #endregion
 
@@ -47,6 +48,7 @@ public class unit : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.stoppingDistance = unitStoppingDistance - 0.75f;
     }
 
     void Update()
@@ -97,9 +99,9 @@ public class unit : MonoBehaviour
         bool isComplete = false;
         if (activeOrderQueue.Count > 0)
         {
-            unitOrder tempOrder = activeOrderQueue[0];
-
-            agent.destination = tempOrder.moveTo;
+            unitOrder tempOrder = activeOrderQueue[0]; //Get the order on the top of the list
+            agent.destination = tempOrder.moveTo; //Tell NavMeshAgent to move to order location
+            agent.avoidancePriority = baseAvoidance - activeOrderQueue.Count; //Set the movement priority of this unit based on the number of orders it has queued
 
             if ((transform.position - agent.destination).magnitude <= unitStoppingDistance)
             {
@@ -109,11 +111,11 @@ public class unit : MonoBehaviour
                         isComplete = true;
                         break;
                     case data.unitAction.PICKUP:
-                        PickUp(target);
+                        pickUp(target);
                         isComplete = true;
                         break;
                     case data.unitAction.DROP:
-                        Drop();
+                        drop();
                         isComplete = true;
                         break;
                     default:
@@ -122,10 +124,16 @@ public class unit : MonoBehaviour
                 }
             }
         }
+
+        //If the order has been compleated then increase the avoidancePriority so this unit will move out of the way of units with orders
+        if (activeOrderQueue.Count == 0)
+        {
+            agent.avoidancePriority = baseAvoidance + 10;
+        }
         return isComplete;
     }
 
-    void PickUp(GameObject newObject)
+    void pickUp(GameObject newObject)
     {
         inventory = newObject;
         inventory.GetComponent<resource>().PickedUp(transform.gameObject);
@@ -133,7 +141,7 @@ public class unit : MonoBehaviour
         agent.destination = transform.position;
     }
 
-    void Drop()
+    void drop()
     {
         inventory.GetComponent<resource>().Dropped();
         inventory = null;
