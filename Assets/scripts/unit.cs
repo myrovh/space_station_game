@@ -171,8 +171,11 @@ public class unit : MonoBehaviour
 
     void idle()
     {
-        agent.updateRotation = false;
-        transform.Rotate(Vector3.up * Time.deltaTime * 10);
+        if (activeOrderQueue.Count == 0)
+        {
+            agent.updateRotation = false;
+            transform.Rotate(Vector3.up * Time.deltaTime * 10);
+        }
     }
 
     //Call this function and pass a bool to tell the unit if it is selected or not
