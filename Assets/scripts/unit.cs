@@ -41,8 +41,8 @@ public class unit : MonoBehaviour
 
     //Order Queue Variables
     private List<unitOrder> activeOrderQueue = new List<unitOrder>();
-    //delegate void MultiDelegate();
-    //private MultiDelegate passiveOrderQueue;
+    delegate void MultiDelegate();
+    private MultiDelegate passiveOrderQueue;
 
     //Hauling Variables
     public GameObject target;
@@ -54,7 +54,7 @@ public class unit : MonoBehaviour
     void OnEnable()
     {
         //Add passive functions here
-        //passiveOrderQueue = idle();
+        passiveOrderQueue += idle;
     }
 
     void Start()
@@ -65,15 +65,11 @@ public class unit : MonoBehaviour
 
     void Update()
     {
-        /*
         //Executes any asigned passive orders
         if (passiveOrderQueue != null)
         {
             passiveOrderQueue();
         }
-        */
-
-        idle();
 
         //Executes the first order on the active order queue
         currentOrder();
