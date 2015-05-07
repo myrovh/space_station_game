@@ -672,6 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 1833589733}
   selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
+  buttonClick: 0
   moveButton: {fileID: 1041588454}
   pickUpButton: {fileID: 1422951101}
   dropButton: {fileID: 331266531}
@@ -1353,7 +1354,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 0
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1833589735
 MonoBehaviour:
@@ -1399,7 +1400,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 23.9689999, y: 24.5569992}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 606, y: 271}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1833589738
