@@ -33,20 +33,20 @@ public class ui : MonoBehaviour
 
     void moveOrder()
     {
-        addToQueue(orderPos, data.unitAction.STAND, currentUnit);
+        addToQueue(orderPos, data.unitAction.STAND, null, currentUnit);
         showOrders(false);
     }
 
     void pickUpOrder()
     {
         currentUnit.GetComponent<unit>().target = targetResource;
-        addToQueue(orderPos, data.unitAction.PICKUP, currentUnit);
+        addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
         showOrders(false);
     }
 
     void dropOrder()
     {
-        addToQueue(orderPos, data.unitAction.DROP, currentUnit);
+        addToQueue(orderPos, data.unitAction.DROP, null, currentUnit);
         showOrders(false);
     }
 
@@ -67,9 +67,17 @@ public class ui : MonoBehaviour
     }
 
     //Takes an order as a parameter and adds it to the units queue
-    void addToQueue(Vector3 moveTo, data.unitAction actAt, GameObject unit)
+    void addToQueue(Vector3 moveTo, data.unitAction actAt, GameObject actAtObject, GameObject unit)
     {
-        unit.GetComponent<unit>().queueOrder(moveTo, actAt);
+        if (moveTo != Vector3.zero)
+        {
+            unit.GetComponent<unit>().queueOrder(moveTo, actAt);
+        }
+        else
+        {
+            unit.GetComponent<unit>().queueOrder(actAtObject, actAt);
+        }
+        
     }
 
     void selecionCheck()
@@ -130,7 +138,7 @@ public class ui : MonoBehaviour
                         }
                         else
                         {
-                            addToQueue(hit.point, data.unitAction.STAND, unit);
+                            addToQueue(hit.point, data.unitAction.STAND, null, unit);
                         }
                     }
                 }
@@ -157,7 +165,7 @@ public class ui : MonoBehaviour
                         }
                         else
                         {
-                            addToQueue(hit.point, data.unitAction.STAND, unit);
+                            addToQueue(hit.point, data.unitAction.STAND, null, unit);
                         }
                     }
                 }
