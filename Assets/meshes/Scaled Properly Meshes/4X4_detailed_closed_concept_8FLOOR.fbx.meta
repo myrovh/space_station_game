@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 50235b2547f30cc40b6c4b11e8c9b92b
-timeCreated: 1430722461
+guid: e04d1f3deada17c419a9229aa398fce4
+timeCreated: 1430976644
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: boilerplate_4x4_closed
+    4300000: X4_Detailed_closed_concept_8FLOOR:X4_Detailed_closed_concept_2:boilerplate_4x4_closed
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -30,7 +30,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
