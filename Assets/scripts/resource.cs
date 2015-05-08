@@ -5,6 +5,7 @@ public class resource : MonoBehaviour
 {
     public bool isCarried = false;
     GameObject owner;
+    public data.resourceType resourceType;
 
     void Start()
     {
