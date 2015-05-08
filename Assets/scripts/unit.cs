@@ -9,23 +9,12 @@ public class unit : MonoBehaviour
     {
         public Vector3 moveTo;
         public data.unitAction actAt;
-        public GameObject actAtObject;
 
         public unitOrder(Vector3 moveTo, data.unitAction actAt)
         {
             this.moveTo = moveTo;
             this.actAt = actAt;
-            this.actAtObject = null;
         }
-
-        public unitOrder(GameObject actAtObject, data.unitAction actAt)
-        {
-            this.moveTo = actAtObject.transform.position;
-            this.actAt = actAt;
-            this.actAtObject = actAtObject;
-        }
-
-
     }
     #endregion
 
@@ -54,7 +43,6 @@ public class unit : MonoBehaviour
     void OnEnable()
     {
         //Add passive functions here
-        passiveOrderQueue += idle;
     }
 
     void Start()
@@ -70,7 +58,6 @@ public class unit : MonoBehaviour
         {
             passiveOrderQueue();
         }
-
         //Executes the first order on the active order queue
         currentOrder();
     }
@@ -87,11 +74,6 @@ public class unit : MonoBehaviour
     public void queueOrder(Vector3 moveTo, data.unitAction actAt)
     {
         activeOrderQueue.Add(new unitOrder(moveTo, actAt));
-    }
-
-    public void queueOrder(GameObject actAtObject, data.unitAction actAt)
-    {
-        activeOrderQueue.Add(new unitOrder(actAtObject, actAt));
     }
 
     //Clears the active order queue
@@ -114,7 +96,6 @@ public class unit : MonoBehaviour
     //returns true when current order is completed
     bool executeOrder()
     {
-        agent.updateRotation = true;
         bool isComplete = false;
         if (activeOrderQueue.Count > 0)
         {
@@ -155,7 +136,7 @@ public class unit : MonoBehaviour
     void pickUp(GameObject newObject)
     {
         inventory = newObject;
-        inventory.GetComponent<resource>().PickedUp(this.gameObject);
+        inventory.GetComponent<resource>().PickedUp(transform.gameObject);
         isCarrying = true;
         agent.destination = transform.position;
     }
@@ -168,15 +149,6 @@ public class unit : MonoBehaviour
         agent.destination = transform.position;
     }
     #endregion
-
-    void idle()
-    {
-        if (activeOrderQueue.Count == 0)
-        {
-            agent.updateRotation = false;
-            transform.Rotate(Vector3.up * Time.deltaTime * 10);
-        }
-    }
 
     //Call this function and pass a bool to tell the unit if it is selected or not
     //Later these functions will be removed and selection tracking will be handled by the UI

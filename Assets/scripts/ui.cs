@@ -3,81 +3,23 @@ using System.Collections.Generic;
 
 public class ui : MonoBehaviour
 {
-    List<GameObject> allPlayerUnits = new List<GameObject>();
-    private GameObject targetResource;
-    public GameObject popup;
-    private GameObject currentUnit;
-    private Vector3 orderPos;
+    //reference to a test unit
+    private GameObject[] allPlayerUnits;
+    public GameObject controlResource;
     private Vector3 startClick = -Vector3.one;
     public Texture2D selectionHighlight = null;
     public static Rect selection = new Rect(0, 0, 0, 0);
-    private RaycastHit hit;
 
-    [SerializeField]
-    public UnityEngine.UI.Button moveButton = null;
-    [SerializeField]
-    public UnityEngine.UI.Button pickUpButton = null;
-    [SerializeField]
-    public UnityEngine.UI.Button dropButton = null;
-
+    //Test for input data (gives 2 orders to control unit)
     void Start()
     {
-        //Adding listeners for each of the buttons
-
-        moveButton.onClick.AddListener(() => { moveOrder(); });
-        pickUpButton.onClick.AddListener(() => { pickUpOrder(); });
-        dropButton.onClick.AddListener(() => { dropOrder(); });
-
-        allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
-    }
-
-    void moveOrder()
-    {
-        addToQueue(orderPos, data.unitAction.STAND, null, currentUnit);
-        showOrders(false);
-    }
-
-    void pickUpOrder()
-    {
-        currentUnit.GetComponent<unit>().target = targetResource;
-        addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
-        showOrders(false);
-    }
-
-    void dropOrder()
-    {
-        addToQueue(orderPos, data.unitAction.DROP, null, currentUnit);
-        showOrders(false);
-    }
-
-    //Enables or disables unit order popup based on parameter given
-    void showOrders(bool isVisible)
-    {
-        if (isVisible)
-        {
-            popup.GetComponent<CanvasGroup>().alpha = 1;
-            popup.GetComponent<RectTransform>().position = Input.mousePosition;
-        }
-        else
-        {
-            popup.GetComponent<CanvasGroup>().alpha = 0;
-        }
-
-        popup.GetComponent<CanvasGroup>().interactable = isVisible;
+        allPlayerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
     }
 
     //Takes an order as a parameter and adds it to the units queue
-    void addToQueue(Vector3 moveTo, data.unitAction actAt, GameObject actAtObject, GameObject unit)
+    void addToQueue(Vector3 moveTo, data.unitAction actAt, GameObject unit)
     {
-        if (moveTo != Vector3.zero)
-        {
-            unit.GetComponent<unit>().queueOrder(moveTo, actAt);
-        }
-        else
-        {
-            unit.GetComponent<unit>().queueOrder(actAtObject, actAt);
-        }
-        
+        unit.GetComponent<unit>().queueOrder(moveTo, actAt);
     }
 
     void selecionCheck()
@@ -98,14 +40,16 @@ public class ui : MonoBehaviour
 
             if (Input.GetButtonDown("Select"))
             {
+                RaycastHit hit;
+
                 //Selects unit if is clicked while underneath mouse cursor
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag == "PlayerUnit")
                 {
-                    unit.GetComponent<unit>().selectionStatus(false);
-                    hit.rigidbody.GetComponent<unit>().selectionStatus(true);
+                        unit.GetComponent<unit>().selectionStatus(false);
+                        hit.rigidbody.GetComponent<unit>().selectionStatus(true);
                 }
                 //Deselects all units that are not hit by raycast
-                else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag != "PopupMenu")
+                else
                 {
                     unit.GetComponent<unit>().selectionStatus(false);
                 }
@@ -117,57 +61,35 @@ public class ui : MonoBehaviour
     {
         foreach (GameObject unit in allPlayerUnits)
         {
-            if (Input.GetButtonDown("Interact") && Input.GetButton("Queue") && unit.GetComponent<unit>().isSelected)
+            if (Input.GetButtonDown("Interact") && Input.GetButtonDown("Queue") && unit.GetComponent<unit>().isSelected)
             {
+                RaycastHit hit;
+
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    if (hit.collider.tag == "Resource")
-                    {
-                        showOrders(true);
-                        orderPos = hit.point;
-                        currentUnit = unit;
-                        targetResource = hit.collider.gameObject;
-                    }
-                    else
-                    {
-                        if (unit.GetComponent<unit>().isCarrying)
-                        {
-                            showOrders(true);
-                            orderPos = hit.point;
-                            currentUnit = unit;
-                        }
-                        else
-                        {
-                            addToQueue(hit.point, data.unitAction.STAND, null, unit);
-                        }
-                    }
+                    addToQueue(hit.point, data.unitAction.STAND, unit);
                 }
             }
             else if (Input.GetButtonDown("Interact") && unit.GetComponent<unit>().isSelected)
             {
-               unit.GetComponent<unit>().clearQueue();
-               if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                unit.GetComponent<unit>().clearQueue();
+                RaycastHit hit;
+
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
                     if (hit.collider.tag == "Resource")
                     {
-                            showOrders(true);
-                            orderPos = hit.point;
-                            currentUnit = unit;
-                            targetResource = hit.collider.gameObject;
+                        unit.GetComponent<unit>().target = controlResource;
+                        addToQueue(hit.point, data.unitAction.PICKUP, unit);
                     }
                     else
                     {
-                        if (unit.GetComponent<unit>().isCarrying)
-                        {
-                            showOrders(true);
-                            orderPos = hit.point;
-                            currentUnit = unit;
-                        }
-                        else
-                        {
-                            addToQueue(hit.point, data.unitAction.STAND, null, unit);
-                        }
+                        addToQueue(hit.point, data.unitAction.STAND, unit);
                     }
+                }
+                if (unit.GetComponent<unit>().isCarrying)
+                {
+                    addToQueue(hit.point, data.unitAction.DROP, unit);
                 }
             }
         }
@@ -175,17 +97,16 @@ public class ui : MonoBehaviour
 
     void Update()
     {
-        checkSelectionBox();
+        checkCamera();
 
         selecionCheck();
 
         generateOrders();
-
     }
 
     //Checking if the select button is being pressed and setting the values of the selection box
     //based on the start click and current mouse position
-    void checkSelectionBox()
+    void checkCamera()
     {
         if (Input.GetButtonDown("Select"))
         {
