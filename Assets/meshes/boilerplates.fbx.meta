@@ -1,0 +1,117 @@
+fileFormatVersion: 2
+guid: 933e304c40596df4fbfac45fdb4715b2
+timeCreated: 1430393551
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: boilerplate_3.8_corner
+    100002: boilerplate_3_corner
+    100004: boilerplate_3x3_closed
+    100006: boilerplate_4.8_corner
+    100008: boilerplate_4_corner
+    100010: boilerplate_4x4_closed
+    100012: boilerplate_4x4_open-1.6x3
+    100014: boilerplate_4x4_open-3x3
+    100016: boilerplate_8x4_open-3x3
+    100018: boilerplate_8x8_open-3x3
+    100020: //RootNode
+    400000: boilerplate_3.8_corner
+    400002: boilerplate_3_corner
+    400004: boilerplate_3x3_closed
+    400006: boilerplate_4.8_corner
+    400008: boilerplate_4_corner
+    400010: boilerplate_4x4_closed
+    400012: boilerplate_4x4_open-1.6x3
+    400014: boilerplate_4x4_open-3x3
+    400016: boilerplate_8x4_open-3x3
+    400018: boilerplate_8x8_open-3x3
+    400020: //RootNode
+    2300000: boilerplate_3.8_corner
+    2300002: boilerplate_3_corner
+    2300004: boilerplate_3x3_closed
+    2300006: boilerplate_4.8_corner
+    2300008: boilerplate_4_corner
+    2300010: boilerplate_4x4_closed
+    2300012: boilerplate_4x4_open-1.6x3
+    2300014: boilerplate_4x4_open-3x3
+    2300016: boilerplate_8x4_open-3x3
+    2300018: boilerplate_8x8_open-3x3
+    3300000: boilerplate_3.8_corner
+    3300002: boilerplate_3_corner
+    3300004: boilerplate_3x3_closed
+    3300006: boilerplate_4.8_corner
+    3300008: boilerplate_4_corner
+    3300010: boilerplate_4x4_closed
+    3300012: boilerplate_4x4_open-1.6x3
+    3300014: boilerplate_4x4_open-3x3
+    3300016: boilerplate_8x4_open-3x3
+    3300018: boilerplate_8x8_open-3x3
+    4300000: boilerplate_3_corner
+    4300002: boilerplate_3.8_corner
+    4300004: boilerplate_3x3_closed
+    4300006: boilerplate_4x4_open-3x3
+    4300008: boilerplate_4x4_open-1.6x3
+    4300010: boilerplate_4.8_corner
+    4300012: boilerplate_4_corner
+    4300014: boilerplate_8x8_open-3x3
+    4300016: boilerplate_8x4_open-3x3
+    4300018: boilerplate_4x4_closed
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
