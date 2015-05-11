@@ -13,6 +13,10 @@ public class ui : MonoBehaviour
     public static Rect selection = new Rect(0, 0, 0, 0);
     private RaycastHit hit;
 
+    #region Door Test Code
+    public GameObject testDoor;
+    #endregion
+
     [SerializeField]
     public UnityEngine.UI.Button moveButton = null;
     [SerializeField]
@@ -181,6 +185,7 @@ public class ui : MonoBehaviour
 
         generateOrders();
 
+        doorTest();
     }
 
     //Checking if the select button is being pressed and setting the values of the selection box
@@ -226,4 +231,18 @@ public class ui : MonoBehaviour
     {
         return Screen.height - y;
     }
+
+    #region Door Test Code
+    void doorTest()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            testDoor.GetComponent<Door>().startDoorOpen();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            testDoor.GetComponent<Door>().startDoorClose();
+        }
+    }
+    #endregion
 }
