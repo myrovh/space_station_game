@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class resource : MonoBehaviour
 {
     public bool isCarried = false;
     GameObject owner;
     public data.resourceType resourceType;
+    public List<data.interactions> interactions;
+    public Vector3 dropPosition;
 
     void Start()
     {
         transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        interactions.Add(data.interactions.HAUL);
     }
 
     void Update()
@@ -24,14 +28,18 @@ public class resource : MonoBehaviour
     {
         owner = newOwner;
         isCarried = true;
-        //gameObject.SetActive(false);
     }
 
     public void Dropped()
     {
-        transform.position = (owner.transform.position + owner.transform.forward);
+        transform.position = owner.transform.position + Vector3.forward;
+        //transform.position = dropPosition;
         owner = null;
         isCarried = false;
-       //gameObject.SetActive(true);
+    }
+
+    public List<data.interactions> getInteractions()
+    {
+        return interactions;
     }
 }
