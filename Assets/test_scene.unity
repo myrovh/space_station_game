@@ -720,7 +720,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 132676, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_Name
@@ -1750,7 +1750,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 472190, guid: c17f3379f3ce6aa48bb18f7bee090b7a, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 145368, guid: c17f3379f3ce6aa48bb18f7bee090b7a, type: 2}
       propertyPath: m_IsActive
@@ -2926,6 +2926,60 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 499048042}
   m_Mesh: {fileID: 4300018, guid: 933e304c40596df4fbfac45fdb4715b2, type: 3}
+--- !u!1001 &516846692
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1844204469}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -1.62920685e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3ba4fd9e4fd7f7a4bb4fda08d1e416ac, type: 2}
+    - target: {fileID: 2300000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 81eadb7cc56a4c54aba1d79c49b896f6, type: 2}
+    - target: {fileID: 2300002, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3cb20f6c936f17e4bb378a97d0ea6627, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &527910132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,6 +3476,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 575677165}
   m_Mesh: {fileID: 4300018, guid: 933e304c40596df4fbfac45fdb4715b2, type: 3}
+--- !u!1 &576572198 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+  m_PrefabInternal: {fileID: 516846692}
+--- !u!4 &576572199 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+  m_PrefabInternal: {fileID: 516846692}
+--- !u!114 &576572201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 576572198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c938dfeaf418edc40934c5a67925e87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorOpenTime: 0
 --- !u!1 &604241812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,7 +3834,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 690348847}
   m_Layer: 0
-  m_Name: north_1_corner
+  m_Name: south_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3978,7 +4052,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 796412814}
   m_Layer: 0
-  m_Name: north_1_surface
+  m_Name: south_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4603,6 +4677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 1833589733}
   selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
+  testDoor: {fileID: 576572198}
   moveButton: {fileID: 1041588454}
   pickUpButton: {fileID: 1422951101}
   dropButton: {fileID: 331266531}
@@ -6463,7 +6538,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1218959981}
   m_Layer: 0
-  m_Name: north_2_surface
+  m_Name: south_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6705,7 +6780,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 132676, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_Name
@@ -8449,7 +8524,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 19529890, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_StoppingDistance
@@ -9492,6 +9567,7 @@ Transform:
   - {fileID: 531922349}
   - {fileID: 527910133}
   - {fileID: 401405627}
+  - {fileID: 576572199}
   m_Father: {fileID: 1805038711}
   m_RootOrder: 2
 --- !u!1 &1845597868
