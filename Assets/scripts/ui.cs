@@ -272,13 +272,14 @@ public class ui : MonoBehaviour
     #region Door Test Code
     void doorTest()
     {
+        Door test_door_script = testDoor.GetComponent<Door>();
         if (Input.GetKeyDown(KeyCode.O))
         {
-            testDoor.GetComponent<Door>().startDoorOpen();
+            test_door_script.startDoorOpen();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            testDoor.GetComponent<Door>().startDoorClose();
+            test_door_script.startDoorClose();
         }
     }
     #endregion
