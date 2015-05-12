@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 99270740b8153064d8ab3150c9cd56bf
-timeCreated: 1431322557
+guid: 0a623a5dd9c75354cabe49c0c6ccfe92
+timeCreated: 1431402441
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: boilerplate_3_corner
+    4300000: boilerplate_4_corner
     9500000: //RootNode
   materials:
     importMaterials: 0
