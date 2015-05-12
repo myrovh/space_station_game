@@ -8,6 +8,7 @@ TagManager:
   - Resource
   - PopupMenu
   - resourceSlot
+  - module
   layers:
   - Default
   - TransparentFX
