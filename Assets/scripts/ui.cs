@@ -3,145 +3,71 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 public class ui : MonoBehaviour
 {
-    List<GameObject> allPlayerUnits = new List<GameObject>();
-    private GameObject targetResource;
-    public GameObject popup;
-    private GameObject currentUnit;
-    private Vector3 orderPos;
-    private Vector3 startClick = -Vector3.one;
+    #region Variables
+
+    //Unit Selection Vairables
     public Texture2D selectionHighlight = null;
     public static Rect selection = new Rect(0, 0, 0, 0);
-    private RaycastHit hit;
     public bool buttonClick = false;
+    private List<GameObject> allPlayerUnits = new List<GameObject>();
+    private RaycastHit hit;
+    private Vector3 startClick = -Vector3.one;
+
+    //Haul Order Variables
+    private GameObject targetResource;
     private bool haulOrder = false;
     private List<GameObject> freeSlots;
 
-    #region Door Test Code
+    //Popup Variables
+    [SerializeField]
+    public UnityEngine.UI.Button button1 = null;
+    [SerializeField]
+    public UnityEngine.UI.Button button2 = null;
+    [SerializeField]
+    public UnityEngine.UI.Button button3 = null;
+    public GameObject popup;
+    private GameObject currentUnit;
+
+    // Door Test Code
     public GameObject testDoor;
+
     #endregion
 
-    [SerializeField]
-    public UnityEngine.UI.Button moveButton = null;
-    [SerializeField]
-    public UnityEngine.UI.Button pickUpButton = null;
-    [SerializeField]
-    public UnityEngine.UI.Button dropButton = null;
-
+    #region Monobehaviour Functions
     void Start()
     {
         //Adding listeners for each of the buttons
 
-        moveButton.onClick.AddListener(() => { moveOrder(); });
-        pickUpButton.onClick.AddListener(() => { pickUpOrder(); });
-        dropButton.onClick.AddListener(() => { dropOrder(); });
+        button1.onClick.AddListener(() => { button1Action(); });
+        button2.onClick.AddListener(() => { button2Action(); });
+        button3.onClick.AddListener(() => { button3Action(); });
 
         allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
     }
-
-    void moveOrder()
+    void Update()
     {
-        addToQueue(orderPos, data.unitAction.STAND, null, currentUnit);
-        showOrders(false);
+        checkSelectionBox();
+
+        selecionCheck();
+
+        generateOrders();
+
+        doorTest();
     }
 
-    void pickUpOrder()
+    //Drawing the selection box to the screen
+    private void OnGUI()
     {
-        currentUnit.GetComponent<unit>().target = targetResource;
-        addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
-        showOrders(false);
-    }
-
-    void dropOrder()
-    {
-        addToQueue(orderPos, data.unitAction.DROP, null, currentUnit);
-        showOrders(false);
-    }
-
-    //Enables or disables unit order popup based on parameter given
-    void showOrders(bool isVisible)
-    {
-        if (isVisible)
+        if (startClick != -Vector3.one)
         {
-            popup.GetComponent<CanvasGroup>().alpha = 1;
-            popup.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            popup.GetComponent<RectTransform>().position = Input.mousePosition;
-        }
-        else
-        {
-            popup.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            popup.GetComponent<CanvasGroup>().alpha = 0;
-        }
-
-        popup.GetComponent<CanvasGroup>().interactable = isVisible;
-    }
-
-    //Takes an order as a parameter and adds it to the units queue
-    void addToQueue(Vector3 moveTo, data.unitAction actAt, GameObject actAtObject, GameObject unit)
-    {
-        if (moveTo != Vector3.zero)
-        {
-            unit.GetComponent<unit>().queueOrder(moveTo, actAt);
-        }
-        else
-        {
-            currentUnit.GetComponent<unit>().target = targetResource;
-            unit.GetComponent<unit>().queueOrder(actAtObject, actAt);
-        }
-
-    }
-
-    void selecionCheck()
-    {
-        foreach (GameObject unit in allPlayerUnits)
-        {
-            if (Input.GetButton("Select"))
-            {
-                Vector3 unitPos = Camera.main.WorldToScreenPoint(unit.transform.position);
-                unitPos.y = InvertMouseY(unitPos.y);
-
-                //Select unit if unit is inside selection box
-                if (selection.Contains(unitPos))
-                {
-                    unit.GetComponent<unit>().selectionStatus(true);
-                }
-            }
-        }
-
-        if (Input.GetButtonDown("Select") && !buttonClick)
-        {
-            buttonClick = true;
-            //Selects unit if is clicked while underneath mouse cursor
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag == "PlayerUnit")
-            {
-                foreach (GameObject unit in allPlayerUnits)
-                {
-                    unit.GetComponent<unit>().selectionStatus(false);
-                }
-                hit.rigidbody.GetComponent<unit>().selectionStatus(true);
-                showOrders(false);
-            }
-            //Deselects all units that are not hit by raycast
-            else
-            {
-                //Check to see if the mouse pointer is over a ui object
-                if (!EventSystem.current.IsPointerOverGameObject())
-                {
-                    foreach (GameObject unit in allPlayerUnits)
-                    {
-                        unit.GetComponent<unit>().selectionStatus(false);
-                        showOrders(false);
-                    }
-                }
-            }
-        }
-
-        if (Input.GetButtonUp("Select"))
-        {
-            buttonClick = false;
-            haulOrder = false;
+            GUI.color = new Color(1, 1, 1, 0.5f);
+            GUI.DrawTexture(selection, selectionHighlight);
         }
     }
+    #endregion
 
+    #region Generate Order Functions
+    //Generates orders for currently selected units
     void generateOrders()
     {
         if (!haulOrder)
@@ -214,15 +140,74 @@ public class ui : MonoBehaviour
         }
     }
 
-    void Update()
+    //Takes an order as a parameter and adds it to the units queue
+    void addToQueue(Vector3 moveTo, data.unitAction actAt, GameObject actAtObject, GameObject unit)
     {
-        checkSelectionBox();
+        if (moveTo != Vector3.zero)
+        {
+            unit.GetComponent<unit>().queueOrder(moveTo, actAt);
+        }
+        else
+        {
+            currentUnit.GetComponent<unit>().target = targetResource;
+            unit.GetComponent<unit>().queueOrder(actAtObject, actAt);
+        }
 
-        selecionCheck();
+    }
+    #endregion
 
-        generateOrders();
+    #region Unit Selection Functions
+    //Function to check if units are being selected
+    void selecionCheck()
+    {
+        foreach (GameObject unit in allPlayerUnits)
+        {
+            if (Input.GetButton("Select"))
+            {
+                Vector3 unitPos = Camera.main.WorldToScreenPoint(unit.transform.position);
+                unitPos.y = InvertMouseY(unitPos.y);
 
-        doorTest();
+                //Select unit if unit is inside selection box
+                if (selection.Contains(unitPos))
+                {
+                    unit.GetComponent<unit>().selectionStatus(true);
+                }
+            }
+        }
+
+        if (Input.GetButtonDown("Select") && !buttonClick)
+        {
+            buttonClick = true;
+            //Selects unit if is clicked while underneath mouse cursor
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag == "PlayerUnit")
+            {
+                foreach (GameObject unit in allPlayerUnits)
+                {
+                    unit.GetComponent<unit>().selectionStatus(false);
+                }
+                hit.rigidbody.GetComponent<unit>().selectionStatus(true);
+                showOrders(false);
+            }
+            //Deselects all units that are not hit by raycast
+            else
+            {
+                //Check to see if the mouse pointer is over a ui object
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                    foreach (GameObject unit in allPlayerUnits)
+                    {
+                        unit.GetComponent<unit>().selectionStatus(false);
+                        showOrders(false);
+                    }
+                }
+            }
+        }
+
+        if (Input.GetButtonUp("Select"))
+        {
+            buttonClick = false;
+            haulOrder = false;
+        }
     }
 
     //Checking if the select button is being pressed and setting the values of the selection box
@@ -253,33 +238,58 @@ public class ui : MonoBehaviour
             }
         }
     }
-
-    //Drawing the selection box to the screen
-    private void OnGUI()
-    {
-        if (startClick != -Vector3.one)
-        {
-            GUI.color = new Color(1, 1, 1, 0.5f);
-            GUI.DrawTexture(selection, selectionHighlight);
-        }
-    }
-
+    //Inverts the y value of the mouse position
     public static float InvertMouseY(float y)
     {
         return Screen.height - y;
     }
+    #endregion
+
+    #region Context Popup Functions
+    void button1Action()
+    {
+
+    }
+
+    void button2Action()
+    {
+
+    }
+
+    void button3Action()
+    {
+
+    }
+
+    //Enables or disables unit order popup based on parameter given
+    void showOrders(bool isVisible)
+    {
+        if (isVisible)
+        {
+            popup.GetComponent<CanvasGroup>().alpha = 1;
+            popup.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            popup.GetComponent<RectTransform>().position = Input.mousePosition;
+        }
+        else
+        {
+            popup.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            popup.GetComponent<CanvasGroup>().alpha = 0;
+        }
+
+        popup.GetComponent<CanvasGroup>().interactable = isVisible;
+    }
+    #endregion
 
     #region Door Test Code
     void doorTest()
     {
-        Door test_door_script = testDoor.GetComponent<Door>();
         if (Input.GetKeyDown(KeyCode.O))
         {
-            test_door_script.startDoorOpen();
+            testDoor.GetComponent<Door>().startDoorOpen();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            test_door_script.startDoorClose();
+            testDoor.GetComponent<Door>().startDoorClose();
         }
     }
     #endregion
