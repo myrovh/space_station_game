@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 public class ui : MonoBehaviour
@@ -30,6 +31,7 @@ public class ui : MonoBehaviour
 
     // Door Test Code
     public GameObject currentDoor;
+    public Image progressBar;
 
     #endregion
 
@@ -111,10 +113,12 @@ public class ui : MonoBehaviour
                             currentUnit.GetComponent<unit>().door = currentDoor;
                             if (!currentDoor.GetComponent<Door>().isOpen)
                             {
+                                progressBar.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
                                 addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
                             }
                             else
                             {
+                                progressBar.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
                                 addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
                             }
                         }
