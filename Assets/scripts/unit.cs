@@ -89,11 +89,21 @@ public class unit : MonoBehaviour
     //Adds new order to the bottom of the queue
     public void queueOrder(Vector3 moveTo, data.unitAction actAt)
     {
+        if (door != null)
+        {
+            door.GetComponent<Door>().unitUsingDoor = false;
+        }
+
         activeOrderQueue.Add(new unitOrder(moveTo, actAt));
     }
 
     public void queueOrder(GameObject actAtObject, data.unitAction actAt)
     {
+        if (door != null)
+        {
+            door.GetComponent<Door>().unitUsingDoor = false;
+        }
+
         activeOrderQueue.Add(new unitOrder(actAtObject, actAt));
     }
 
@@ -181,13 +191,13 @@ public class unit : MonoBehaviour
 
     void openDoor(GameObject door)
     {
-        door.GetComponent<Door>().startDoorOpen();
+        door.GetComponent<Door>().unitUsingDoor = true;
         agent.destination = transform.position;
     }
 
     void closeDoor(GameObject door)
     {
-        door.GetComponent<Door>().startDoorClose();
+        door.GetComponent<Door>().unitUsingDoor = true;
         agent.destination = transform.position;
     }
     #endregion
