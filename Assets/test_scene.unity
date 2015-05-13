@@ -4748,6 +4748,7 @@ MonoBehaviour:
   button3: {fileID: 0}
   popup: {fileID: 1833589733}
   currentDoor: {fileID: 0}
+  progressBar: {fileID: 1945282145}
 --- !u!1 &879406444
 GameObject:
   m_ObjectHideFlags: 0
@@ -10162,11 +10163,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 495415868}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1954299848
 GameObject:
   m_ObjectHideFlags: 0

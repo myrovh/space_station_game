@@ -51,6 +51,12 @@ public class unit : MonoBehaviour
 
     //Door Manipulation Variables
     public GameObject door;
+
+    //Idle Function Variables
+    float rotateSpeed = 3.0f;
+    float timer = 0.0f;
+    Quaternion qto;
+    float speed = 1.25f;
     #endregion
 
     #region MonoBehaviour Functions
@@ -207,7 +213,15 @@ public class unit : MonoBehaviour
         if (activeOrderQueue.Count == 0)
         {
             agent.updateRotation = false;
-            transform.Rotate(Vector3.up * Time.deltaTime * 10);
+
+            timer += Time.deltaTime;
+
+            if (timer > 2)
+            {
+                qto = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
+                timer = 0.0f;
+            }
+            transform.rotation = Quaternion.Slerp(transform.rotation, qto, Time.deltaTime * rotateSpeed);
         }
     }
 
