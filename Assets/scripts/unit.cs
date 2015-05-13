@@ -48,6 +48,9 @@ public class unit : MonoBehaviour
     public GameObject target;
     private GameObject inventory;
     public bool isCarrying = false;
+
+    //Door Manipulation Variables
+    public GameObject door;
     #endregion
 
     #region MonoBehaviour Functions
@@ -137,6 +140,14 @@ public class unit : MonoBehaviour
                         drop();
                         isComplete = true;
                         break;
+                    case data.unitAction.OPENDOOR:
+                        openDoor(door);
+                        isComplete = true;
+                        break;
+                    case data.unitAction.CLOSEDOOR:
+                        closeDoor(door);
+                        isComplete = true;
+                        break;
                     default:
                         isComplete = true;
                         break;
@@ -165,6 +176,18 @@ public class unit : MonoBehaviour
         inventory.GetComponent<resource>().Dropped();
         inventory = null;
         isCarrying = false;
+        agent.destination = transform.position;
+    }
+
+    void openDoor(GameObject door)
+    {
+        door.GetComponent<Door>().startDoorOpen();
+        agent.destination = transform.position;
+    }
+
+    void closeDoor(GameObject door)
+    {
+        door.GetComponent<Door>().startDoorClose();
         agent.destination = transform.position;
     }
     #endregion

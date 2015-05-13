@@ -1565,7 +1565,7 @@ GameObject:
   - 114: {fileID: 331266532}
   - 114: {fileID: 331266531}
   m_Layer: 5
-  m_Name: dropButton
+  m_Name: button3
   m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3027,6 +3027,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 181cd55675a54f842835aee57270ae14, type: 3}
   m_IsPrefabParent: 0
@@ -3545,6 +3549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c938dfeaf418edc40934c5a67925e87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOpen: 0
   doorOpenTime: 0
 --- !u!1 &604241812
 GameObject:
@@ -4725,13 +4730,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8106a54555b23b41af0ccfa5ca36848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popup: {fileID: 1833589733}
   selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
   buttonClick: 0
-  testDoor: {fileID: 576572198}
-  moveButton: {fileID: 1041588454}
-  pickUpButton: {fileID: 1422951101}
-  dropButton: {fileID: 331266531}
+  button1: {fileID: 0}
+  button2: {fileID: 0}
+  button3: {fileID: 0}
+  popup: {fileID: 1833589733}
+  currentDoor: {fileID: 0}
 --- !u!1 &879406444
 GameObject:
   m_ObjectHideFlags: 0
@@ -5537,7 +5542,7 @@ GameObject:
   - 114: {fileID: 1041588455}
   - 114: {fileID: 1041588454}
   m_Layer: 5
-  m_Name: moveButton
+  m_Name: button1
   m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7439,7 +7444,7 @@ GameObject:
   - 114: {fileID: 1422951102}
   - 114: {fileID: 1422951101}
   m_Layer: 5
-  m_Name: pickUpButton
+  m_Name: button2
   m_TagString: PopupMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

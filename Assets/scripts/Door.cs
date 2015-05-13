@@ -5,7 +5,7 @@ public class Door : MonoBehaviour {
     Animator doorAnimation;
     int openHash = Animator.StringToHash("opening");
     int closeHash = Animator.StringToHash("closing");
-    private bool isOpen;
+    public bool isOpen;
     public int doorOpenTime;
 
 	// Use this for initialization

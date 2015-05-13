@@ -29,7 +29,7 @@ public class ui : MonoBehaviour
     private GameObject currentUnit;
 
     // Door Test Code
-    public GameObject testDoor;
+    public GameObject currentDoor;
 
     #endregion
 
@@ -38,9 +38,9 @@ public class ui : MonoBehaviour
     {
         //Adding listeners for each of the buttons
 
-        button1.onClick.AddListener(() => { button1Action(); });
-        button2.onClick.AddListener(() => { button2Action(); });
-        button3.onClick.AddListener(() => { button3Action(); });
+        //button1.onClick.AddListener(() => { button1Action(); });
+        //button2.onClick.AddListener(() => { button2Action(); });
+        //button3.onClick.AddListener(() => { button3Action(); });
 
         allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
     }
@@ -52,7 +52,7 @@ public class ui : MonoBehaviour
 
         generateOrders();
 
-        doorTest();
+        //doorTest();
     }
 
     //Drawing the selection box to the screen
@@ -102,6 +102,20 @@ public class ui : MonoBehaviour
                             if (targetResource.GetComponent<resource>().interactions.Count <= 1)
                             {
                                 haulOrder = true;
+                            }
+                        }
+                        else if (hit.collider.tag == "door")
+                        {
+                            currentUnit = unit;
+                            currentDoor = hit.transform.parent.gameObject;
+                            currentUnit.GetComponent<unit>().door = currentDoor;
+                            if (!currentDoor.GetComponent<Door>().isOpen)
+                            {
+                                addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
+                            }
+                            else
+                            {
+                                addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
                             }
                         }
                         else
@@ -279,7 +293,7 @@ public class ui : MonoBehaviour
         popup.GetComponent<CanvasGroup>().interactable = isVisible;
     }
     #endregion
-
+/*
     #region Door Test Code
     void doorTest()
     {
@@ -293,4 +307,5 @@ public class ui : MonoBehaviour
         }
     }
     #endregion
+ */
 }
