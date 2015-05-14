@@ -39,6 +39,7 @@ public class Door : MonoBehaviour
                 doorTimer = 5.0f;
                 unitUsingDoor = false;
             }
+            progressBar.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(transform.position); 
             progressBar.fillAmount = doorTimer / 5;
         }
         else

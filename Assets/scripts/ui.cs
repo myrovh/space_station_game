@@ -29,6 +29,9 @@ public class ui : MonoBehaviour
     public GameObject popup;
     private GameObject currentUnit;
 
+    //Door Variables
+    public GameObject currentDoor;
+
     #endregion
 
     #region Monobehaviour Functions
@@ -80,6 +83,20 @@ public class ui : MonoBehaviour
                             targetResource = hit.collider.gameObject;
                             haulOrder = true;
                         }
+                        else if (hit.collider.tag == "door")
+                        {
+                            currentUnit = unit;
+                            currentDoor = hit.transform.parent.gameObject;
+                            currentUnit.GetComponent<unit>().door = currentDoor;
+                            if (!currentDoor.GetComponent<Door>().isOpen)
+                            {
+                                addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
+                            }
+                            else
+                            {
+                                addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
+                            }
+                        }
                         else
                         {
                             addToQueue(hit.point, data.unitAction.STAND, null, unit);
@@ -107,12 +124,10 @@ public class ui : MonoBehaviour
                             currentUnit.GetComponent<unit>().door = currentDoor;
                             if (!currentDoor.GetComponent<Door>().isOpen)
                             {
-                                progressBar.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
                                 addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
                             }
                             else
                             {
-                                progressBar.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
                                 addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
                             }
                         }
