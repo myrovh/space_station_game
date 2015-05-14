@@ -4752,7 +4752,6 @@ MonoBehaviour:
   button3: {fileID: 0}
   popup: {fileID: 1833589733}
   currentDoor: {fileID: 0}
-  progressBar: {fileID: 1945282145}
 --- !u!1 &879406444
 GameObject:
   m_ObjectHideFlags: 0
