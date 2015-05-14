@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4125ccaf8ef212f459784865ba81deb2
-timeCreated: 1431581843
+guid: 288a06307eef2f742a615962ed160e21
+timeCreated: 1431599722
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -17,10 +17,10 @@ ModelImporter:
     3300002: pCube2
     4300000: pCube1
     4300002: pCube2
-    7400000: Close
-    7400002: Open
-    7400004: Open-Idle
-    7400006: Close-Idle
+    7400000: OpenCage-Idle
+    7400002: OpenCage
+    7400004: CloseCage
+    7400006: CloseCage-Idle
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -39,10 +39,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Close
+      name: OpenCage-Idle
       takeName: Take 001
-      firstFrame: 1
-      lastFrame: 5
+      firstFrame: 10
+      lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -71,7 +71,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Open
+      name: OpenCage
       takeName: Take 001
       firstFrame: 5
       lastFrame: 10
@@ -103,10 +103,10 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Open-Idle
+      name: CloseCage
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 1
+      lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -135,10 +135,10 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Close-Idle
+      name: CloseCage-Idle
       takeName: Take 001
-      firstFrame: 10
-      lastFrame: 10
+      firstFrame: 5
+      lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
