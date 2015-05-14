@@ -29,6 +29,13 @@ public class ui : MonoBehaviour
     public GameObject popup;
     private GameObject currentUnit;
 
+    //Camera Variables
+    public GameObject LevelCamera;
+    private LevelCamera _cameraScript;
+
+    // Door Variables
+    public GameObject currentDoor;
+    public Image progressBar;
     #endregion
 
     #region Monobehaviour Functions
@@ -41,6 +48,9 @@ public class ui : MonoBehaviour
         //button3.onClick.AddListener(() => { button3Action(); });
 
         allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
+
+        //Get camera script
+        _cameraScript = LevelCamera.GetComponent<LevelCamera>();
     }
     void Update()
     {
@@ -49,6 +59,8 @@ public class ui : MonoBehaviour
         selecionCheck();
 
         generateOrders();
+
+        CameraOrders();
     }
 
     //Drawing the selection box to the screen
@@ -291,4 +303,69 @@ public class ui : MonoBehaviour
         popup.GetComponent<CanvasGroup>().interactable = isVisible;
     }
     #endregion
+
+    private void CameraOrders()
+    {
+        #region Camera Pan
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            _cameraScript.PanCamera(data.cardinalPoints.NORTH);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            _cameraScript.PanCamera(data.cardinalPoints.SOUTH);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            _cameraScript.PanCamera(data.cardinalPoints.EAST);
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            _cameraScript.PanCamera(data.cardinalPoints.WEST);
+        }
+        #endregion
+
+        #region Camera Rotate
+        if(Input.GetKeyDown((KeyCode.Q)))
+        {
+            data.cardinalPoints currentRotation = _cameraScript.GetCurrentRotation();
+            if (currentRotation == data.cardinalPoints.SOUTH)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.WEST, data.cardinalPoints.SOUTH);
+            }
+            else if (currentRotation == data.cardinalPoints.WEST)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.NORTH, data.cardinalPoints.WEST);
+            }
+            else if (currentRotation == data.cardinalPoints.EAST)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.SOUTH, data.cardinalPoints.EAST);
+            }
+            else if (currentRotation == data.cardinalPoints.NORTH)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.EAST, data.cardinalPoints.NORTH);
+            }
+        }
+        if(Input.GetKeyDown((KeyCode.E)))
+        {
+            data.cardinalPoints currentRotation = _cameraScript.GetCurrentRotation();
+            if (currentRotation == data.cardinalPoints.SOUTH)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.EAST, data.cardinalPoints.NORTH);
+            }
+            else if (currentRotation == data.cardinalPoints.WEST)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.SOUTH, data.cardinalPoints.EAST);
+            }
+            else if (currentRotation == data.cardinalPoints.EAST)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.NORTH, data.cardinalPoints.WEST);
+            }
+            else if (currentRotation == data.cardinalPoints.NORTH)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.WEST, data.cardinalPoints.SOUTH);
+            }
+        }
+        #endregion
+    }
 }
