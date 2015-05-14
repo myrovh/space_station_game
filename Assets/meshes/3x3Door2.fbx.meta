@@ -1,24 +1,26 @@
 fileFormatVersion: 2
-guid: 685245a1c38147f45b296a71dc0b83d5
-timeCreated: 1431581653
+guid: 5116ab17340b5e5478a916f4fc592758
+timeCreated: 1431594645
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: boilerplate_3x3_closed3
-    100004: boilerplate_3x3_closed4
+    100002: polySurface2
+    100004: polySurface3
     400000: //RootNode
-    400002: boilerplate_3x3_closed3
-    400004: boilerplate_3x3_closed4
-    2300000: boilerplate_3x3_closed3
-    2300002: boilerplate_3x3_closed4
-    3300000: boilerplate_3x3_closed3
-    3300002: boilerplate_3x3_closed4
-    4300000: boilerplate_3x3_closed3
-    4300002: boilerplate_3x3_closed4
-    7400000: Open
-    7400002: Close
+    400002: polySurface2
+    400004: polySurface3
+    2300000: polySurface2
+    2300002: polySurface3
+    3300000: polySurface2
+    3300002: polySurface3
+    4300000: polySurface2
+    4300002: polySurface3
+    7400000: DoorClose
+    7400002: DoorOpen
+    7400004: DoorOpen-Idle
+    7400006: DoorClose-Idle
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -37,39 +39,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Open
-      takeName: Take 001
-      firstFrame: 1
-      lastFrame: 5
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: boilerplate_3x3_closed3
-        weight: 1
-      - path: boilerplate_3x3_closed4
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-    - serializedVersion: 16
-      name: Close
+      name: DoorClose
       takeName: Take 001
       firstFrame: 5
       lastFrame: 10
@@ -94,9 +64,105 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: boilerplate_3x3_closed3
+      - path: polySurface2
         weight: 1
-      - path: boilerplate_3x3_closed4
+      - path: polySurface3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: DoorOpen
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: polySurface2
+        weight: 1
+      - path: polySurface3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: DoorOpen-Idle
+      takeName: Take 001
+      firstFrame: 5
+      lastFrame: 5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: polySurface2
+        weight: 1
+      - path: polySurface3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: DoorClose-Idle
+      takeName: Take 001
+      firstFrame: 10
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: polySurface2
+        weight: 1
+      - path: polySurface3
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
