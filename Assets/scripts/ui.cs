@@ -29,10 +29,6 @@ public class ui : MonoBehaviour
     public GameObject popup;
     private GameObject currentUnit;
 
-    // Door Test Code
-    public GameObject currentDoor;
-    public Image progressBar;
-
     #endregion
 
     #region Monobehaviour Functions
@@ -53,8 +49,6 @@ public class ui : MonoBehaviour
         selecionCheck();
 
         generateOrders();
-
-        //doorTest();
     }
 
     //Drawing the selection box to the screen
@@ -297,19 +291,4 @@ public class ui : MonoBehaviour
         popup.GetComponent<CanvasGroup>().interactable = isVisible;
     }
     #endregion
-/*
-    #region Door Test Code
-    void doorTest()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            testDoor.GetComponent<Door>().startDoorOpen();
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            testDoor.GetComponent<Door>().startDoorClose();
-        }
-    }
-    #endregion
- */
 }
