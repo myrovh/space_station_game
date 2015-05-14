@@ -56,11 +56,11 @@ public class unit : MonoBehaviour
     private float rotateSpeed = 3.0f;
     private float timer = 0.0f;
     private Quaternion qto;
+    private Vector3 randomPoint;
 
     //Vision Cone Variables
     Vector3 facingDirection = Vector3.forward;
     float coneLength = 3.0f;
-    //Vector3 currentDestination = Vector3.zero;
     #endregion
 
     #region MonoBehaviour Functions
@@ -245,15 +245,18 @@ public class unit : MonoBehaviour
             if (timer > 2)
             {
                 qto = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
+                randomPoint = Random.insideUnitSphere * 0.001f;
                 timer = 0.0f;
             }
             transform.rotation = Quaternion.Slerp(transform.rotation, qto, Time.deltaTime * rotateSpeed);
+            transform.Translate(randomPoint);
         }
     }
 
     void visionCone()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, coneLength);
+        facingDirection = Vector3.forward;
 
         foreach (Collider other in hitColliders)
         {
