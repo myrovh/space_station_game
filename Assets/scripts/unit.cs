@@ -48,6 +48,15 @@ public class unit : MonoBehaviour
     public GameObject target;
     private GameObject inventory;
     public bool isCarrying = false;
+
+    //Door Manipulation Variables
+    public GameObject door;
+
+    //Idle Function Variables
+    float rotateSpeed = 3.0f;
+    float timer = 0.0f;
+    Quaternion qto;
+    float speed = 1.25f;
     #endregion
 
     #region MonoBehaviour Functions
@@ -86,11 +95,21 @@ public class unit : MonoBehaviour
     //Adds new order to the bottom of the queue
     public void queueOrder(Vector3 moveTo, data.unitAction actAt)
     {
+        if (door != null)
+        {
+            door.GetComponent<Door>().unitUsingDoor = false;
+        }
+
         activeOrderQueue.Add(new unitOrder(moveTo, actAt));
     }
 
     public void queueOrder(GameObject actAtObject, data.unitAction actAt)
     {
+        if (door != null)
+        {
+            door.GetComponent<Door>().unitUsingDoor = false;
+        }
+
         activeOrderQueue.Add(new unitOrder(actAtObject, actAt));
     }
 
@@ -137,6 +156,14 @@ public class unit : MonoBehaviour
                         drop();
                         isComplete = true;
                         break;
+                    case data.unitAction.OPENDOOR:
+                        openDoor(door);
+                        isComplete = true;
+                        break;
+                    case data.unitAction.CLOSEDOOR:
+                        closeDoor(door);
+                        isComplete = true;
+                        break;
                     default:
                         isComplete = true;
                         break;
@@ -167,6 +194,18 @@ public class unit : MonoBehaviour
         isCarrying = false;
         agent.destination = transform.position;
     }
+
+    void openDoor(GameObject door)
+    {
+        door.GetComponent<Door>().unitUsingDoor = true;
+        agent.destination = transform.position;
+    }
+
+    void closeDoor(GameObject door)
+    {
+        door.GetComponent<Door>().unitUsingDoor = true;
+        agent.destination = transform.position;
+    }
     #endregion
 
     void idle()
@@ -174,7 +213,15 @@ public class unit : MonoBehaviour
         if (activeOrderQueue.Count == 0)
         {
             agent.updateRotation = false;
-            transform.Rotate(Vector3.up * Time.deltaTime * 10);
+
+            timer += Time.deltaTime;
+
+            if (timer > 2)
+            {
+                qto = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
+                timer = 0.0f;
+            }
+            transform.rotation = Quaternion.Slerp(transform.rotation, qto, Time.deltaTime * rotateSpeed);
         }
     }
 

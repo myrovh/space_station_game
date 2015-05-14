@@ -22,7 +22,7 @@ public class module : MonoBehaviour
     // Returns list containing gameobjects of any slots that don't have a resource too close
     public List<GameObject> getFreeSlots()
     {
-        List<GameObject> freeSlots = null;
+        List<GameObject> freeSlots = new List<GameObject>();
         GameObject[] allResources = GameObject.FindGameObjectsWithTag("Resource");
 
         foreach (GameObject slot in resourceSlots)
@@ -30,7 +30,8 @@ public class module : MonoBehaviour
             bool isFree = true;
             for (int i = 0; i < allResources.Length; i++)
             {
-                if ((slot.transform.position - allResources[i].transform.position).magnitude < slotSize)
+                float magnitude_check = (slot.transform.position - allResources[i].transform.position).magnitude;
+                if (magnitude_check < slotSize) 
                 {
                     isFree = false;
                 }

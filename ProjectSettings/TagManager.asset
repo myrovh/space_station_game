@@ -9,6 +9,7 @@ TagManager:
   - PopupMenu
   - resourceSlot
   - module
+  - door
   layers:
   - Default
   - TransparentFX

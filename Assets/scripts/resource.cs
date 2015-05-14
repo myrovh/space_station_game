@@ -32,8 +32,8 @@ public class resource : MonoBehaviour
 
     public void Dropped()
     {
-        transform.position = owner.transform.position + Vector3.forward;
-        //transform.position = dropPosition;
+        //transform.position = owner.transform.position + Vector3.forward;
+        transform.position = dropPosition;
         owner = null;
         isCarried = false;
     }
