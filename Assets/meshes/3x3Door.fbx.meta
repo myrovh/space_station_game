@@ -1,24 +1,24 @@
 fileFormatVersion: 2
-guid: 4125ccaf8ef212f459784865ba81deb2
-timeCreated: 1431581843
+guid: 685245a1c38147f45b296a71dc0b83d5
+timeCreated: 1431581653
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: pCube1
-    100002: pCube2
-    100004: //RootNode
-    400000: pCube1
-    400002: pCube2
-    400004: //RootNode
-    2300000: pCube1
-    2300002: pCube2
-    3300000: pCube1
-    3300002: pCube2
-    4300000: pCube1
-    4300002: pCube2
-    7400000: Close
-    7400002: Open
+    100000: //RootNode
+    100002: boilerplate_3x3_closed3
+    100004: boilerplate_3x3_closed4
+    400000: //RootNode
+    400002: boilerplate_3x3_closed3
+    400004: boilerplate_3x3_closed4
+    2300000: boilerplate_3x3_closed3
+    2300002: boilerplate_3x3_closed4
+    3300000: boilerplate_3x3_closed3
+    3300002: boilerplate_3x3_closed4
+    4300000: boilerplate_3x3_closed3
+    4300002: boilerplate_3x3_closed4
+    7400000: Open
+    7400002: Close
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -37,7 +37,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Close
+      name: Open
       takeName: Take 001
       firstFrame: 1
       lastFrame: 5
@@ -62,14 +62,14 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: pCube1
+      - path: boilerplate_3x3_closed3
         weight: 1
-      - path: pCube2
+      - path: boilerplate_3x3_closed4
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Open
+      name: Close
       takeName: Take 001
       firstFrame: 5
       lastFrame: 10
@@ -94,9 +94,9 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: pCube1
+      - path: boilerplate_3x3_closed3
         weight: 1
-      - path: pCube2
+      - path: boilerplate_3x3_closed4
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
