@@ -6,6 +6,10 @@ TagManager:
   tags:
   - PlayerUnit
   - Resource
+  - PopupMenu
+  - resourceSlot
+  - module
+  - door
   layers:
   - Default
   - TransparentFX
