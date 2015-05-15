@@ -41,22 +41,26 @@ public class unit : MonoBehaviour
 
     //Order Queue Variables
     private List<unitOrder> activeOrderQueue = new List<unitOrder>();
-    delegate void MultiDelegate();
+    public delegate void MultiDelegate();
     private MultiDelegate passiveOrderQueue;
 
     //Hauling Variables
     public GameObject target;
-    private GameObject inventory;
     public bool isCarrying = false;
+    private GameObject inventory;
 
     //Door Manipulation Variables
     public GameObject door;
 
     //Idle Function Variables
-    float rotateSpeed = 3.0f;
-    float timer = 0.0f;
-    Quaternion qto;
-    float speed = 1.25f;
+    private float rotateSpeed = 3.0f;
+    private float timer = 0.0f;
+    private Quaternion qto;
+    private Vector3 randomPoint;
+
+    //Vision Cone Variables
+    Vector3 facingDirection = Vector3.forward;
+    float coneLength = 3.0f;
     #endregion
 
     #region MonoBehaviour Functions
@@ -64,6 +68,7 @@ public class unit : MonoBehaviour
     {
         //Add passive functions here
         passiveOrderQueue += idle;
+        passiveOrderQueue += visionCone;
     }
 
     void Start()
@@ -100,23 +105,37 @@ public class unit : MonoBehaviour
             door.GetComponent<Door>().unitUsingDoor = false;
         }
 
+        checkCarrying();
+
         activeOrderQueue.Add(new unitOrder(moveTo, actAt));
     }
 
     public void queueOrder(GameObject actAtObject, data.unitAction actAt)
     {
-        if (door != null)
-        {
-            door.GetComponent<Door>().unitUsingDoor = false;
-        }
+            if (door != null)
+            {
+                door.GetComponent<Door>().unitUsingDoor = false;
+            }
 
-        activeOrderQueue.Add(new unitOrder(actAtObject, actAt));
+            checkCarrying();
+
+            activeOrderQueue.Add(new unitOrder(actAtObject, actAt));
     }
 
     //Clears the active order queue
     public void clearQueue()
     {
         activeOrderQueue.Clear();
+    }
+
+    void checkCarrying()
+    {
+        if (isCarrying)
+        {
+            inventory.GetComponent<resource>().DroppedInFront();
+            inventory = null;
+            isCarrying = false;
+        }
     }
     #endregion
 
@@ -167,7 +186,7 @@ public class unit : MonoBehaviour
                     default:
                         isComplete = true;
                         break;
-                }
+                }  
             }
         }
 
@@ -189,16 +208,22 @@ public class unit : MonoBehaviour
 
     void drop()
     {
-        inventory.GetComponent<resource>().Dropped();
-        inventory = null;
-        isCarrying = false;
-        agent.destination = transform.position;
+        if (inventory != null)
+        {
+            inventory.GetComponent<resource>().Dropped();
+            inventory = null;
+            isCarrying = false;
+            agent.destination = transform.position;
+        }
     }
 
     void openDoor(GameObject door)
     {
-        door.GetComponent<Door>().unitUsingDoor = true;
-        agent.destination = transform.position;
+        if (!door.GetComponent<Door>().isDoorOpen())
+        {
+            door.GetComponent<Door>().unitUsingDoor = true;
+            agent.destination = transform.position;
+        }
     }
 
     void closeDoor(GameObject door)
@@ -208,6 +233,7 @@ public class unit : MonoBehaviour
     }
     #endregion
 
+    #region Passive Queue Manipulation
     void idle()
     {
         if (activeOrderQueue.Count == 0)
@@ -219,12 +245,40 @@ public class unit : MonoBehaviour
             if (timer > 2)
             {
                 qto = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
+                randomPoint = Random.insideUnitSphere * 0.001f;
                 timer = 0.0f;
             }
             transform.rotation = Quaternion.Slerp(transform.rotation, qto, Time.deltaTime * rotateSpeed);
+            transform.Translate(randomPoint);
         }
     }
 
+    void visionCone()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, coneLength);
+        facingDirection = Vector3.forward;
+
+        foreach (Collider other in hitColliders)
+        {
+            float angle = Vector3.Angle(other.transform.position, facingDirection);
+
+            if (angle < 45.0f)
+            {
+                if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
+                {
+                    door = other.transform.parent.gameObject;
+                    if (!door.GetComponent<Door>().unitUsingDoor)
+                    {
+                        checkCarrying();
+                        queueOrder(other.gameObject, data.unitAction.OPENDOOR);
+                    }
+                }
+            }
+        }
+    }
+    #endregion
+
+    #region Selection Functions
     //Call this function and pass a bool to tell the unit if it is selected or not
     //Later these functions will be removed and selection tracking will be handled by the UI
     public void selectionStatus(bool select)
@@ -240,4 +294,5 @@ public class unit : MonoBehaviour
             isSelected = false;
         }
     }
+    #endregion
 }
