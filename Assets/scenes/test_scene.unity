@@ -684,7 +684,7 @@ GameObject:
   m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &68735061
 Transform:
@@ -833,7 +833,7 @@ GameObject:
   m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &97216546
 Transform:
@@ -1694,7 +1694,7 @@ GameObject:
   m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &200251148
 Transform:
@@ -2724,7 +2724,7 @@ GameObject:
   m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &365808916
 Transform:
@@ -5783,7 +5783,7 @@ MonoBehaviour:
   popup: {fileID: 1833589733}
   LevelCamera: {fileID: 832159714}
   currentDoor: {fileID: 0}
-  progressBar: {fileID: 0}
+  progressBar: {fileID: 1945282145}
 --- !u!1 &887237522
 GameObject:
   m_ObjectHideFlags: 0
@@ -6257,22 +6257,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5471036, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5471036, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5438890, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5438890, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 11485522, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: progressBar
+      value: 
+      objectReference: {fileID: 1945282145}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
   m_IsPrefabParent: 0
@@ -7398,6 +7386,22 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 143836, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 124574, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 165336, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 184784, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
   m_IsPrefabParent: 0
@@ -7568,7 +7572,7 @@ GameObject:
   m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1253469769
 Transform:
@@ -7897,6 +7901,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11485522, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: progressBar
+      value: 
+      objectReference: {fileID: 1945282145}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
   m_IsPrefabParent: 0
@@ -10339,7 +10347,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.7487216
+      value: -1.74000001
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10347,7 +10355,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_LocalPosition.z
-      value: .0764871165
+      value: .0799999982
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_LocalRotation.x
@@ -10367,7 +10375,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 19529890, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_StoppingDistance
@@ -11343,7 +11351,7 @@ GameObject:
   m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1918044784
 Transform:
@@ -11859,7 +11867,7 @@ GameObject:
   m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1969844049
 Transform:
@@ -12101,7 +12109,7 @@ GameObject:
   m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1999111193
 Transform:

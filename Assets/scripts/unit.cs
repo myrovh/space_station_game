@@ -266,7 +266,7 @@ public class unit : MonoBehaviour
             {
                 if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
                 {
-                    door = other.transform.parent.gameObject;
+                    door = other.transform.gameObject;
                     if (!door.GetComponent<Door>().unitUsingDoor)
                     {
                         checkCarrying();

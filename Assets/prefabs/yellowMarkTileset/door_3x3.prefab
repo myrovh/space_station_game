@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3369330}
   - 23: {fileID: 2323916}
   - 54: {fileID: 5471036}
+  - 208: {fileID: 20857460}
   m_Layer: 0
   m_Name: polySurface2
   m_TagString: Untagged
@@ -29,6 +30,7 @@ GameObject:
   - 33: {fileID: 3345048}
   - 23: {fileID: 2359014}
   - 54: {fileID: 5438890}
+  - 208: {fileID: 20808164}
   m_Layer: 0
   m_Name: polySurface3
   m_TagString: Untagged
@@ -46,6 +48,7 @@ GameObject:
   - 4: {fileID: 467794}
   - 65: {fileID: 6506582}
   - 114: {fileID: 11485522}
+  - 95: {fileID: 9551978}
   m_Layer: 0
   m_Name: door_3x3
   m_TagString: door
@@ -195,6 +198,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.9000001, y: .300000012, z: 3}
   m_Center: {x: -1.5, y: -0, z: 0}
+--- !u!95 &9551978
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 66af2ee896e03114d87a82d8bd7f11c1, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3ba4fd9e4fd7f7a4bb4fda08d1e416ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11485522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +230,36 @@ MonoBehaviour:
   doorOpenTime: 0
   unitUsingDoor: 0
   progressBar: {fileID: 0}
+--- !u!208 &20808164
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147496}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.50500011, y: .162, z: 1.50000012}
+  m_MoveThreshold: .100000001
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: -3.0150001, y: 0, z: 0}
+  m_TimeToStationary: .5
+--- !u!208 &20857460
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125630}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.50500011, y: .162, z: 1.50000012}
+  m_MoveThreshold: .100000001
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: -.00500000035, y: 0, z: 0}
+  m_TimeToStationary: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
