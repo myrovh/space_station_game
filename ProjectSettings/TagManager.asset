@@ -10,6 +10,7 @@ TagManager:
   - resourceSlot
   - module
   - door
+  - surface
   layers:
   - Default
   - TransparentFX
