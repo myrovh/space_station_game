@@ -112,14 +112,14 @@ public class unit : MonoBehaviour
 
     public void queueOrder(GameObject actAtObject, data.unitAction actAt)
     {
-            if (door != null)
-            {
-                door.GetComponent<Door>().unitUsingDoor = false;
-            }
+        if (door != null)
+        {
+            door.GetComponent<Door>().unitUsingDoor = false;
+        }
 
-            checkCarrying();
+        checkCarrying();
 
-            activeOrderQueue.Add(new unitOrder(actAtObject, actAt));
+        activeOrderQueue.Add(new unitOrder(actAtObject, actAt));
     }
 
     //Clears the active order queue
@@ -186,7 +186,7 @@ public class unit : MonoBehaviour
                     default:
                         isComplete = true;
                         break;
-                }  
+                }
             }
         }
 
@@ -260,19 +260,16 @@ public class unit : MonoBehaviour
 
         foreach (Collider other in hitColliders)
         {
-            float angle = Vector3.Angle(other.transform.position, facingDirection);
 
-            if (angle < 45.0f)
+            if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
             {
-                if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
-                {
                     door = other.transform.gameObject;
-                    if (!door.GetComponent<Door>().unitUsingDoor)
-                    {
-                        checkCarrying();
-                        queueOrder(other.gameObject, data.unitAction.OPENDOOR);
-                    }
+                if (!door.GetComponent<Door>().unitUsingDoor && !door.GetComponent<Door>().isOpen)
+                {
+                    checkCarrying();
+                    queueOrder(other.gameObject, data.unitAction.OPENDOOR);
                 }
+
             }
         }
     }
