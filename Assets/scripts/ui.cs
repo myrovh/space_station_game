@@ -228,14 +228,14 @@ public class ui : MonoBehaviour
             else
             {
                 //Check to see if the mouse pointer is over a ui object
-                if (!EventSystem.current.IsPointerOverGameObject())
-                {
+               // if (!EventSystem.current.IsPointerOverGameObject())
+               // {
                     foreach (GameObject unit in allPlayerUnits)
                     {
                         unit.GetComponent<unit>().selectionStatus(false);
                         showOrders(false);
                     }
-                }
+                //}
             }
         }
 

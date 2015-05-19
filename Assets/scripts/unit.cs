@@ -34,6 +34,7 @@ public class unit : MonoBehaviour
     public float unitMoveSpeed = 1;
     public float unitStoppingDistance = 1.5f;
     private int baseAvoidance = 89;
+    public float health = 100;
 
     //State Tracking Variables
     public bool isSelected = false;
@@ -291,5 +292,10 @@ public class unit : MonoBehaviour
             isSelected = false;
         }
     }
-    #endregion
+
+    public void takeDamage()
+    {
+        health = health - 1 * Time.deltaTime;
+    }
+
 }

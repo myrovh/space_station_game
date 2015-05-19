@@ -7,6 +7,43 @@ public class module : MonoBehaviour
     [SerializeField]
     public List<GameObject> resourceSlots;
     public float slotSize = 2.0f;
+    public List<GameObject> unitsInModule;
+
+    public bool noAir = false;
+    #endregion
+
+    #region Event System Functions
+    void OnEnable()
+    {
+        eventManager.depressurize += this.depressurizeModule;
+    }
+
+    void depressurizeModule()
+    {
+            noAir = true;
+    }
+
+    void Update()
+    {
+        if (noAir)
+        {
+            foreach (GameObject currentUnit in unitsInModule)
+            {
+                currentUnit.GetComponent<unit>().takeDamage();
+            }
+        }
+
+
+        if(Input.GetKey("space"))
+        {
+            eventManager.depressurizeModule();
+        }
+    }
+
+    void OnDisable()
+    {
+        eventManager.depressurize -= this.depressurizeModule;
+    }
     #endregion
 
     void Start()
@@ -45,4 +82,17 @@ public class module : MonoBehaviour
 
         return freeSlots;
     }
+
+    #region Unit List Manipulation
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "PlayerUnit")
+            unitsInModule.Add(other.gameObject);
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        unitsInModule.Remove(other.gameObject);
+    }
+    #endregion
 }
