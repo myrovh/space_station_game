@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2335734}
   - 54: {fileID: 5408564}
   - 65: {fileID: 6506182}
+  - 114: {fileID: 11430442}
   m_Layer: 0
   m_Name: corner_0.4
   m_TagString: surface
@@ -89,6 +90,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .400000036, y: .399999946, z: .399451077}
   m_Center: {x: -9.53674316e-07, y: 9.53674316e-07, z: 0}
+--- !u!114 &11430442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a09c966a662b3429e2df90eb1b8261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
