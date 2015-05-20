@@ -6,7 +6,7 @@ public class Module : MonoBehaviour
     #region Variables
     [SerializeField]
     public List<GameObject> ResourceSlots;
-    public float SlotSize = 2.0f;
+    public float SlotSize = 1.0f;
     public List<GameObject> unitsInModule;
 
     public bool noAir = false;
