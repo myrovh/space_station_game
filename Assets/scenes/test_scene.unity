@@ -2816,6 +2816,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 339486503}
+  - 114: {fileID: 339486504}
   m_Layer: 0
   m_Name: north_module
   m_TagString: module
@@ -2843,6 +2844,21 @@ Transform:
   - {fileID: 941625969}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &339486504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 339486502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34c8efccc599df49bda360404540c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResourceSlots: []
+  SlotSize: 2
+  unitsInModule: []
+  noAir: 0
 --- !u!1 &347067961
 GameObject:
   m_ObjectHideFlags: 0
@@ -6553,7 +6569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &897067477
 Transform:
   m_ObjectHideFlags: 0
@@ -9437,6 +9453,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 193448, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
   m_IsPrefabParent: 0
@@ -10875,6 +10895,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 193448, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
   m_IsPrefabParent: 0
@@ -12281,6 +12305,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 193448, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
   m_IsPrefabParent: 0
@@ -12369,6 +12397,10 @@ Prefab:
     - target: {fileID: 418804, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 193448, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
@@ -13211,13 +13243,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Color: {r: .333261251, g: .985294104, b: .472661495, a: 1}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &1945282146
