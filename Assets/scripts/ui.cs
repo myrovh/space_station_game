@@ -97,7 +97,7 @@ public class ui : MonoBehaviour
                             currentUnit = unit;
                             currentDoor = hit.transform.parent.gameObject;
                             currentUnit.GetComponent<unit>().door = currentDoor;
-                            if (!currentDoor.GetComponent<Door>().isOpen)
+                            if (!currentDoor.GetComponent<Door>().IsOpen)
                             {
                                 addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
                             }
@@ -131,7 +131,7 @@ public class ui : MonoBehaviour
                             currentUnit = unit;
                             currentDoor = hit.transform.gameObject;
                             currentUnit.GetComponent<unit>().door = currentDoor;
-                            if (!currentDoor.GetComponent<Door>().isOpen)
+                            if (!currentDoor.GetComponent<Door>().IsOpen)
                             {
                                 addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
                             }

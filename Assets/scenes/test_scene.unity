@@ -6930,6 +6930,10 @@ Prefab:
       propertyPath: progressBar
       value: 
       objectReference: {fileID: 1945282145}
+    - target: {fileID: 11485522, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: ProgressBar
+      value: 
+      objectReference: {fileID: 1945282145}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
   m_IsPrefabParent: 0
@@ -9230,6 +9234,10 @@ Prefab:
       propertyPath: progressBar
       value: 
       objectReference: {fileID: 1945282145}
+    - target: {fileID: 11485522, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: ProgressBar
+      value: 
+      objectReference: {fileID: 1945282145}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
   m_IsPrefabParent: 0
@@ -10972,7 +10980,7 @@ Transform:
   m_LocalScale: {x: 1, y: .371353477, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!54 &1563513366
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -103,7 +103,7 @@ public class unit : MonoBehaviour
     {
         if (door != null)
         {
-            door.GetComponent<Door>().unitUsingDoor = false;
+            door.GetComponent<Door>().UnitUsingDoor = false;
         }
 
         checkCarrying();
@@ -115,7 +115,7 @@ public class unit : MonoBehaviour
     {
         if (door != null)
         {
-            door.GetComponent<Door>().unitUsingDoor = false;
+            door.GetComponent<Door>().UnitUsingDoor = false;
         }
 
         checkCarrying();
@@ -220,16 +220,16 @@ public class unit : MonoBehaviour
 
     void openDoor(GameObject door)
     {
-        if (!door.GetComponent<Door>().isDoorOpen())
+        if (!door.GetComponent<Door>().IsDoorOpen())
         {
-            door.GetComponent<Door>().unitUsingDoor = true;
+            door.GetComponent<Door>().UnitUsingDoor = true;
             agent.destination = transform.position;
         }
     }
 
     void closeDoor(GameObject door)
     {
-        door.GetComponent<Door>().unitUsingDoor = true;
+        door.GetComponent<Door>().UnitUsingDoor = true;
         agent.destination = transform.position;
     }
     #endregion
@@ -265,7 +265,7 @@ public class unit : MonoBehaviour
             if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
             {
                     door = other.transform.gameObject;
-                if (!door.GetComponent<Door>().unitUsingDoor && !door.GetComponent<Door>().isOpen)
+                if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen)
                 {
                     checkCarrying();
                     queueOrder(other.gameObject, data.unitAction.OPENDOOR);
