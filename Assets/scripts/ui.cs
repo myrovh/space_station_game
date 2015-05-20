@@ -32,6 +32,7 @@ public class ui : MonoBehaviour
     //Camera Variables
     public GameObject LevelCamera;
     private LevelCamera _cameraScript;
+    private bool _cameraInit;
 
     // Door Variables
     public GameObject currentDoor;
@@ -51,9 +52,21 @@ public class ui : MonoBehaviour
 
         //Get camera script
         _cameraScript = LevelCamera.GetComponent<LevelCamera>();
+        _cameraInit = false;
+    }
+
+    void OnEnable()
+    {
+        
     }
     void Update()
     {
+        if (!_cameraInit)
+        {
+            //Send initial rotation to camera to ensure walls are hidden on level start
+            _cameraScript.RotateCamera(data.cardinalPoints.SOUTH, data.cardinalPoints.EAST);
+            _cameraInit = true;
+        }
         checkSelectionBox();
 
         selecionCheck();
