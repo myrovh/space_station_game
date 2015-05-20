@@ -47,14 +47,17 @@ public class Surface : MonoBehaviour {
         if (cardinalLocation == data.cardinalPoints.UPPR)
         {
             _renderer.enabled = false;
+            gameObject.layer = 2;
         }
         else if (cardinalLocation == e.LeftEdge || cardinalLocation == e.RightEdge)
         {
             _renderer.enabled = false;
+            gameObject.layer = 2;
         }
         else
         {
             _renderer.enabled = true;
+            gameObject.layer = 0;
         }
     }
 }
