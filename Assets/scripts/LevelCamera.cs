@@ -3,9 +3,15 @@ using System.Collections.Generic;
 
 public class LevelCamera : MonoBehaviour
 {
+    /*
+    //TODO use these values to create an area that the camera cannot move beyond
     public float LevelBoundNorthSouth;
     public float LevelBoundEastWest;
-    public float MoveSpeed;
+    public float LevelBoundUppr;
+    public float LevelBoundDown;
+    */
+    public float PanSpeed = 10.0f;
+    public float ZoomSpeed = 10.0f;
 
     //_currentRotation refers to the left edge
     private data.cardinalPoints _currentRotation = data.cardinalPoints.SOUTH;
@@ -18,20 +24,27 @@ public class LevelCamera : MonoBehaviour
     {
         if (moveDirection == data.cardinalPoints.NORTH)
         {
-            transform.parent.position += transform.parent.forward * (MoveSpeed * Time.deltaTime);
+            transform.parent.position += transform.parent.forward * (PanSpeed * Time.deltaTime);
         }
         else if(moveDirection == data.cardinalPoints.SOUTH)
         {
-            transform.parent.position += -(transform.parent.forward) * (MoveSpeed * Time.deltaTime);
+            transform.parent.position += -(transform.parent.forward) * (PanSpeed * Time.deltaTime);
         }
         else if (moveDirection == data.cardinalPoints.EAST)
         {
-            transform.parent.position += transform.parent.right * (MoveSpeed * Time.deltaTime);
+            transform.parent.position += transform.parent.right * (PanSpeed * Time.deltaTime);
         }
         else if (moveDirection == data.cardinalPoints.WEST)
         {
-            transform.parent.position += -(transform.parent.right) * (MoveSpeed * Time.deltaTime);
+            transform.parent.position += -(transform.parent.right) * (PanSpeed * Time.deltaTime);
         }
+    }
+
+    public void ZoomCamera(float axisMovement)
+    {
+        float direction = (axisMovement*ZoomSpeed);
+        //transform.Translate(0, direction, 0);
+        transform.position = transform.position+(transform.forward*direction);
     }
 
     public void RotateCamera(data.cardinalPoints leftEdge, data.cardinalPoints rightEdge)

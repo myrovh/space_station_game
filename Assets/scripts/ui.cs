@@ -332,19 +332,19 @@ public class ui : MonoBehaviour
     private void CameraOrders()
     {
         #region Camera Pan
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             _cameraScript.PanCamera(data.cardinalPoints.NORTH);
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             _cameraScript.PanCamera(data.cardinalPoints.SOUTH);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             _cameraScript.PanCamera(data.cardinalPoints.EAST);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             _cameraScript.PanCamera(data.cardinalPoints.WEST);
         }
@@ -391,6 +391,10 @@ public class ui : MonoBehaviour
                 _cameraScript.RotateCamera(data.cardinalPoints.WEST, data.cardinalPoints.SOUTH);
             }
         }
+        #endregion
+
+        #region Camera Zoom
+        _cameraScript.ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
         #endregion
     }
 }
