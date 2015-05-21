@@ -3514,7 +3514,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: .439999998
+      scalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3547,7 +3547,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     startSpeed:
-      scalar: 4.88000011
+      scalar: 15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3740,7 +3740,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 500
+      scalar: 15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4167,7 +4167,7 @@ ParticleSystem:
     enabled: 1
     multiplier: 0
   ClampVelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       scalar: 1
       maxCurve:
@@ -4278,9 +4278,9 @@ ParticleSystem:
           outSlope: 0
           tangentMode: 0
         - time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
+          value: 0
+          inSlope: -2
+          outSlope: -2
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -4299,10 +4299,10 @@ ParticleSystem:
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-      minMaxState: 0
+      minMaxState: 1
     separateAxis: 0
     inWorldSpace: 0
-    dampen: 1
+    dampen: .100000001
   SizeBySpeedModule:
     enabled: 0
     curve:
@@ -4481,7 +4481,7 @@ ParticleSystem:
     plane3: {fileID: 0}
     plane4: {fileID: 0}
     plane5: {fileID: 0}
-    dampen: 1
+    dampen: .300000012
     bounce: 1
     energyLossOnCollision: .5
     minKillSpeed: 0
