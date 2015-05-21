@@ -14458,7 +14458,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2097175266}
   m_Layer: 0
-  m_Name: camera_piviot
+  m_Name: camera_pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
