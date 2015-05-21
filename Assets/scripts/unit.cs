@@ -61,7 +61,7 @@ public class unit : MonoBehaviour
 
     //Vision Cone Variables
     Vector3 facingDirection = Vector3.forward;
-    float coneLength = 3.0f;
+    float coneLength = 5.0f;
     #endregion
 
     #region MonoBehaviour Functions
@@ -261,16 +261,22 @@ public class unit : MonoBehaviour
 
         foreach (Collider other in hitColliders)
         {
-
-            if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
+            float angle = Vector3.Angle(other.transform.position, facingDirection);
+            if (angle < 45.0f)
             {
-                    door = other.transform.gameObject;
-                if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen)
+                if (activeOrderQueue.Count > 0)
                 {
-                    checkCarrying();
-                    queueOrder(other.gameObject, data.unitAction.OPENDOOR);
-                }
+                    if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) < unitStoppingDistance + 7.0f)
+                    {
+                        door = other.transform.gameObject;
+                        if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen && activeOrderQueue[0].actAt == null)
+                        {
+                            checkCarrying();
+                            queueOrder(other.gameObject, data.unitAction.OPENDOOR);
 
+                        }
+                    }
+                }
             }
         }
     }

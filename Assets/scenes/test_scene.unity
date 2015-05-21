@@ -2068,10 +2068,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34c8efccc599df49bda360404540c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResourceSlots: []
-  SlotSize: 1
-  unitsInModule: []
-  noAir: 0
 --- !u!1 &268374625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,10 +2905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34c8efccc599df49bda360404540c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResourceSlots: []
-  SlotSize: 1
-  unitsInModule: []
-  noAir: 0
 --- !u!1 &347067961
 GameObject:
   m_ObjectHideFlags: 0
