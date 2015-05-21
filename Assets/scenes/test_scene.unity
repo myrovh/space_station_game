@@ -3471,7 +3471,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: da8b4e52f2df675408e4aca6138fbb19, type: 2}
+  - {fileID: 2100000, guid: f95568cb5e322d04090b8ec9401d0db6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3674,7 +3674,7 @@ ParticleSystem:
         rgba: 4294965471
       minMaxState: 1
     startSize:
-      scalar: .100000001
+      scalar: .200000003
       maxCurve:
         serializedVersion: 2
         m_Curve:
