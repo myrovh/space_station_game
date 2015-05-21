@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 3x3_door_DIRTYDECAL3
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Sparks
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -18,8 +18,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 44c194a303962e7499d3f4704b6c70a2, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: 6e3d18afbc65e80428353f515d91f4a8, type: 3}
+          m_Scale: {x: .5, y: .5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -101,7 +101,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: .189999998
+        second: .5
       data:
         first:
           name: _BumpScale
@@ -129,12 +129,16 @@ Material:
       data:
         first:
           name: _Metallic
-        second: .159999996
+        second: 0
+      data:
+        first:
+          name: _InvFade
+        second: .460000008
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _Color
@@ -143,3 +147,7 @@ Material:
         first:
           name: _EmissionColorUI
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: .501960814}
