@@ -263,13 +263,13 @@ public class unit : MonoBehaviour
         {
             float angle = Vector3.Angle(other.transform.position, facingDirection);
             if (angle < 45.0f)
-            {
+            { 
                 if (activeOrderQueue.Count > 0)
                 {
                     if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) < unitStoppingDistance + 7.0f)
                     {
                         door = other.transform.gameObject;
-                        if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen && activeOrderQueue[0].actAt == null)
+                        if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen && activeOrderQueue.Count == 0)
                         {
                             checkCarrying();
                             queueOrder(other.gameObject, data.unitAction.OPENDOOR);

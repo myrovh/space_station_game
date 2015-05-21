@@ -168,7 +168,7 @@ public class ui : MonoBehaviour
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    freeSlots = hit.transform.root.GetComponent<Module>().GetFreeSlots();
+                    freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
                     targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
                     addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
                     addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
@@ -179,7 +179,7 @@ public class ui : MonoBehaviour
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    freeSlots = hit.transform.root.GetComponent<Module>().GetFreeSlots();
+                    freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
                     targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
                     addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
                     addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
