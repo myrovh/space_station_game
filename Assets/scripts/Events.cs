@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class GameEvent
 {
@@ -14,6 +15,18 @@ public class CameraChange : GameEvent
     {
         LeftEdge = leftEdge;
         RightEdge = rightEdge;
+    }
+}
+
+public class DialogueEvent : GameEvent
+{
+    public DialogueText MessageText;
+    public Transform MessageTarget;
+
+    public DialogueEvent(Transform target, DialogueText text)
+    {
+        MessageText = text;
+        MessageTarget = target;
     }
 }
 

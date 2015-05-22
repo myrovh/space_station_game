@@ -6,7 +6,7 @@ public class ui : MonoBehaviour
 {
     #region Variables
 
-    //Unit Selection Vairables
+    //Unit Selection Variables
     public Texture2D selectionHighlight = null;
     public static Rect selection = new Rect(0, 0, 0, 0);
     public bool buttonClick = false;
@@ -37,6 +37,9 @@ public class ui : MonoBehaviour
     // Door Variables
     public GameObject currentDoor;
     public Image progressBar;
+
+    //Dialogue Variables
+    public GameObject dialoguePrefab;
     #endregion
 
     #region Monobehaviour Functions
@@ -53,12 +56,22 @@ public class ui : MonoBehaviour
         //Get camera script
         _cameraScript = LevelCamera.GetComponent<LevelCamera>();
         _cameraInit = false;
+
+        //Adds dialogue to the data list variable
+        Dialogue.BuildDialogue();
+        Dialogue.ReportDialogue();
     }
 
     void OnEnable()
     {
-        
+        Events.instance.AddListener<DialogueEvent>(OnDialogueEvent);
     }
+
+    void OnDisable()
+    {
+        Events.instance.RemoveListener<DialogueEvent>(OnDialogueEvent);
+    }
+
     void Update()
     {
         if (!_cameraInit)
@@ -84,6 +97,19 @@ public class ui : MonoBehaviour
             GUI.color = new Color(1, 1, 1, 0.5f);
             GUI.DrawTexture(selection, selectionHighlight);
         }
+    }
+    #endregion
+
+    #region Event Handelers
+    private void OnDialogueEvent(DialogueEvent e)
+    {
+        Debug.Log("Dialogue was called");
+        GameObject dialogueObject = (GameObject) Instantiate(dialoguePrefab, Vector3.zero, Quaternion.identity);
+        DialoguePopup dialogueScript = dialogueObject.GetComponentInChildren<DialoguePopup>();
+        dialogueScript.CameraTarget = LevelCamera.transform;
+        dialogueScript.ObjectTarget = e.MessageTarget;
+        dialogueScript.Text = e.MessageText.DialogueContents;
+        dialogueScript.LifeTime = e.MessageText.DialogueContents.Length*0.3f;
     }
     #endregion
 

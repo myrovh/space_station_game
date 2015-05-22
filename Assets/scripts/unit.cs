@@ -109,6 +109,7 @@ public class unit : MonoBehaviour
         checkCarrying();
 
         activeOrderQueue.Add(new unitOrder(moveTo, actAt));
+        RaiseDialogue(Dialogue.List[0]);
     }
 
     public void queueOrder(GameObject actAtObject, data.unitAction actAt)
@@ -231,6 +232,12 @@ public class unit : MonoBehaviour
     {
         door.GetComponent<Door>().UnitUsingDoor = true;
         agent.destination = transform.position;
+    }
+
+    public void RaiseDialogue(DialogueText text)
+    {
+        //TODO add test to make sure that unit will not raise a new dialogue when already talking
+        Events.instance.Raise(new DialogueEvent(transform, text));
     }
     #endregion
 
