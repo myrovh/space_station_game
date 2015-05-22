@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 411870}
   - 33: {fileID: 3369330}
   - 23: {fileID: 2323916}
-  - 64: {fileID: 6429934}
   - 54: {fileID: 5428060}
   - 208: {fileID: 20809350}
+  - 65: {fileID: 6502032}
   m_Layer: 0
   m_Name: polySurface2
   m_TagString: Untagged
@@ -30,9 +30,9 @@ GameObject:
   - 4: {fileID: 409084}
   - 33: {fileID: 3345048}
   - 23: {fileID: 2359014}
-  - 64: {fileID: 6454752}
   - 54: {fileID: 5480906}
   - 208: {fileID: 20801208}
+  - 65: {fileID: 6558542}
   m_Layer: 0
   m_Name: polySurface3
   m_TagString: Untagged
@@ -188,8 +188,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &6429934
-MeshCollider:
+--- !u!65 &6502032
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -198,20 +198,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: f79a43a7fe4746147be34df8eb44073d, type: 3}
---- !u!64 &6454752
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147496}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300002, guid: f79a43a7fe4746147be34df8eb44073d, type: 3}
+  m_Size: {x: 3.00987983, y: .324014306, z: 3.00000167}
+  m_Center: {x: -.00493991375, y: 0, z: 0}
 --- !u!65 &6536936
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -224,6 +212,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.9000001, y: .300000012, z: 3}
   m_Center: {x: -1.5, y: 0, z: 0}
+--- !u!65 &6558542
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.00987792, y: .324014306, z: 3.00000167}
+  m_Center: {x: -1.1920929e-07, y: 0, z: 0}
 --- !u!95 &9551978
 Animator:
   serializedVersion: 3
