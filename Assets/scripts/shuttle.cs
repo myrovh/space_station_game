@@ -1,50 +1,108 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class shuttle : MonoBehaviour {
-
-    Vector3 currentDestination = Vector3.zero;
-    Vector3 currentPosition;
+public class shuttle : module
+{
+    public Vector3 currentDestination = Vector3.zero;
+    public Vector3 currentPosition;
+    private float journeyLength = -1;
+    private float speed = 1.0F;
+    private float startTime;
     public GameObject shuttleDoor;
-    bool shuttleMove = true;
-    float speed = 7;
-	
-	void Update () 
+    private bool shuttleMove = true;
+    private bool shuttleDocked = false;
+    private bool levelExit = false;
+
+    void Start()
+    {
+        startTime = Time.time;
+        currentDestination = GameObject.FindGameObjectWithTag("dock").transform.position;
+        currentDestination.z -= 2.0f;
+    }
+    void Update()
     {
         currentPosition = transform.position;
-        if (shuttleMove)
+        if (journeyLength == -1)
         {
-            if (Vector3.Distance(currentPosition, currentDestination) > .1f)
-            {
-                Vector3 directionOfTravel = currentDestination - currentPosition;
-                directionOfTravel.Normalize();
+            journeyLength = Vector3.Distance(currentPosition, currentDestination);
+        }
 
-                this.transform.Translate(
-                (directionOfTravel.x * speed * Time.deltaTime),
-                (directionOfTravel.y * speed * Time.deltaTime),
-                (directionOfTravel.z * speed * Time.deltaTime),
-                Space.World);
+        float distCovered = (Time.time - startTime) * speed;
+        float fracJourney = distCovered / journeyLength;
+
+        if (!levelExit)
+        {
+            if (shuttleMove)
+            {
+                if (Vector3.Distance(currentPosition, currentDestination) > .1f)
+                {
+                    transform.position = Vector3.Lerp(currentPosition, currentDestination, fracJourney);
+                }
+                else
+                {
+                    if (!shuttleDoor.GetComponent<Door>().IsOpen && shuttleDocked)
+                    {
+                        shuttleDoor.GetComponent<Door>().StartDoorOpen();
+                        shuttleMove = false;
+                        resetLengthAndTime();
+                    }
+                    if (!shuttleDocked)
+                    {
+                        dockShuttle();
+                        shuttleDocked = true;
+                    }
+                }
+            }
+            if (Input.GetKey("m"))
+            {
+                levelExit = true;
+            }
+        }
+        else
+        {
+            if (shuttleDocked)
+            {
+                resetLengthAndTime();
+                StartCoroutine(unDockShuttle());
             }
             else
             {
-                if (!shuttleDoor.GetComponent<Door>().IsOpen)
+                if (Vector3.Distance(currentPosition, currentDestination) > .1f)
                 {
-                    shuttleDoor.GetComponent<Door>().StartDoorOpen();
+                    transform.position = Vector3.Lerp(currentPosition, currentDestination, fracJourney);
                 }
-                shuttleMove = false;
+                else
+                {
+                    levelEnd();
+                }
             }
         }
-        StartCoroutine(levelEnd());
-	}
+    }
 
-    IEnumerator levelEnd()
+    void levelEnd()
     {
-        if (Input.GetKey("m"))
-        {
-            shuttleDoor.GetComponent<Door>().StartDoorClose();
-            yield return new WaitForSeconds(2);
-            currentDestination = new Vector3(-17.7f, 0.0f, -16.3f);
-            shuttleMove = true;
-        }
+        resetLengthAndTime();
+        currentDestination = new Vector3(-25.0f, 0.0f, -2.0f);
+        shuttleMove = true;
+        shuttleDocked = false;
+    }
+
+    void resetLengthAndTime()
+    {
+        journeyLength = -1;
+        startTime = Time.time;
+    }
+
+    void dockShuttle()
+    {
+        currentDestination.z = currentDestination.z + 2;
+    }
+
+    IEnumerator unDockShuttle()
+    {
+        shuttleDoor.GetComponent<Door>().StartDoorClose();
+        currentDestination.z = currentPosition.z - 2.0f;
+        yield return new WaitForSeconds(2);
+        shuttleDocked = false;
     }
 }

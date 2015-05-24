@@ -46,6 +46,7 @@ public class unit : MonoBehaviour
     private MultiDelegate passiveOrderQueue;
 
     //Hauling Variables
+    //accept reference to module
     public GameObject target;
     public bool isCarrying = false;
     private GameObject inventory;
@@ -211,6 +212,7 @@ public class unit : MonoBehaviour
     {
         if (inventory != null)
         {
+            //check for free slots in module
             inventory.GetComponent<resource>().Dropped();
             inventory = null;
             isCarrying = false;

@@ -11,6 +11,7 @@ TagManager:
   - module
   - door
   - surface
+  - dock
   layers:
   - Default
   - TransparentFX
