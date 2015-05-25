@@ -1814,7 +1814,7 @@ ParticleSystem:
         rgba: 4278226687
       minMaxState: 1
     startSize:
-      scalar: 4.94000006
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -8920,6 +8920,10 @@ Prefab:
     - target: {fileID: 429496, guid: a9162f85043b52746bdea88349dc1e74, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 150846, guid: a9162f85043b52746bdea88349dc1e74, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9162f85043b52746bdea88349dc1e74, type: 2}
