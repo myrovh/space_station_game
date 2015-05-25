@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class shuttle : module
 {
@@ -15,9 +16,17 @@ public class shuttle : module
 
     void Start()
     {
+        base.Start();
         startTime = Time.time;
         currentDestination = GameObject.FindGameObjectWithTag("dock").transform.position;
         currentDestination.z -= 2.0f;
+    }
+
+    public List<GameObject> GetFreeSlots()
+    {
+        List<GameObject> freeSlots = new List<GameObject>();
+        base.GetFreeSlots();
+        return freeSlots;
     }
     void Update()
     {
