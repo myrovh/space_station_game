@@ -59,7 +59,6 @@ public class ui : MonoBehaviour
 
         //Adds dialogue to the data list variable
         Dialogue.BuildDialogue();
-        Dialogue.ReportDialogue();
     }
 
     void OnEnable()

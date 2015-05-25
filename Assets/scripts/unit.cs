@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class unit : MonoBehaviour
@@ -38,7 +39,7 @@ public class unit : MonoBehaviour
 
     //State Tracking Variables
     public bool isSelected = false;
-    private NavMeshAgent agent;
+    private NavMeshAgent _agent;
 
     //Order Queue Variables
     private List<unitOrder> activeOrderQueue = new List<unitOrder>();
@@ -62,6 +63,9 @@ public class unit : MonoBehaviour
     //Vision Cone Variables
     Vector3 facingDirection = Vector3.forward;
     float coneLength = 3.0f;
+
+    //Sound Variables
+    private AudioSource _audioSource;
     #endregion
 
     #region MonoBehaviour Functions
@@ -74,8 +78,9 @@ public class unit : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = unitStoppingDistance - 0.75f;
+        _audioSource = GetComponent<AudioSource>();
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.stoppingDistance = unitStoppingDistance - 0.75f;
     }
 
     void Update()
@@ -109,7 +114,7 @@ public class unit : MonoBehaviour
         checkCarrying();
 
         activeOrderQueue.Add(new unitOrder(moveTo, actAt));
-        RaiseDialogue(Dialogue.GetRandomDialogueType(Dialogue.DialogueType.MOVEORDER));
+        SpeakDialogue(Dialogue.GetRandomDialogueType(Dialogue.DialogueType.MOVEORDER));
     }
 
     public void queueOrder(GameObject actAtObject, data.unitAction actAt)
@@ -154,15 +159,15 @@ public class unit : MonoBehaviour
     //returns true when current order is completed
     bool executeOrder()
     {
-        agent.updateRotation = true;
+        _agent.updateRotation = true;
         bool isComplete = false;
         if (activeOrderQueue.Count > 0)
         {
             unitOrder tempOrder = activeOrderQueue[0]; //Get the order on the top of the list
-            agent.destination = tempOrder.moveTo; //Tell NavMeshAgent to move to order location
-            agent.avoidancePriority = baseAvoidance - activeOrderQueue.Count; //Set the movement priority of this unit based on the number of orders it has queued
+            _agent.destination = tempOrder.moveTo; //Tell NavMeshAgent to move to order location
+            _agent.avoidancePriority = baseAvoidance - activeOrderQueue.Count; //Set the movement priority of this unit based on the number of orders it has queued
 
-            if ((transform.position - agent.destination).magnitude <= unitStoppingDistance)
+            if ((transform.position - _agent.destination).magnitude <= unitStoppingDistance)
             {
                 switch (tempOrder.actAt)
                 {
@@ -195,7 +200,7 @@ public class unit : MonoBehaviour
         //If the order has been compleated then increase the avoidancePriority so this unit will move out of the way of units with orders
         if (activeOrderQueue.Count == 0)
         {
-            agent.avoidancePriority = baseAvoidance + 10;
+            _agent.avoidancePriority = baseAvoidance + 10;
         }
         return isComplete;
     }
@@ -205,7 +210,7 @@ public class unit : MonoBehaviour
         inventory = newObject;
         inventory.GetComponent<resource>().PickedUp(this.gameObject);
         isCarrying = true;
-        agent.destination = transform.position;
+        _agent.destination = transform.position;
     }
 
     void drop()
@@ -215,7 +220,7 @@ public class unit : MonoBehaviour
             inventory.GetComponent<resource>().Dropped();
             inventory = null;
             isCarrying = false;
-            agent.destination = transform.position;
+            _agent.destination = transform.position;
         }
     }
 
@@ -224,14 +229,14 @@ public class unit : MonoBehaviour
         if (!door.GetComponent<Door>().IsDoorOpen())
         {
             door.GetComponent<Door>().UnitUsingDoor = true;
-            agent.destination = transform.position;
+            _agent.destination = transform.position;
         }
     }
 
     void closeDoor(GameObject door)
     {
         door.GetComponent<Door>().UnitUsingDoor = true;
-        agent.destination = transform.position;
+        _agent.destination = transform.position;
     }
 
     public void RaiseDialogue(DialogueText text)
@@ -246,7 +251,7 @@ public class unit : MonoBehaviour
     {
         if (activeOrderQueue.Count == 0)
         {
-            agent.updateRotation = false;
+            _agent.updateRotation = false;
 
             timer += Time.deltaTime;
 
@@ -305,4 +310,21 @@ public class unit : MonoBehaviour
         health = health - 1 * Time.deltaTime;
     }
     #endregion
+
+    public void SpeakDialogue(DialogueText text)
+    {
+        RaiseDialogue(text);
+        _audioSource.clip = Dialogue.GetDialogueAudio(text);
+        if (_audioSource.clip != null)
+        {
+            StartCoroutine(PlayAudio());
+        }
+    }
+
+    IEnumerator PlayAudio()
+    {
+        _audioSource.Play();
+        yield return new WaitForSeconds(_audioSource.clip.length);
+        _audioSource.Stop();
+    } 
 }

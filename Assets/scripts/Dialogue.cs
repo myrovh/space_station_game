@@ -21,6 +21,11 @@ public static class Dialogue
         DialogueList.Add(new DialogueText(2, DialogueType.MOVEORDER, "I'm on my way"));
         DialogueList.Add(new DialogueText(3, DialogueType.MOVEORDER, "Moving"));
         DialogueList.Add(new DialogueText(4, DialogueType.MOVEORDER, "Okay"));
+
+        foreach (AudioClip a in Resources.LoadAll(audioPath, typeof(AudioClip)))
+        {
+            AudioList.Add(a);
+        }
     }
 
     public static void ReportDialogue()
@@ -60,12 +65,17 @@ public static class Dialogue
         return null;
     }
 
-    /*
-    public static AudioSource GetDialogueAudio(DialogueText text)
+    public static AudioClip GetDialogueAudio(DialogueText text)
     {
-        
+        foreach (AudioClip a in AudioList)
+        {
+            if (a.name == text.DialogueId.ToString())
+            {
+                return a;
+            }
+        }
+        return null;
     }
-    */
 }
 
 public class DialogueText
