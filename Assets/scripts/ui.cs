@@ -103,7 +103,6 @@ public class ui : MonoBehaviour
     #region Event Handelers
     private void OnDialogueEvent(DialogueEvent e)
     {
-        Debug.Log("Dialogue was called");
         GameObject dialogueObject = (GameObject) Instantiate(dialoguePrefab, Vector3.zero, Quaternion.identity);
         DialoguePopup dialogueScript = dialogueObject.GetComponentInChildren<DialoguePopup>();
         dialogueScript.CameraTarget = LevelCamera.transform;

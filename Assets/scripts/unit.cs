@@ -109,7 +109,7 @@ public class unit : MonoBehaviour
         checkCarrying();
 
         activeOrderQueue.Add(new unitOrder(moveTo, actAt));
-        RaiseDialogue(Dialogue.List[0]);
+        RaiseDialogue(Dialogue.GetRandomDialogueType(Dialogue.DialogueType.MOVEORDER));
     }
 
     public void queueOrder(GameObject actAtObject, data.unitAction actAt)
