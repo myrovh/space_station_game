@@ -99,6 +99,7 @@ public class unit : MonoBehaviour
 
     void OnMouseUp()
     {
+        selectionStatus(true);
     }
     #endregion
 
