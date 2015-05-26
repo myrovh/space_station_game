@@ -17,7 +17,6 @@ public class shuttle : module
     void Start()
     {
         base.Start();
-        enterLevel();
     }
 
     public List<GameObject> GetFreeSlots()
@@ -61,10 +60,6 @@ public class shuttle : module
                             shuttleDocked = true;
                         }
                     }
-                }
-                if (Input.GetKey("m"))
-                {
-                    exitLevel();
                 }
             }
             else

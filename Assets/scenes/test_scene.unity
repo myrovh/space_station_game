@@ -2020,7 +2020,7 @@ GameObject:
   - 114: {fileID: 241551520}
   m_Layer: 0
   m_Name: south_module
-  m_TagString: module
+  m_TagString: shuttle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

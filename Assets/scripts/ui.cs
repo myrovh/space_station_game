@@ -53,12 +53,10 @@ public class ui : MonoBehaviour
         //Get camera script
         _cameraScript = LevelCamera.GetComponent<LevelCamera>();
         _cameraInit = false;
+
+        GameObject.FindGameObjectWithTag("shuttle").GetComponent<shuttle>().enterLevel();
     }
 
-    void OnEnable()
-    {
-        
-    }
     void Update()
     {
         if (!_cameraInit)
@@ -74,6 +72,8 @@ public class ui : MonoBehaviour
         generateOrders();
 
         CameraOrders();
+
+        shuttleCommands();
     }
 
     //Drawing the selection box to the screen
@@ -396,5 +396,13 @@ public class ui : MonoBehaviour
         #region Camera Zoom
         _cameraScript.ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
         #endregion
+    }
+
+    private void shuttleCommands()
+    {
+        if (Input.GetKey("m"))
+        {
+            GameObject.FindGameObjectWithTag("shuttle").GetComponent<shuttle>().exitLevel();
+        }
     }
 }

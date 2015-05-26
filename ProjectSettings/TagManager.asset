@@ -12,6 +12,7 @@ TagManager:
   - door
   - surface
   - dock
+  - shuttle
   layers:
   - Default
   - TransparentFX
