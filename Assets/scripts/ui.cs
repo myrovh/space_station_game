@@ -236,9 +236,9 @@ public class ui : MonoBehaviour
             {
                 foreach (GameObject unit in allPlayerUnits)
                 {
-                    unit.GetComponent<unit>().selectionStatus(false);
+                   // unit.GetComponent<unit>().selectionStatus(false);
                 }
-                hit.rigidbody.GetComponent<unit>().selectionStatus(true);
+               // hit.rigidbody.GetComponent<unit>().selectionStatus(true);
                 showOrders(false);
             }
             //Deselects all units that are not hit by raycast

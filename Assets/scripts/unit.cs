@@ -96,6 +96,10 @@ public class unit : MonoBehaviour
         //Clears the passive order queue
         passiveOrderQueue = null;
     }
+
+    void OnMouseUp()
+    {
+    }
     #endregion
 
     #region Active Queue Manipulation
