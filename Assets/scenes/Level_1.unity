@@ -2285,6 +2285,14 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
   m_IsPrefabParent: 0
@@ -4249,6 +4257,14 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
   m_IsPrefabParent: 0
@@ -5700,6 +5716,14 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
   m_IsPrefabParent: 0
@@ -6679,6 +6703,14 @@ Prefab:
     - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
@@ -8988,6 +9020,14 @@ Prefab:
     - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
@@ -12126,6 +12166,14 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
   m_IsPrefabParent: 0
@@ -12868,6 +12916,14 @@ Prefab:
     - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
@@ -14971,7 +15027,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -29.2600002
+      value: -24.1599998
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_LocalRotation.x
@@ -16341,6 +16397,14 @@ Prefab:
     - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
@@ -20059,6 +20123,30 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 481154, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .140000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 481154, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 191634, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 141350, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 193630, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 186540, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}
   m_IsPrefabParent: 0
@@ -23306,6 +23394,14 @@ Prefab:
     - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
@@ -29063,6 +29159,14 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 186674, guid: e68a07a5686a5d148a7014ef29efc5f1, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 156986, guid: e68a07a5686a5d148a7014ef29efc5f1, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e68a07a5686a5d148a7014ef29efc5f1, type: 2}
   m_IsPrefabParent: 0
@@ -29851,6 +29955,14 @@ Prefab:
     - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
@@ -31512,6 +31624,14 @@ Prefab:
     - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
@@ -34292,6 +34412,14 @@ Prefab:
     - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}
+      propertyPath: m_TagString
+      value: door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcde968bf3dfe574491a9c33c2a3f242, type: 2}

@@ -267,7 +267,7 @@ public class unit : MonoBehaviour
     }
 
     void visionCone()
-    {
+    {/*
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, coneLength);
         facingDirection = Vector3.forward;
 
@@ -284,7 +284,7 @@ public class unit : MonoBehaviour
                 }
 
             }
-        }
+        }*/
     }
     #endregion
 

@@ -166,7 +166,7 @@ public class ui : MonoBehaviour
                         else if (hit.collider.tag == "door")
                         {
                             currentUnit = unit;
-                            currentDoor = hit.transform.gameObject;
+                            currentDoor = hit.transform.parent.gameObject;
                             currentUnit.GetComponent<unit>().door = currentDoor;
                             if (!currentDoor.GetComponent<Door>().IsOpen)
                             {
