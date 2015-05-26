@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class shuttle : module
 {
-    public Vector3 currentDestination = Vector3.zero;
-    public Vector3 currentPosition;
+    private Vector3 currentDestination = -Vector3.one;
+    private Vector3 currentPosition;
     private float journeyLength = -1;
     private float speed = 1.0F;
     private float startTime;
@@ -17,9 +17,7 @@ public class shuttle : module
     void Start()
     {
         base.Start();
-        startTime = Time.time;
-        currentDestination = GameObject.FindGameObjectWithTag("dock").transform.position;
-        currentDestination.z -= 2.0f;
+        enterLevel();
     }
 
     public List<GameObject> GetFreeSlots()
@@ -30,64 +28,78 @@ public class shuttle : module
     }
     void Update()
     {
-        currentPosition = transform.position;
-        if (journeyLength == -1)
+        if (currentDestination != -Vector3.one)
         {
-            journeyLength = Vector3.Distance(currentPosition, currentDestination);
-        }
-
-        float distCovered = (Time.time - startTime) * speed;
-        float fracJourney = distCovered / journeyLength;
-
-        if (!levelExit)
-        {
-            if (shuttleMove)
+            currentPosition = transform.position;
+            if (journeyLength == -1)
             {
-                if (Vector3.Distance(currentPosition, currentDestination) > .1f)
-                {
-                    transform.position = Vector3.Lerp(currentPosition, currentDestination, fracJourney);
-                }
-                else
-                {
-                    if (!shuttleDoor.GetComponent<Door>().IsOpen && shuttleDocked)
-                    {
-                        shuttleDoor.GetComponent<Door>().StartDoorOpen();
-                        shuttleMove = false;
-                        resetLengthAndTime();
-                    }
-                    if (!shuttleDocked)
-                    {
-                        dockShuttle();
-                        shuttleDocked = true;
-                    }
-                }
+                journeyLength = Vector3.Distance(currentPosition, currentDestination);
             }
-            if (Input.GetKey("m"))
+
+            float distCovered = (Time.time - startTime) * speed;
+            float fracJourney = distCovered / journeyLength;
+
+            if (!levelExit)
             {
-                levelExit = true;
-            }
-        }
-        else
-        {
-            if (shuttleDocked)
-            {
-                resetLengthAndTime();
-                StartCoroutine(unDockShuttle());
+                if (shuttleMove)
+                {
+                    if (Vector3.Distance(currentPosition, currentDestination) > .1f)
+                    {
+                        transform.position = Vector3.Lerp(currentPosition, currentDestination, fracJourney);
+                    }
+                    else
+                    {
+                        if (!shuttleDoor.GetComponent<Door>().IsOpen && shuttleDocked)
+                        {
+                            shuttleDoor.GetComponent<Door>().StartDoorOpen();
+                            shuttleMove = false;
+                            resetLengthAndTime();
+                        }
+                        if (!shuttleDocked)
+                        {
+                            dockShuttle();
+                            shuttleDocked = true;
+                        }
+                    }
+                }
+                if (Input.GetKey("m"))
+                {
+                    exitLevel();
+                }
             }
             else
             {
-                if (Vector3.Distance(currentPosition, currentDestination) > .1f)
+                if (shuttleDocked)
                 {
-                    transform.position = Vector3.Lerp(currentPosition, currentDestination, fracJourney);
+                    resetLengthAndTime();
+                    StartCoroutine(unDockShuttle());
                 }
                 else
                 {
-                    levelEnd();
+                    if (Vector3.Distance(currentPosition, currentDestination) > .1f)
+                    {
+                        transform.position = Vector3.Lerp(currentPosition, currentDestination, fracJourney);
+                    }
+                    else
+                    {
+                        levelEnd();
+                    }
                 }
             }
         }
     }
 
+    public void enterLevel()
+    {
+        startTime = Time.time;
+        currentDestination = GameObject.FindGameObjectWithTag("dock").transform.position;
+        currentDestination.z -= 2.0f;
+    }
+
+    public void exitLevel()
+    {
+        levelExit = true;
+    }
     void levelEnd()
     {
         resetLengthAndTime();

@@ -2072,8 +2072,6 @@ MonoBehaviour:
   SlotSize: 1
   unitsInModule: []
   noAir: 0
-  currentDestination: {x: 0, y: 0, z: 0}
-  currentPosition: {x: 0, y: 0, z: 0}
   shuttleDoor: {fileID: 2140677356}
 --- !u!1 &268374625
 GameObject:
