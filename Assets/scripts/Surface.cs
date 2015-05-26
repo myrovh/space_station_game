@@ -8,6 +8,10 @@ public class Surface : MonoBehaviour {
     void Start()
     {
         _renderer = GetComponent<MeshRenderer>();
+        if (_renderer == null)
+        {
+            Destroy(this);
+        }
         string location = transform.parent.parent.name;
         if (location == "west")
         {
