@@ -6,7 +6,7 @@ public class ui : MonoBehaviour
 {
     #region Variables
 
-    //Unit Selection Vairables
+    //Unit Selection Variables
     public Texture2D selectionHighlight = null;
     public static Rect selection = new Rect(0, 0, 0, 0);
     public bool buttonClick = false;
@@ -29,6 +29,17 @@ public class ui : MonoBehaviour
     public GameObject popup;
     private GameObject currentUnit;
 
+    //Camera Variables
+    public GameObject LevelCamera;
+    private LevelCamera _cameraScript;
+    private bool _cameraInit;
+
+    // Door Variables
+    public GameObject currentDoor;
+    public Image progressBar;
+
+    //Dialogue Variables
+    public GameObject dialoguePrefab;
     #endregion
 
     #region Monobehaviour Functions
@@ -41,14 +52,40 @@ public class ui : MonoBehaviour
         //button3.onClick.AddListener(() => { button3Action(); });
 
         allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
+
+        //Get camera script
+        _cameraScript = LevelCamera.GetComponent<LevelCamera>();
+        _cameraInit = false;
+
+        //Adds dialogue to the data list variable
+        Dialogue.BuildDialogue();
     }
+
+    void OnEnable()
+    {
+        Events.instance.AddListener<DialogueEvent>(OnDialogueEvent);
+    }
+
+    void OnDisable()
+    {
+        Events.instance.RemoveListener<DialogueEvent>(OnDialogueEvent);
+    }
+
     void Update()
     {
+        if (!_cameraInit)
+        {
+            //Send initial rotation to camera to ensure walls are hidden on level start
+            _cameraScript.RotateCamera(data.cardinalPoints.SOUTH, data.cardinalPoints.EAST);
+            _cameraInit = true;
+        }
         checkSelectionBox();
 
         selecionCheck();
 
         generateOrders();
+
+        CameraOrders();
     }
 
     //Drawing the selection box to the screen
@@ -59,6 +96,18 @@ public class ui : MonoBehaviour
             GUI.color = new Color(1, 1, 1, 0.5f);
             GUI.DrawTexture(selection, selectionHighlight);
         }
+    }
+    #endregion
+
+    #region Event Handelers
+    private void OnDialogueEvent(DialogueEvent e)
+    {
+        GameObject dialogueObject = (GameObject) Instantiate(dialoguePrefab, Vector3.zero, Quaternion.identity);
+        DialoguePopup dialogueScript = dialogueObject.GetComponentInChildren<DialoguePopup>();
+        dialogueScript.CameraTarget = LevelCamera.transform;
+        dialogueScript.ObjectTarget = e.MessageTarget;
+        dialogueScript.Text = e.MessageText.DialogueContents;
+        dialogueScript.LifeTime = e.MessageText.DialogueContents.Length*0.3f;
     }
     #endregion
 
@@ -79,6 +128,20 @@ public class ui : MonoBehaviour
                             currentUnit = unit;
                             targetResource = hit.collider.gameObject;
                             haulOrder = true;
+                        }
+                        else if (hit.collider.tag == "door")
+                        {
+                            currentUnit = unit;
+                            currentDoor = hit.transform.parent.gameObject;
+                            currentUnit.GetComponent<unit>().door = currentDoor;
+                            if (!currentDoor.GetComponent<Door>().IsOpen)
+                            {
+                                addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
+                            }
+                            else
+                            {
+                                addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
+                            }
                         }
                         else
                         {
@@ -103,16 +166,14 @@ public class ui : MonoBehaviour
                         else if (hit.collider.tag == "door")
                         {
                             currentUnit = unit;
-                            currentDoor = hit.transform.parent.gameObject;
+                            currentDoor = hit.transform.gameObject;
                             currentUnit.GetComponent<unit>().door = currentDoor;
-                            if (!currentDoor.GetComponent<Door>().isOpen)
+                            if (!currentDoor.GetComponent<Door>().IsOpen)
                             {
-                                progressBar.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
                                 addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
                             }
                             else
                             {
-                                progressBar.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
                                 addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
                             }
                         }
@@ -131,7 +192,7 @@ public class ui : MonoBehaviour
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    freeSlots = hit.transform.root.GetComponent<module>().getFreeSlots();
+                    freeSlots = hit.transform.root.GetComponent<Module>().GetFreeSlots();
                     targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
                     addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
                     addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
@@ -142,7 +203,7 @@ public class ui : MonoBehaviour
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    freeSlots = hit.transform.root.GetComponent<module>().getFreeSlots();
+                    freeSlots = hit.transform.root.GetComponent<Module>().GetFreeSlots();
                     targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
                     addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
                     addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
@@ -204,14 +265,14 @@ public class ui : MonoBehaviour
             else
             {
                 //Check to see if the mouse pointer is over a ui object
-                if (!EventSystem.current.IsPointerOverGameObject())
-                {
+               // if (!EventSystem.current.IsPointerOverGameObject())
+               // {
                     foreach (GameObject unit in allPlayerUnits)
                     {
                         unit.GetComponent<unit>().selectionStatus(false);
                         showOrders(false);
                     }
-                }
+                //}
             }
         }
 
@@ -291,4 +352,73 @@ public class ui : MonoBehaviour
         popup.GetComponent<CanvasGroup>().interactable = isVisible;
     }
     #endregion
+
+    private void CameraOrders()
+    {
+        #region Camera Pan
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            _cameraScript.PanCamera(data.cardinalPoints.NORTH);
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            _cameraScript.PanCamera(data.cardinalPoints.SOUTH);
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            _cameraScript.PanCamera(data.cardinalPoints.EAST);
+        }
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            _cameraScript.PanCamera(data.cardinalPoints.WEST);
+        }
+        #endregion
+
+        #region Camera Rotate
+        if(Input.GetKeyDown((KeyCode.Q)))
+        {
+            data.cardinalPoints currentRotation = _cameraScript.GetCurrentRotation();
+            if (currentRotation == data.cardinalPoints.SOUTH)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.WEST, data.cardinalPoints.SOUTH);
+            }
+            else if (currentRotation == data.cardinalPoints.WEST)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.NORTH, data.cardinalPoints.WEST);
+            }
+            else if (currentRotation == data.cardinalPoints.EAST)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.SOUTH, data.cardinalPoints.EAST);
+            }
+            else if (currentRotation == data.cardinalPoints.NORTH)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.EAST, data.cardinalPoints.NORTH);
+            }
+        }
+        if(Input.GetKeyDown((KeyCode.E)))
+        {
+            data.cardinalPoints currentRotation = _cameraScript.GetCurrentRotation();
+            if (currentRotation == data.cardinalPoints.SOUTH)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.EAST, data.cardinalPoints.NORTH);
+            }
+            else if (currentRotation == data.cardinalPoints.WEST)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.SOUTH, data.cardinalPoints.EAST);
+            }
+            else if (currentRotation == data.cardinalPoints.EAST)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.NORTH, data.cardinalPoints.WEST);
+            }
+            else if (currentRotation == data.cardinalPoints.NORTH)
+            {
+                _cameraScript.RotateCamera(data.cardinalPoints.WEST, data.cardinalPoints.SOUTH);
+            }
+        }
+        #endregion
+
+        #region Camera Zoom
+        _cameraScript.ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
+        #endregion
+    }
 }

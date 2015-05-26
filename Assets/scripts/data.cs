@@ -9,4 +9,5 @@ public static class data
     public enum resourceType { AMMO, REACTIONMASS };
     //Defines possible interactions for objects in the game
     public enum interactions { HAUL };
+    public enum cardinalPoints { NORTH, EAST, SOUTH, WEST, DOWN, UPPR}
 }

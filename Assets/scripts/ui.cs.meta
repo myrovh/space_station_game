@@ -1,10 +1,19 @@
 fileFormatVersion: 2
 guid: f8106a54555b23b41af0ccfa5ca36848
-timeCreated: 1429833519
+timeCreated: 1432264044
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - selectionHighlight: {instanceID: 0}
+  - button1: {instanceID: 0}
+  - button2: {instanceID: 0}
+  - button3: {instanceID: 0}
+  - popup: {instanceID: 0}
+  - LevelCamera: {instanceID: 0}
+  - currentDoor: {instanceID: 0}
+  - progressBar: {instanceID: 0}
+  - dialoguePrefab: {fileID: 169768, guid: bbf7dade28d850144a3b0b1f629abf2e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

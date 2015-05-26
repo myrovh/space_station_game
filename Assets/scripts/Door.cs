@@ -5,63 +5,62 @@ using System.Collections;
 
 public class Door : MonoBehaviour
 {
-    Animator doorAnimation;
-    int openHash = Animator.StringToHash("opening");
-    int closeHash = Animator.StringToHash("closing");
-    public bool isOpen;
-    public int doorOpenTime;
+    Animator _doorAnimation;
+    private int _isOpenHash = Animator.StringToHash("isOpen");
+    public bool IsOpen;
 
-    float doorTimer = 5.0f;
-    public bool unitUsingDoor = false;
-    public Image progressBar;
+    float _doorTimer = 5.0f;
+    public bool UnitUsingDoor = false;
+    public Image ProgressBar;
 
     // Use this for initialization
     void Start()
     {
-        doorAnimation = GetComponent<Animator>();
-        isOpen = false;
+        _doorAnimation = GetComponent<Animator>();
+        IsOpen = false;
     }
 
     void Update()
     {
-        if (unitUsingDoor)
+        if (UnitUsingDoor)
         {
-            doorTimer -= Time.deltaTime;
-            if (doorTimer < 0 && !isOpen)
+            _doorTimer -= Time.deltaTime;
+            if (_doorTimer < 0 && !IsOpen)
             {
-                startDoorOpen();
-                doorTimer = 5.0f;
-                unitUsingDoor = false;
+                StartDoorOpen();
+                _doorTimer = 5.0f;
+                UnitUsingDoor = false;
             }
-            else if (doorTimer < 0 && isOpen)
+            else if (_doorTimer < 0 && IsOpen)
             {
-                startDoorClose();
-                doorTimer = 5.0f;
-                unitUsingDoor = false;
+                StartDoorClose();
+                _doorTimer = 5.0f;
+                UnitUsingDoor = false;
             }
-            progressBar.fillAmount = doorTimer / 5;
+            ProgressBar.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(transform.position); 
+            ProgressBar.fillAmount = _doorTimer / 5;
         }
         else
         {
-            progressBar.fillAmount = 0;
+            ProgressBar.fillAmount = 0;
         }
         
         
     }
-    public void startDoorOpen()
+    public void StartDoorOpen()
     {
-        doorAnimation.SetTrigger(openHash);
-        isOpen = true;
+        _doorAnimation.SetBool(_isOpenHash, true);
+        IsOpen = true;
     }
 
-    public void startDoorClose()
+    public void StartDoorClose()
     {
-        doorAnimation.SetTrigger(closeHash);
-        isOpen = false;
+        _doorAnimation.SetBool(_isOpenHash, false);
+        IsOpen = false;
     }
 
-    public bool isDoorOpen()
+    public bool IsDoorOpen()
     {
-        return isOpen;
+        return IsOpen;
     }
 }

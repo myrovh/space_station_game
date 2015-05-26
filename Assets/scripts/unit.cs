@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class unit : MonoBehaviour
@@ -34,29 +35,37 @@ public class unit : MonoBehaviour
     public float unitMoveSpeed = 1;
     public float unitStoppingDistance = 1.5f;
     private int baseAvoidance = 89;
+    public float health = 100;
 
     //State Tracking Variables
     public bool isSelected = false;
-    private NavMeshAgent agent;
+    private NavMeshAgent _agent;
 
     //Order Queue Variables
     private List<unitOrder> activeOrderQueue = new List<unitOrder>();
-    delegate void MultiDelegate();
+    public delegate void MultiDelegate();
     private MultiDelegate passiveOrderQueue;
 
     //Hauling Variables
     public GameObject target;
-    private GameObject inventory;
     public bool isCarrying = false;
+    private GameObject inventory;
 
     //Door Manipulation Variables
     public GameObject door;
 
     //Idle Function Variables
-    float rotateSpeed = 3.0f;
-    float timer = 0.0f;
-    Quaternion qto;
-    float speed = 1.25f;
+    private float rotateSpeed = 3.0f;
+    private float timer = 0.0f;
+    private Quaternion qto;
+    private Vector3 randomPoint;
+
+    //Vision Cone Variables
+    Vector3 facingDirection = Vector3.forward;
+    float coneLength = 3.0f;
+
+    //Sound Variables
+    private AudioSource _audioSource;
     #endregion
 
     #region MonoBehaviour Functions
@@ -64,12 +73,14 @@ public class unit : MonoBehaviour
     {
         //Add passive functions here
         passiveOrderQueue += idle;
+        passiveOrderQueue += visionCone;
     }
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = unitStoppingDistance - 0.75f;
+        _audioSource = GetComponent<AudioSource>();
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.stoppingDistance = unitStoppingDistance - 0.75f;
     }
 
     void Update()
@@ -97,18 +108,23 @@ public class unit : MonoBehaviour
     {
         if (door != null)
         {
-            door.GetComponent<Door>().unitUsingDoor = false;
+            door.GetComponent<Door>().UnitUsingDoor = false;
         }
 
+        checkCarrying();
+
         activeOrderQueue.Add(new unitOrder(moveTo, actAt));
+        SpeakDialogue(Dialogue.GetRandomDialogueType(Dialogue.DialogueType.MOVEORDER));
     }
 
     public void queueOrder(GameObject actAtObject, data.unitAction actAt)
     {
         if (door != null)
         {
-            door.GetComponent<Door>().unitUsingDoor = false;
+            door.GetComponent<Door>().UnitUsingDoor = false;
         }
+
+        checkCarrying();
 
         activeOrderQueue.Add(new unitOrder(actAtObject, actAt));
     }
@@ -117,6 +133,16 @@ public class unit : MonoBehaviour
     public void clearQueue()
     {
         activeOrderQueue.Clear();
+    }
+
+    void checkCarrying()
+    {
+        if (isCarrying)
+        {
+            inventory.GetComponent<resource>().DroppedInFront();
+            inventory = null;
+            isCarrying = false;
+        }
     }
     #endregion
 
@@ -133,15 +159,15 @@ public class unit : MonoBehaviour
     //returns true when current order is completed
     bool executeOrder()
     {
-        agent.updateRotation = true;
+        _agent.updateRotation = true;
         bool isComplete = false;
         if (activeOrderQueue.Count > 0)
         {
             unitOrder tempOrder = activeOrderQueue[0]; //Get the order on the top of the list
-            agent.destination = tempOrder.moveTo; //Tell NavMeshAgent to move to order location
-            agent.avoidancePriority = baseAvoidance - activeOrderQueue.Count; //Set the movement priority of this unit based on the number of orders it has queued
+            _agent.destination = tempOrder.moveTo; //Tell NavMeshAgent to move to order location
+            _agent.avoidancePriority = baseAvoidance - activeOrderQueue.Count; //Set the movement priority of this unit based on the number of orders it has queued
 
-            if ((transform.position - agent.destination).magnitude <= unitStoppingDistance)
+            if ((transform.position - _agent.destination).magnitude <= unitStoppingDistance)
             {
                 switch (tempOrder.actAt)
                 {
@@ -174,7 +200,7 @@ public class unit : MonoBehaviour
         //If the order has been compleated then increase the avoidancePriority so this unit will move out of the way of units with orders
         if (activeOrderQueue.Count == 0)
         {
-            agent.avoidancePriority = baseAvoidance + 10;
+            _agent.avoidancePriority = baseAvoidance + 10;
         }
         return isComplete;
     }
@@ -184,47 +210,85 @@ public class unit : MonoBehaviour
         inventory = newObject;
         inventory.GetComponent<resource>().PickedUp(this.gameObject);
         isCarrying = true;
-        agent.destination = transform.position;
+        _agent.destination = transform.position;
     }
 
     void drop()
     {
-        inventory.GetComponent<resource>().Dropped();
-        inventory = null;
-        isCarrying = false;
-        agent.destination = transform.position;
+        if (inventory != null)
+        {
+            inventory.GetComponent<resource>().Dropped();
+            inventory = null;
+            isCarrying = false;
+            _agent.destination = transform.position;
+        }
     }
 
     void openDoor(GameObject door)
     {
-        door.GetComponent<Door>().unitUsingDoor = true;
-        agent.destination = transform.position;
+        if (!door.GetComponent<Door>().IsDoorOpen())
+        {
+            door.GetComponent<Door>().UnitUsingDoor = true;
+            _agent.destination = transform.position;
+        }
     }
 
     void closeDoor(GameObject door)
     {
-        door.GetComponent<Door>().unitUsingDoor = true;
-        agent.destination = transform.position;
+        door.GetComponent<Door>().UnitUsingDoor = true;
+        _agent.destination = transform.position;
+    }
+
+    public void RaiseDialogue(DialogueText text)
+    {
+        //TODO add test to make sure that unit will not raise a new dialogue when already talking
+        Events.instance.Raise(new DialogueEvent(transform, text));
     }
     #endregion
 
+    #region Passive Queue Manipulation
     void idle()
     {
         if (activeOrderQueue.Count == 0)
         {
-            agent.updateRotation = false;
+            _agent.updateRotation = false;
 
             timer += Time.deltaTime;
 
             if (timer > 2)
             {
                 qto = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
+                randomPoint = Random.insideUnitSphere * 0.001f;
                 timer = 0.0f;
             }
             transform.rotation = Quaternion.Slerp(transform.rotation, qto, Time.deltaTime * rotateSpeed);
+            transform.Translate(randomPoint);
         }
     }
 
+    void visionCone()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, coneLength);
+        facingDirection = Vector3.forward;
+
+        foreach (Collider other in hitColliders)
+        {
+
+            if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
+            {
+                    door = other.transform.gameObject;
+                if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen)
+                {
+                    checkCarrying();
+                    queueOrder(other.gameObject, data.unitAction.OPENDOOR);
+                }
+
+            }
+        }
+    }
+    #endregion
+
+    #region Selection Functions
     //Call this function and pass a bool to tell the unit if it is selected or not
     //Later these functions will be removed and selection tracking will be handled by the UI
     public void selectionStatus(bool select)
@@ -240,4 +304,27 @@ public class unit : MonoBehaviour
             isSelected = false;
         }
     }
+
+    public void takeDamage()
+    {
+        health = health - 1 * Time.deltaTime;
+    }
+    #endregion
+
+    public void SpeakDialogue(DialogueText text)
+    {
+        RaiseDialogue(text);
+        _audioSource.clip = Dialogue.GetDialogueAudio(text);
+        if (_audioSource.clip != null)
+        {
+            StartCoroutine(PlayAudio());
+        }
+    }
+
+    IEnumerator PlayAudio()
+    {
+        _audioSource.Play();
+        yield return new WaitForSeconds(_audioSource.clip.length);
+        _audioSource.Stop();
+    } 
 }
