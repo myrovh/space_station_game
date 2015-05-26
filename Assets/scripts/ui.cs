@@ -221,6 +221,10 @@ public class ui : MonoBehaviour
                 {
                     unit.GetComponent<unit>().selectionStatus(true);
                 }
+                else
+                {
+                    unit.GetComponent<unit>().selectionStatus(false);
+                }
             }
         }
 

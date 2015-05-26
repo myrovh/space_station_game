@@ -95,7 +95,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 3834242}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: hardpoint_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - 54: {fileID: 17618369}
   - 65: {fileID: 17618368}
   - 114: {fileID: 17618372}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 20641308}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: west_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - 54: {fileID: 29782066}
   - 65: {fileID: 29782065}
   - 114: {fileID: 29782069}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - 65: {fileID: 39011960}
   - 54: {fileID: 39011959}
   - 114: {fileID: 39011963}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 40381426}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_12_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - 54: {fileID: 42860278}
   - 65: {fileID: 42860277}
   - 114: {fileID: 42860281}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   - 65: {fileID: 56646938}
   - 54: {fileID: 56646937}
   - 114: {fileID: 56646941}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -703,7 +703,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 57257600}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_9_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 65576320}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: south
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   - 65: {fileID: 68735063}
   - 54: {fileID: 68735062}
   - 114: {fileID: 68735066}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -867,7 +867,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 86177380}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_4_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,7 +895,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 87689168}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_10_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +923,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 92578581}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: hardpoint_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   - 65: {fileID: 97216548}
   - 54: {fileID: 97216547}
   - 114: {fileID: 97216551}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ GameObject:
   - 54: {fileID: 120494497}
   - 65: {fileID: 120494496}
   - 114: {fileID: 120494500}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -1238,7 +1238,7 @@ GameObject:
   - 54: {fileID: 123302788}
   - 65: {fileID: 123302787}
   - 114: {fileID: 123302791}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -1400,7 +1400,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 125157969}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: south_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1428,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 126662521}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_9_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1456,7 +1456,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 129118099}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_3_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1484,7 +1484,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 137631858}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_9_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1512,7 +1512,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 147020207}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_4_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1545,7 +1545,7 @@ GameObject:
   - 54: {fileID: 159952006}
   - 65: {fileID: 159952005}
   - 114: {fileID: 159952009}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -1645,7 +1645,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 162464768}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_9_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1678,7 +1678,7 @@ GameObject:
   - 54: {fileID: 174109400}
   - 65: {fileID: 174109399}
   - 114: {fileID: 174109403}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -1783,7 +1783,7 @@ GameObject:
   - 54: {fileID: 195045755}
   - 65: {fileID: 195045754}
   - 114: {fileID: 195045758}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -1888,7 +1888,7 @@ GameObject:
   - 65: {fileID: 200251150}
   - 54: {fileID: 200251149}
   - 114: {fileID: 200251153}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -1988,7 +1988,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 209776729}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2018,7 +2018,7 @@ GameObject:
   - 4: {fileID: 241551518}
   - 65: {fileID: 241551519}
   - 114: {fileID: 241551520}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: south_module
   m_TagString: shuttle
   m_Icon: {fileID: 0}
@@ -2081,7 +2081,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 268374626}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: east_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2114,7 +2114,7 @@ GameObject:
   - 54: {fileID: 278826309}
   - 65: {fileID: 278826308}
   - 114: {fileID: 278826312}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -2219,7 +2219,7 @@ GameObject:
   - 54: {fileID: 281101155}
   - 65: {fileID: 281101154}
   - 114: {fileID: 281101158}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -2324,7 +2324,7 @@ GameObject:
   - 54: {fileID: 292312479}
   - 65: {fileID: 292312478}
   - 114: {fileID: 292312482}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -2429,7 +2429,7 @@ GameObject:
   - 54: {fileID: 292916185}
   - 65: {fileID: 292916184}
   - 114: {fileID: 292916188}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -2534,7 +2534,7 @@ GameObject:
   - 54: {fileID: 304736495}
   - 65: {fileID: 304736494}
   - 114: {fileID: 304736498}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -2634,7 +2634,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 318010001}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_8_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2771,7 +2771,7 @@ GameObject:
   - 54: {fileID: 337838366}
   - 65: {fileID: 337838365}
   - 114: {fileID: 337838369}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -2872,7 +2872,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 339486503}
   - 114: {fileID: 339486504}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: north_module
   m_TagString: module
   m_Icon: {fileID: 0}
@@ -2922,7 +2922,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 347067962}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_4_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2955,7 +2955,7 @@ GameObject:
   - 65: {fileID: 365622696}
   - 54: {fileID: 365622695}
   - 114: {fileID: 365622699}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -3060,7 +3060,7 @@ GameObject:
   - 65: {fileID: 365808918}
   - 54: {fileID: 365808917}
   - 114: {fileID: 365808921}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -3165,7 +3165,7 @@ GameObject:
   - 54: {fileID: 383135363}
   - 65: {fileID: 383135362}
   - 114: {fileID: 383135366}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -3270,7 +3270,7 @@ GameObject:
   - 65: {fileID: 386604787}
   - 54: {fileID: 386604786}
   - 114: {fileID: 386604790}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -3370,7 +3370,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409194069}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_6_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3403,7 +3403,7 @@ GameObject:
   - 65: {fileID: 412239169}
   - 54: {fileID: 412239168}
   - 114: {fileID: 412239172}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -3503,7 +3503,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432176057}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_4_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3531,7 +3531,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461826685}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3579,7 +3579,7 @@ GameObject:
   - 54: {fileID: 469049004}
   - 65: {fileID: 469049003}
   - 114: {fileID: 469049007}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -3684,7 +3684,7 @@ GameObject:
   - 65: {fileID: 483122187}
   - 54: {fileID: 483122186}
   - 114: {fileID: 483122190}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -3784,7 +3784,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491292549}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3908,7 +3908,7 @@ GameObject:
   - 65: {fileID: 499893775}
   - 54: {fileID: 499893774}
   - 114: {fileID: 499893778}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -4008,7 +4008,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 500424118}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_2_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4036,7 +4036,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 500928516}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_11_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4064,7 +4064,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 504060127}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_2_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4092,7 +4092,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 532200888}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: east_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4125,7 +4125,7 @@ GameObject:
   - 54: {fileID: 544536508}
   - 65: {fileID: 544536507}
   - 114: {fileID: 544536511}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -4225,7 +4225,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 562263824}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_4_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4258,7 +4258,7 @@ GameObject:
   - 65: {fileID: 563265004}
   - 54: {fileID: 563265003}
   - 114: {fileID: 563265007}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -4358,7 +4358,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 576422669}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: south_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4391,7 +4391,7 @@ GameObject:
   - 54: {fileID: 578918383}
   - 65: {fileID: 578918382}
   - 114: {fileID: 578918386}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -4491,7 +4491,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 586686789}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4519,7 +4519,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 609597096}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: north_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4552,7 +4552,7 @@ GameObject:
   - 54: {fileID: 612951698}
   - 65: {fileID: 612951697}
   - 114: {fileID: 612951701}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -4657,7 +4657,7 @@ GameObject:
   - 65: {fileID: 623055415}
   - 54: {fileID: 623055414}
   - 114: {fileID: 623055418}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -4757,7 +4757,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 637733604}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: east_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4785,7 +4785,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 655573881}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4813,7 +4813,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 656438400}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: east_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4841,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 667611574}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: north_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4869,7 +4869,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 688190935}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4897,7 +4897,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 708058660}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: north_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4930,7 +4930,7 @@ GameObject:
   - 54: {fileID: 709847641}
   - 65: {fileID: 709847640}
   - 114: {fileID: 709847644}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -5030,7 +5030,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 721557427}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: south
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5065,7 +5065,7 @@ GameObject:
   - 65: {fileID: 723988285}
   - 54: {fileID: 723988284}
   - 114: {fileID: 723988288}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -5165,7 +5165,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 731947502}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_7_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5193,7 +5193,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 733770241}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: south_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5221,7 +5221,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 738209322}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: hardpoint_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5248,7 +5248,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 752976434}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_4_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5281,7 +5281,7 @@ GameObject:
   - 54: {fileID: 755187551}
   - 65: {fileID: 755187550}
   - 114: {fileID: 755187554}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -5386,7 +5386,7 @@ GameObject:
   - 54: {fileID: 766186255}
   - 65: {fileID: 766186254}
   - 114: {fileID: 766186258}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -5491,7 +5491,7 @@ GameObject:
   - 54: {fileID: 783971003}
   - 65: {fileID: 783971002}
   - 114: {fileID: 783971006}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -5596,7 +5596,7 @@ GameObject:
   - 65: {fileID: 787626446}
   - 54: {fileID: 787626445}
   - 114: {fileID: 787626449}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -5701,7 +5701,7 @@ GameObject:
   - 54: {fileID: 811732233}
   - 65: {fileID: 811732232}
   - 114: {fileID: 811732236}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -5806,7 +5806,7 @@ GameObject:
   - 54: {fileID: 812320354}
   - 65: {fileID: 812320353}
   - 114: {fileID: 812320357}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -5911,7 +5911,7 @@ GameObject:
   - 54: {fileID: 813113140}
   - 65: {fileID: 813113139}
   - 114: {fileID: 813113143}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -6016,7 +6016,7 @@ GameObject:
   - 54: {fileID: 825279781}
   - 65: {fileID: 825279780}
   - 114: {fileID: 825279784}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -6219,7 +6219,7 @@ GameObject:
   - 54: {fileID: 847988630}
   - 65: {fileID: 847988629}
   - 114: {fileID: 847988633}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -6440,7 +6440,7 @@ GameObject:
   - 65: {fileID: 887237525}
   - 54: {fileID: 887237524}
   - 114: {fileID: 887237528}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -6545,7 +6545,7 @@ GameObject:
   - 54: {fileID: 887287640}
   - 65: {fileID: 887287639}
   - 114: {fileID: 887287643}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -6645,7 +6645,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 897067477}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6688,7 +6688,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 906551561}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_3_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6716,7 +6716,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 908882045}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_2_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6744,7 +6744,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 920688369}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_4_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6838,7 +6838,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 941625969}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: hardpoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6867,7 +6867,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 962647687}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_11_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6938,6 +6938,18 @@ Prefab:
       propertyPath: m_Name
       value: shuttledoor_3x3
       objectReference: {fileID: 0}
+    - target: {fileID: 176184, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
   m_IsPrefabParent: 0
@@ -6953,7 +6965,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1006854483}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: north
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6983,7 +6995,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1007581357}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: south_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7011,7 +7023,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1008416171}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_6_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7044,7 +7056,7 @@ GameObject:
   - 65: {fileID: 1016652359}
   - 54: {fileID: 1016652358}
   - 114: {fileID: 1016652362}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -7278,7 +7290,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1032951846}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7306,7 +7318,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1036617105}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_11_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7469,6 +7481,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 127768, guid: e019c629b8d4b00408f5c819ff46abc2, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e019c629b8d4b00408f5c819ff46abc2, type: 2}
   m_IsPrefabParent: 0
@@ -7484,7 +7500,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1127791996}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_7_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7512,7 +7528,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1142317811}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_6_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7540,7 +7556,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1151027829}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: hardpoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7574,7 +7590,7 @@ GameObject:
   - 65: {fileID: 1158088099}
   - 54: {fileID: 1158088098}
   - 114: {fileID: 1158088102}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -7674,7 +7690,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1158872423}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: north
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7710,7 +7726,7 @@ GameObject:
   - 54: {fileID: 1159354717}
   - 65: {fileID: 1159354716}
   - 114: {fileID: 1159354720}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -7810,7 +7826,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1163669594}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7843,7 +7859,7 @@ GameObject:
   - 65: {fileID: 1166387323}
   - 54: {fileID: 1166387322}
   - 114: {fileID: 1166387326}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -7943,7 +7959,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1170908262}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8004,7 +8020,7 @@ GameObject:
   - 54: {fileID: 1184537660}
   - 65: {fileID: 1184537659}
   - 114: {fileID: 1184537663}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -8104,7 +8120,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1189718783}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8710,7 +8726,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1206545072}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_3_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8738,7 +8754,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1217517954}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_3_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8766,7 +8782,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1231114329}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_7_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8865,7 +8881,7 @@ GameObject:
   - 65: {fileID: 1253469771}
   - 54: {fileID: 1253469770}
   - 114: {fileID: 1253469774}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -8970,7 +8986,7 @@ GameObject:
   - 54: {fileID: 1299493200}
   - 65: {fileID: 1299493199}
   - 114: {fileID: 1299493203}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -9075,7 +9091,7 @@ GameObject:
   - 54: {fileID: 1301370240}
   - 65: {fileID: 1301370239}
   - 114: {fileID: 1301370243}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -9175,7 +9191,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1311069157}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_7_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9242,6 +9258,18 @@ Prefab:
       propertyPath: ProgressBar
       value: 
       objectReference: {fileID: 1945282145}
+    - target: {fileID: 176184, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125630, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 147496, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfdc4684ae1c87342a5555a1c63df54f, type: 2}
   m_IsPrefabParent: 0
@@ -9257,7 +9285,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1334170069}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9300,7 +9328,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1343267006}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_12_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9333,7 +9361,7 @@ GameObject:
   - 54: {fileID: 1346633054}
   - 65: {fileID: 1346633053}
   - 114: {fileID: 1346633057}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -9433,7 +9461,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1352536982}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9466,7 +9494,7 @@ GameObject:
   - 54: {fileID: 1362226884}
   - 65: {fileID: 1362226883}
   - 114: {fileID: 1362226887}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -9601,6 +9629,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 193448, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
   m_IsPrefabParent: 0
@@ -9631,7 +9663,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1369392254}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_3_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9659,7 +9691,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1374606650}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_8_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9692,7 +9724,7 @@ GameObject:
   - 54: {fileID: 1400394686}
   - 65: {fileID: 1400394685}
   - 114: {fileID: 1400394689}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -9901,7 +9933,7 @@ GameObject:
   - 54: {fileID: 1424943274}
   - 65: {fileID: 1424943273}
   - 114: {fileID: 1424943277}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -10067,7 +10099,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1444843801}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_5_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10100,7 +10132,7 @@ GameObject:
   - 54: {fileID: 1459764681}
   - 65: {fileID: 1459764680}
   - 114: {fileID: 1459764684}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -10200,7 +10232,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1463064365}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_2_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10228,7 +10260,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1467422461}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10261,7 +10293,7 @@ GameObject:
   - 54: {fileID: 1475839422}
   - 65: {fileID: 1475839421}
   - 114: {fileID: 1475839425}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -10361,7 +10393,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1498054610}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: east_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10389,7 +10421,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1506940527}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_5_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10417,7 +10449,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1508900494}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: east_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10450,7 +10482,7 @@ GameObject:
   - 54: {fileID: 1517480411}
   - 65: {fileID: 1517480410}
   - 114: {fileID: 1517480414}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -10555,7 +10587,7 @@ GameObject:
   - 65: {fileID: 1521818389}
   - 54: {fileID: 1521818388}
   - 114: {fileID: 1521818392}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -10655,7 +10687,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1531287054}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10683,7 +10715,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1531523238}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: east
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10713,7 +10745,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1537285481}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: west_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10741,7 +10773,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1544006783}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_4_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10774,7 +10806,7 @@ GameObject:
   - 54: {fileID: 1552644893}
   - 65: {fileID: 1552644892}
   - 114: {fileID: 1552644896}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -10874,7 +10906,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1563456190}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: west_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11043,6 +11075,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 193448, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
   m_IsPrefabParent: 0
@@ -11078,7 +11114,7 @@ GameObject:
   - 65: {fileID: 1577514472}
   - 54: {fileID: 1577514471}
   - 114: {fileID: 1577514475}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -11178,7 +11214,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1579567578}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_5_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11206,7 +11242,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1589264686}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_8_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11234,7 +11270,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1592873917}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: north_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11262,7 +11298,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1595724327}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: west
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11297,7 +11333,7 @@ GameObject:
   - 54: {fileID: 1621522937}
   - 65: {fileID: 1621522936}
   - 114: {fileID: 1621522940}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -11402,7 +11438,7 @@ GameObject:
   - 54: {fileID: 1623186977}
   - 65: {fileID: 1623186976}
   - 114: {fileID: 1623186980}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -11502,7 +11538,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1649566755}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_11_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11535,7 +11571,7 @@ GameObject:
   - 54: {fileID: 1651201700}
   - 65: {fileID: 1651201699}
   - 114: {fileID: 1651201703}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -11640,7 +11676,7 @@ GameObject:
   - 54: {fileID: 1668305135}
   - 65: {fileID: 1668305134}
   - 114: {fileID: 1668305138}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -11745,7 +11781,7 @@ GameObject:
   - 54: {fileID: 1669012546}
   - 65: {fileID: 1669012545}
   - 114: {fileID: 1669012549}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -11845,7 +11881,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1674360427}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: north_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11873,7 +11909,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1675818641}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_3_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11963,7 +11999,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1746787712}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_5_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11991,7 +12027,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1752792811}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: south_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12019,7 +12055,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1754988454}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_3_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12047,7 +12083,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1755064720}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_8_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12075,7 +12111,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1757455680}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: hardpoint_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12107,7 +12143,7 @@ GameObject:
   - 54: {fileID: 1771333808}
   - 65: {fileID: 1771333807}
   - 114: {fileID: 1771333811}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -12239,7 +12275,7 @@ GameObject:
   - 54: {fileID: 1775952048}
   - 65: {fileID: 1775952047}
   - 114: {fileID: 1775952051}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -12344,7 +12380,7 @@ GameObject:
   - 54: {fileID: 1784254750}
   - 65: {fileID: 1784254749}
   - 114: {fileID: 1784254753}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -12444,7 +12480,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1801896004}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: north_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12507,6 +12543,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 193448, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
   m_IsPrefabParent: 0
@@ -12537,7 +12577,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1812660633}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_12_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12600,6 +12640,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 193448, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a412b960566e2f84fbff6ec4516d68fc, type: 2}
   m_IsPrefabParent: 0
@@ -12630,7 +12674,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1814252030}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_3_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12760,7 +12804,7 @@ GameObject:
   - 54: {fileID: 1866739436}
   - 65: {fileID: 1866739435}
   - 114: {fileID: 1866739439}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -12860,7 +12904,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1871966438}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_10_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12888,7 +12932,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1873634965}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down_12_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12921,7 +12965,7 @@ GameObject:
   - 54: {fileID: 1883558557}
   - 65: {fileID: 1883558556}
   - 114: {fileID: 1883558560}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_0.4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -13021,7 +13065,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1890950738}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: south_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13054,7 +13098,7 @@ GameObject:
   - 65: {fileID: 1918044786}
   - 54: {fileID: 1918044785}
   - 114: {fileID: 1918044789}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -13154,7 +13198,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1920168909}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13202,7 +13246,7 @@ GameObject:
   - 65: {fileID: 1924763839}
   - 54: {fileID: 1924763838}
   - 114: {fileID: 1924763842}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -13302,7 +13346,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1928689384}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: east
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13363,6 +13407,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 113064, guid: 1092adaf6b1ac78418e1346273ae83ba, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1092adaf6b1ac78418e1346273ae83ba, type: 2}
   m_IsPrefabParent: 0
@@ -13393,7 +13441,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1939210183}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13487,7 +13535,7 @@ GameObject:
   - 54: {fileID: 1949231586}
   - 65: {fileID: 1949231585}
   - 114: {fileID: 1949231589}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -13587,7 +13635,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1954630222}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: west
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13622,7 +13670,7 @@ GameObject:
   - 65: {fileID: 1969844051}
   - 54: {fileID: 1969844050}
   - 114: {fileID: 1969844054}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -13753,6 +13801,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 127768, guid: e019c629b8d4b00408f5c819ff46abc2, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e019c629b8d4b00408f5c819ff46abc2, type: 2}
   m_IsPrefabParent: 0
@@ -13768,7 +13820,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1979351080}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: west_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13801,7 +13853,7 @@ GameObject:
   - 54: {fileID: 1980469962}
   - 65: {fileID: 1980469961}
   - 114: {fileID: 1980469965}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -13901,7 +13953,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1985228377}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_10_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13934,7 +13986,7 @@ GameObject:
   - 65: {fileID: 1999111195}
   - 54: {fileID: 1999111194}
   - 114: {fileID: 1999111198}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -14039,7 +14091,7 @@ GameObject:
   - 65: {fileID: 2000896769}
   - 54: {fileID: 2000896768}
   - 114: {fileID: 2000896772}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_floor_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -14139,7 +14191,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2020002178}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: west_1_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14167,7 +14219,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2030796851}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_2_surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14195,7 +14247,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2035018344}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_10_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14228,7 +14280,7 @@ GameObject:
   - 54: {fileID: 2058775753}
   - 65: {fileID: 2058775752}
   - 114: {fileID: 2058775756}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -14333,7 +14385,7 @@ GameObject:
   - 65: {fileID: 2062871887}
   - 54: {fileID: 2062871886}
   - 114: {fileID: 2062871890}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: surface_wall_4x4
   m_TagString: surface
   m_Icon: {fileID: 0}
@@ -14433,7 +14485,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2087175024}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: west_1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14461,7 +14513,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2096539827}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: uppr_6_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14582,7 +14634,7 @@ GameObject:
   - 54: {fileID: 2127046875}
   - 65: {fileID: 2127046874}
   - 114: {fileID: 2127046878}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: corner_4
   m_TagString: surface
   m_Icon: {fileID: 0}
