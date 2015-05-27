@@ -37,7 +37,6 @@ public class ui : MonoBehaviour
 
     // Door Variables
     public GameObject currentDoor;
-    public Image progressBar;
 
     //Dialogue Variables
     public GameObject dialoguePrefab;

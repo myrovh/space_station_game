@@ -11,11 +11,14 @@ public class Door : MonoBehaviour
 
     float _doorTimer = 5.0f;
     public bool UnitUsingDoor = false;
-    public Image ProgressBar;
+    public Image progressBarPrefab;
+    private Image progressBarClone;
 
     // Use this for initialization
     void Start()
     {
+        progressBarClone = (Image)Instantiate(progressBarPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        progressBarClone.rectTransform.parent = FindObjectOfType<Canvas>().transform;
         _doorAnimation = GetComponent<Animator>();
         IsOpen = false;
     }
@@ -37,17 +40,17 @@ public class Door : MonoBehaviour
                 _doorTimer = 5.0f;
                 UnitUsingDoor = false;
             }
-            if (ProgressBar != null)
+            if (progressBarClone != null)
             {
-                ProgressBar.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(transform.position); 
-                ProgressBar.fillAmount = _doorTimer / 5;
+                progressBarClone.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(transform.position); 
+                progressBarClone.fillAmount = _doorTimer / 5;
             }
         }
         else
         {
-            if (ProgressBar != null)
+            if (progressBarClone != null)
             {
-                ProgressBar.fillAmount = 0;
+                progressBarClone.fillAmount = 0;
             }
         }
         
