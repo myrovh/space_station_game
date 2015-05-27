@@ -18,6 +18,7 @@ public class ui : MonoBehaviour
     private GameObject targetResource;
     private bool haulOrder = false;
     private List<GameObject> freeSlots;
+    private int interactablesMask = (1 << 8);
 
     //Popup Variables
     [SerializeField]
@@ -152,7 +153,7 @@ public class ui : MonoBehaviour
                 else if (Input.GetButtonDown("Interact") && unit.GetComponent<unit>().isSelected)
                 {
                     unit.GetComponent<unit>().clearQueue();
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100,interactablesMask))
                     {
                         if (hit.collider.tag == "Resource")
                         {
@@ -177,10 +178,10 @@ public class ui : MonoBehaviour
                                 addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
                             }
                         }
-                        else
-                        {
-                            addToQueue(hit.point, data.unitAction.STAND, null, unit);
-                        }
+                    }
+                    else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                    {
+                        addToQueue(hit.point, data.unitAction.STAND, null, unit);
                     }
                 }
             }
