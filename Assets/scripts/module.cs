@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Module : MonoBehaviour
+public class module : MonoBehaviour
 {
     #region Variables
     [SerializeField]
