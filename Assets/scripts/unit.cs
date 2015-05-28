@@ -62,6 +62,7 @@ public class unit : MonoBehaviour
     private float timer = 0.0f;
     private Quaternion qto;
     private Vector3 randomPoint;
+    private bool willIdle = true;
 
     //Vision Cone Variables
     Vector3 facingDirection;
@@ -230,6 +231,10 @@ public class unit : MonoBehaviour
                 isCarrying = false;
                 _agent.destination = transform.position;
             }
+            else
+            {
+                checkCarrying();
+            }
         }
     }
 
@@ -259,20 +264,23 @@ public class unit : MonoBehaviour
     #region Passive Queue Manipulation
     void idle()
     {
-        if (activeOrderQueue.Count == 0)
+        if (willIdle)
         {
-            _agent.updateRotation = false;
-
-            timer += Time.deltaTime;
-
-            if (timer > 2)
+            if (activeOrderQueue.Count == 0)
             {
-                qto = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
-                randomPoint = Random.insideUnitSphere * 0.001f;
-                timer = 0.0f;
+                _agent.updateRotation = false;
+
+                timer += Time.deltaTime;
+
+                if (timer > 2)
+                {
+                    qto = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
+                    randomPoint = Random.insideUnitSphere * 0.001f;
+                    timer = 0.0f;
+                }
+                transform.rotation = Quaternion.Slerp(transform.rotation, qto, Time.deltaTime * rotateSpeed);
+                transform.Translate(randomPoint);
             }
-            transform.rotation = Quaternion.Slerp(transform.rotation, qto, Time.deltaTime * rotateSpeed);
-            transform.Translate(randomPoint);
         }
     }
 
@@ -307,8 +315,10 @@ public class unit : MonoBehaviour
     public IEnumerator wait(GameObject other)
     {
         queueOrder(other.gameObject, data.unitAction.OPENDOOR);
+        willIdle = false;
         yield return new WaitForSeconds(6);
         queueOrder(currentDestination, data.unitAction.STAND);
+        willIdle = true;
     }
     #endregion
 
