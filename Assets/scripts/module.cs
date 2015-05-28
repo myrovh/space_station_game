@@ -11,6 +11,8 @@ public class module : MonoBehaviour
     private Color startcolor;
 
     public bool noAir = false;
+    private GameObject _onLights;
+    private GameObject _offLights;
     #endregion
 
     #region Event System Functions
@@ -34,10 +36,25 @@ public class module : MonoBehaviour
             }
         }
 
+        if (_offLights.activeInHierarchy)
+        {
+            _offLights.transform.rotation = _offLights.transform.rotation*Quaternion.Euler(0, 50*Time.deltaTime, 0);
+        }
+
 
         if(Input.GetKey("space"))
         {
             eventManager.depressurizeModule();
+        }
+
+        //Debug check to test module light switching
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SetPowerState(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            SetPowerState(false);
         }
     }
 
@@ -49,6 +66,9 @@ public class module : MonoBehaviour
 
     public void Start()
     {
+        _onLights = transform.Find("on").gameObject;
+        _offLights = transform.Find("off").gameObject;
+
         // Add slot_# empties to the resourceSlots list
         Transform hardpointList = transform.Find("hardpoints");
         foreach (Transform child in hardpointList)
@@ -82,6 +102,12 @@ public class module : MonoBehaviour
         }
 
         return freeSlots;
+    }
+
+    public void SetPowerState(bool isPower)
+    {
+        _onLights.SetActive(isPower);
+        _offLights.SetActive(!isPower);
     }
 
     #region Unit List Manipulation
