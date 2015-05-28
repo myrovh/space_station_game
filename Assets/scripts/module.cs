@@ -8,6 +8,7 @@ public class module : MonoBehaviour
     public List<GameObject> ResourceSlots;
     public float SlotSize = 1.0f;
     public List<GameObject> unitsInModule;
+    private Color startcolor;
 
     public bool noAir = false;
     #endregion
@@ -95,4 +96,5 @@ public class module : MonoBehaviour
         unitsInModule.Remove(other.gameObject);
     }
     #endregion
+
 }

@@ -20,6 +20,9 @@ public class ui : MonoBehaviour
     private List<GameObject> freeSlots;
     private int interactablesMask = (1 << 8);
     public Vector3 currentDestination;
+    public GameObject moduleSelectionPrefab = null;
+    private GameObject glowClone = null;
+    private GameObject thisModule = null;
 
     //Popup Variables
     [SerializeField]
@@ -86,10 +89,7 @@ public class ui : MonoBehaviour
             _cameraInit = true;
         }
 
-        if (!menuOpen)
-        {
             checkMouse();
-        }
 
         checkSelectionBox();
 
@@ -415,22 +415,53 @@ public class ui : MonoBehaviour
 
     void checkMouse()
     {
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask) && hit.collider.tag == "door")
+        if (!menuOpen)
         {
-            foreach(GameObject unit in allPlayerUnits)
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask) && hit.collider.tag == "door")
             {
-                if (unit.GetComponent<unit>().isSelected)
+                foreach (GameObject unit in allPlayerUnits)
                 {
-                    action1 = 1;
-                    action2 = 1;
-                    showOrders(true, true, false, 0.5f);
+                    if (unit.GetComponent<unit>().isSelected)
+                    {
+                        action1 = 1;
+                        action2 = 1;
+                        showOrders(true, true, false, 0.5f);
+                    }
                 }
+
             }
-                        
+            else
+            {
+                showOrders(false, false, false, 0);
+            }
         }
-        else
+
+        if (haulOrder)
         {
-            showOrders(false, false, false, 0);
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.transform.root.tag == "module" && glowClone == null && thisModule == null)
+            {
+                glowClone = (GameObject)GameObject.Instantiate(moduleSelectionPrefab);
+                glowClone.transform.parent =  hit.transform.root;
+                glowClone.transform.localPosition = new Vector3(0, 1, 0);
+                thisModule = hit.transform.root.gameObject;
+            }
+            else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && glowClone != null && hit.transform.root.gameObject != thisModule)
+            {
+                GameObject.Destroy(glowClone);
+                glowClone = null;
+                thisModule = null;
+            }
+            else if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            {
+                GameObject.Destroy(glowClone);
+                glowClone = null;
+                thisModule = null;
+            }
+        }
+        else if (glowClone != null)
+        {
+            GameObject.Destroy(glowClone);
+            glowClone = null;
         }
     }
     #endregion

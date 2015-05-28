@@ -958,66 +958,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1172876400}
   m_RootOrder: 5
---- !u!1 &33405732
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 33405734}
-  - 108: {fileID: 33405733}
-  m_Layer: 0
-  m_Name: Area Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &33405733
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 33405732}
-  m_Enabled: 1
-  serializedVersion: 6
-  m_Type: 0
-  m_Color: {r: .977941155, g: 0, b: 0, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_Strength: 1
-    m_Bias: .0500000007
-    m_NormalBias: .400000006
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_BounceIntensity: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_AreaSize: {x: 1, y: 1}
---- !u!4 &33405734
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 33405732}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 15.2799997, y: 2.69000006, z: -15.46}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
 --- !u!1 &36379986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2080,8 @@ MonoBehaviour:
   selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
   buttonClick: 0
   currentDestination: {x: 0, y: 0, z: 0}
+  moduleSelectionPrefab: {fileID: 139560, guid: 7cdae13500241434e90581821e73973d,
+    type: 2}
   button1: {fileID: 1109972316}
   button2: {fileID: 1293602567}
   button3: {fileID: 1439351483}
@@ -38065,7 +38007,7 @@ GameObject:
   - 65: {fileID: 1754423019}
   m_Layer: 0
   m_Name: down
-  m_TagString: Untagged
+  m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38498,6 +38440,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 162186, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
+      propertyPath: m_TagString
+      value: module
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
   m_IsPrefabParent: 0
@@ -38723,7 +38669,7 @@ GameObject:
   - 114: {fileID: 1776533685}
   m_Layer: 0
   m_Name: 16x12_module 1
-  m_TagString: Untagged
+  m_TagString: module
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
