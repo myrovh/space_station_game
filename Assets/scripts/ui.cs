@@ -109,7 +109,7 @@ public class ui : MonoBehaviour
         dialogueScript.CameraTarget = LevelCamera.transform;
         dialogueScript.ObjectTarget = e.MessageTarget;
         dialogueScript.Text = e.MessageText.DialogueContents;
-        dialogueScript.LifeTime = e.MessageText.DialogueContents.Length*0.3f;
+        dialogueScript.LifeTime = e.MessageLifetime;
     }
     #endregion
 

@@ -248,12 +248,6 @@ public class unit : MonoBehaviour
         door.GetComponent<Door>().UnitUsingDoor = true;
         _agent.destination = transform.position;
     }
-
-    public void RaiseDialogue(DialogueText text)
-    {
-        //TODO add test to make sure that unit will not raise a new dialogue when already talking
-        Events.instance.Raise(new DialogueEvent(transform, text));
-    }
     #endregion
 
     #region Passive Queue Manipulation
@@ -327,13 +321,25 @@ public class unit : MonoBehaviour
     }
     #endregion
 
-    public void SpeakDialogue(DialogueText text)
+    public void RaiseDialogue(DialogueText text)
     {
-        RaiseDialogue(text);
+        //TODO add test to make sure that unit will not raise a new dialogue when already talking
         _audioSource.clip = Dialogue.GetDialogueAudio(text);
         if (_audioSource.clip != null)
         {
-            StartCoroutine(PlayAudio());
+            Events.instance.Raise(new DialogueEvent(transform, text, _audioSource.clip.length));
+        }
+    }
+
+    public void SpeakDialogue(DialogueText text)
+    {
+        if (!_audioSource.isPlaying)
+        {
+            RaiseDialogue(text);
+            if (_audioSource.clip != null)
+            {
+                StartCoroutine(PlayAudio());
+            }  
         }
     }
 
