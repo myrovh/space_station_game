@@ -220,12 +220,16 @@ public class unit : MonoBehaviour
     {
         if (inventory != null)
         {
-            if ((transform.position - currentDestination).magnitude <= unitStoppingDistance + 2)
+            if ((transform.position - currentDestination).magnitude <= unitStoppingDistance + 1)
             {
                 inventory.GetComponent<resource>().Dropped();
                 inventory = null;
                 isCarrying = false;
                 _agent.destination = transform.position;
+            }
+            else
+            {
+                checkCarrying();
             }
         }
     }

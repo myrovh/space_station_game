@@ -245,6 +245,8 @@ public class ui : MonoBehaviour
             unit.GetComponent<unit>().queueOrder(actAtObject, actAt);
         }
 
+        currentDestination = new Vector3(0, 10, 0);
+
     }
     #endregion
 
@@ -498,6 +500,7 @@ public class ui : MonoBehaviour
         {
             GameObject.Destroy(glowClone);
             glowClone = null;
+            thisModule = null;
         }
     }
     #endregion
