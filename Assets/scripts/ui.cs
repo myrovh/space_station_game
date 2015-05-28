@@ -205,10 +205,14 @@ public class ui : MonoBehaviour
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
                     freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
-                    targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
-                    addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
-                    addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
-                    haulOrder = false;
+                    if (freeSlots.Count != 0)
+                    {
+                        targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
+
+                        addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
+                        addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
+                        haulOrder = false;
+                    }
                 }
             }
             else if (Input.GetButtonDown("Interact"))
@@ -216,9 +220,12 @@ public class ui : MonoBehaviour
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
                     freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
-                    targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
-                    addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
-                    addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
+                    if (freeSlots.Count != 0)
+                    {
+                        targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
+                        addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
+                        addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
+                    }
                     haulOrder = false;
                 }
             }
@@ -432,7 +439,7 @@ public class ui : MonoBehaviour
 
     void checkMouse()
     {
-        if (!menuOpen)
+        if (!menuOpen && !haulOrder)
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask) && hit.collider.tag == "door")
             {
@@ -457,10 +464,22 @@ public class ui : MonoBehaviour
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.transform.root.tag == "module" && glowClone == null && thisModule == null)
             {
-                glowClone = (GameObject)GameObject.Instantiate(moduleSelectionPrefab);
-                glowClone.transform.parent =  hit.transform.root;
-                glowClone.transform.localPosition = new Vector3(0, 1, 0);
                 thisModule = hit.transform.root.gameObject;
+
+                if (thisModule.GetComponent<module>().GetFreeSlots().Count != 0)
+                {
+                    glowClone = (GameObject)GameObject.Instantiate(moduleSelectionPrefab);
+                    glowClone.transform.parent = hit.transform.root;
+                    glowClone.transform.localPosition = new Vector3(0, 1, 0);
+                }
+                else
+                {
+                    glowClone = (GameObject)GameObject.Instantiate(moduleSelectionPrefab);
+                    glowClone.transform.parent = hit.transform.root;
+                    glowClone.transform.localPosition = new Vector3(0, 1, 0);
+                    glowClone.GetComponent<ParticleSystem>().startColor = new Color(1, 0, 0, 1);
+                }
+
             }
             else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && glowClone != null && hit.transform.root.gameObject != thisModule)
             {
@@ -483,7 +502,7 @@ public class ui : MonoBehaviour
     }
     #endregion
 
-#region Camera Orders
+    #region Camera Orders
     private void CameraOrders()
     {
         #region Camera Pan
@@ -552,5 +571,5 @@ public class ui : MonoBehaviour
         _cameraScript.ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
         #endregion
     }
-#endregion
+    #endregion
 }
