@@ -13,9 +13,9 @@ GameObject:
   - 54: {fileID: 5428060}
   - 208: {fileID: 20809350}
   - 65: {fileID: 6502032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface2
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,9 +33,9 @@ GameObject:
   - 54: {fileID: 5480906}
   - 208: {fileID: 20801208}
   - 65: {fileID: 6558542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface3
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,7 @@ GameObject:
   - 95: {fileID: 9551978}
   - 65: {fileID: 6536936}
   - 114: {fileID: 11425914}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: door_3x3_2
   m_TagString: door
   m_Icon: {fileID: 0}
@@ -252,10 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c938dfeaf418edc40934c5a67925e87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  doorOpenTime: 0
-  unitUsingDoor: 0
-  progressBar: {fileID: 0}
+  IsOpen: 0
+  UnitUsingDoor: 0
+  progressBarPrefab: {fileID: 11471858, guid: f9c39f127ee96da4dafa343dec62864b, type: 2}
 --- !u!208 &20801208
 NavMeshObstacle:
   m_ObjectHideFlags: 1
