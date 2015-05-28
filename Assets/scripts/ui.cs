@@ -368,6 +368,7 @@ public class ui : MonoBehaviour
     void showOrders(bool button1Visible, bool button2Visible, bool button3Visible, float showAlpha)
     {
         popup.GetComponent<RectTransform>().position = Input.mousePosition;
+        popup.GetComponent<RectTransform>().position += new Vector3(10,0,0);
 
         if (button1Visible)
         {
@@ -376,7 +377,15 @@ public class ui : MonoBehaviour
                 button1.GetComponentInChildren<Text>().text = "Move";
             }
             button1.GetComponent<CanvasGroup>().alpha = showAlpha;
-            button1.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            if(showAlpha == 0.5f)
+            {
+                button1.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+            else
+            {
+                button1.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            }
+
         }
         else
         {
@@ -408,7 +417,15 @@ public class ui : MonoBehaviour
             button3.GetComponent<CanvasGroup>().alpha = 0;
         }
 
-        button1.GetComponent<CanvasGroup>().interactable = button1Visible;
+        if (showAlpha == 0.5f)
+        {
+            button1.GetComponent<CanvasGroup>().interactable = false;
+        }
+        else
+        {
+            button1.GetComponent<CanvasGroup>().interactable = true;
+        }
+
         button2.GetComponent<CanvasGroup>().interactable = button2Visible;
         button3.GetComponent<CanvasGroup>().interactable = button3Visible;
     }
@@ -466,6 +483,7 @@ public class ui : MonoBehaviour
     }
     #endregion
 
+#region Camera Orders
     private void CameraOrders()
     {
         #region Camera Pan
@@ -534,4 +552,5 @@ public class ui : MonoBehaviour
         _cameraScript.ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
         #endregion
     }
+#endregion
 }
