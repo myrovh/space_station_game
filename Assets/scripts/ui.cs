@@ -30,6 +30,7 @@ public class ui : MonoBehaviour
     public UnityEngine.UI.Button button3 = null;
     public GameObject popup;
     public GameObject currentUnit;
+    private bool menuOpen = false;
 
     private int action1 = 0;
     private int action2 = 0;
@@ -84,6 +85,12 @@ public class ui : MonoBehaviour
             _cameraScript.RotateCamera(data.cardinalPoints.SOUTH, data.cardinalPoints.EAST);
             _cameraInit = true;
         }
+
+        if (!menuOpen)
+        {
+            checkMouse();
+        }
+
         checkSelectionBox();
 
         selecionCheck();
@@ -126,7 +133,7 @@ public class ui : MonoBehaviour
             {
                 if (Input.GetButtonDown("Interact") && Input.GetButton("Queue") && unit.GetComponent<unit>().isSelected)
                 {
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask))
                     {
                         if (hit.collider.tag == "Resource")
                         {
@@ -148,10 +155,10 @@ public class ui : MonoBehaviour
                                 addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
                             }
                         }
-                        else
-                        {
-                            addToQueue(hit.point, data.unitAction.STAND, null, unit);
-                        }
+                    }
+                    else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                    {
+                        addToQueue(hit.point, data.unitAction.STAND, null, unit);
                     }
                 }
                 else if (Input.GetButtonDown("Interact") && unit.GetComponent<unit>().isSelected)
@@ -177,13 +184,14 @@ public class ui : MonoBehaviour
 
                             action1 = 1;
                             action2 = 1;
-                            showOrders(true, true, false);
-
+                            menuOpen = true;
+                            showOrders(true, true, false, 1);
                         }
                     }
                     else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                     {
                         addToQueue(hit.point, data.unitAction.STAND, null, unit);
+                        currentUnit = null;
                     }
                 }
             }
@@ -262,7 +270,7 @@ public class ui : MonoBehaviour
                     unit.GetComponent<unit>().selectionStatus(false);
                 }
                 hit.rigidbody.GetComponent<unit>().selectionStatus(true);
-                showOrders(false, false, false);
+                showOrders(false, false, false,0);
             }
             //Deselects all units that are not hit by raycast
             else
@@ -273,7 +281,7 @@ public class ui : MonoBehaviour
                 foreach (GameObject unit in allPlayerUnits)
                 {
                     unit.GetComponent<unit>().selectionStatus(false);
-                    showOrders(false, false, false);
+                    showOrders(false, false, false,0);
                 }
                 }
             }
@@ -328,7 +336,8 @@ public class ui : MonoBehaviour
         {
             addToQueue(currentDestination, data.unitAction.STAND, null, currentUnit);
         }
-        showOrders(false, false, false);
+        showOrders(false, false, false, 0);
+        menuOpen = false;
     }
 
     void button2Action()
@@ -344,7 +353,9 @@ public class ui : MonoBehaviour
                 addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
             }
         }
-        showOrders(false, false, false);
+        showOrders(false, false, false, 0);
+        menuOpen = false;
+
     }
 
     void button3Action()
@@ -353,7 +364,7 @@ public class ui : MonoBehaviour
     }
 
     //Enables or disables unit order popup based on parameter given
-    void showOrders(bool button1Visible, bool button2Visible, bool button3Visible)
+    void showOrders(bool button1Visible, bool button2Visible, bool button3Visible, float showAlpha)
     {
         popup.GetComponent<RectTransform>().position = Input.mousePosition;
 
@@ -363,7 +374,7 @@ public class ui : MonoBehaviour
             {
                 button1.GetComponentInChildren<Text>().text = "Move";
             }
-            button1.GetComponent<CanvasGroup>().alpha = 1;
+            button1.GetComponent<CanvasGroup>().alpha = showAlpha;
             button1.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
         else
@@ -377,7 +388,7 @@ public class ui : MonoBehaviour
             {
                 button2.GetComponentInChildren<Text>().text = "Use Door";
             }
-            button2.GetComponent<CanvasGroup>().alpha = 1;
+            button2.GetComponent<CanvasGroup>().alpha = showAlpha;
             button2.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
         else
@@ -387,7 +398,7 @@ public class ui : MonoBehaviour
         }
         if (button3Visible)
         {
-            button3.GetComponent<CanvasGroup>().alpha = 1;
+            button3.GetComponent<CanvasGroup>().alpha = showAlpha;
             button3.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
         else
@@ -399,6 +410,27 @@ public class ui : MonoBehaviour
         button1.GetComponent<CanvasGroup>().interactable = button1Visible;
         button2.GetComponent<CanvasGroup>().interactable = button2Visible;
         button3.GetComponent<CanvasGroup>().interactable = button3Visible;
+    }
+
+    void checkMouse()
+    {
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask) && hit.collider.tag == "door")
+        {
+            foreach(GameObject unit in allPlayerUnits)
+            {
+                if (unit.GetComponent<unit>().isSelected)
+                {
+                    action1 = 1;
+                    action2 = 1;
+                    showOrders(true, true, false, 0.5f);
+                }
+            }
+                        
+        }
+        else
+        {
+            showOrders(false, false, false, 0);
+        }
     }
     #endregion
 
