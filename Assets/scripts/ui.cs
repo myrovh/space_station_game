@@ -49,6 +49,9 @@ public class ui : MonoBehaviour
 
     //Dialogue Variables
     public GameObject dialoguePrefab;
+
+    //Textures
+    public Texture2D cursorTexture;
     #endregion
 
     #region Monobehaviour Functions
@@ -68,6 +71,8 @@ public class ui : MonoBehaviour
 
         //Adds dialogue to the data list variable
         Dialogue.BuildDialogue();
+
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
     void OnEnable()

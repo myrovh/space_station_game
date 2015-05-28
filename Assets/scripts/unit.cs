@@ -69,6 +69,7 @@ public class unit : MonoBehaviour
 
     //Sound Variables
     private AudioSource _audioSource;
+
     #endregion
 
     #region MonoBehaviour Functions
@@ -84,6 +85,7 @@ public class unit : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _agent = GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = unitStoppingDistance - 0.75f;
+
     }
 
     void Update()
