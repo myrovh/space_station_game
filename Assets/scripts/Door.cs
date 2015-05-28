@@ -18,7 +18,7 @@ public class Door : MonoBehaviour
     void Start()
     {
         progressBarClone = (Image)Instantiate(progressBarPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        progressBarClone.rectTransform.parent = FindObjectOfType<Canvas>().transform;
+        progressBarClone.rectTransform.SetParent(FindObjectOfType<Canvas>().transform);
         _doorAnimation = GetComponent<Animator>();
         IsOpen = false;
     }
