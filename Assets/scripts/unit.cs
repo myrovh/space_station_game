@@ -52,7 +52,7 @@ public class unit : MonoBehaviour
     public GameObject target;
     public bool isCarrying = false;
     private GameObject inventory;
-    private Vector3 currentDestination = Vector3.zero;
+    public Vector3 currentDestination = Vector3.zero;
 
     //Door Manipulation Variables
     public GameObject door;
@@ -220,7 +220,7 @@ public class unit : MonoBehaviour
     {
         if (inventory != null)
         {
-            if ((transform.position - currentDestination).magnitude + unitStoppingDistance <= (transform.position - _agent.destination).magnitude + unitStoppingDistance)
+            if ((transform.position - currentDestination).magnitude <= unitStoppingDistance + 2)
             {
                 inventory.GetComponent<resource>().Dropped();
                 inventory = null;

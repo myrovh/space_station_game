@@ -170,6 +170,7 @@ public class ui : MonoBehaviour
                         {
                             currentUnit = unit;
                             targetResource = hit.collider.gameObject;
+                            currentUnit.GetComponent<unit>().currentDestination = hit.point;
                             if (targetResource.GetComponent<resource>().interactions.Count <= 1)
                             {
                                 haulOrder = true;
