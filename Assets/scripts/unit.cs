@@ -47,6 +47,7 @@ public class unit : MonoBehaviour
     private MultiDelegate passiveOrderQueue;
 
     //Hauling Variables
+    //accept reference to module
     public GameObject target;
     public bool isCarrying = false;
     private GameObject inventory;
@@ -63,7 +64,7 @@ public class unit : MonoBehaviour
 
     //Vision Cone Variables
     Vector3 facingDirection = Vector3.forward;
-    float coneLength = 3.0f;
+    float coneLength = 5.0f;
 
     //Sound Variables
     private AudioSource _audioSource;
@@ -100,6 +101,11 @@ public class unit : MonoBehaviour
     {
         //Clears the passive order queue
         passiveOrderQueue = null;
+    }
+
+    void OnMouseUp()
+    {
+        selectionStatus(true);
     }
     #endregion
 
@@ -277,16 +283,22 @@ public class unit : MonoBehaviour
 
         foreach (Collider other in hitColliders)
         {
-
-            if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
-            {
-                    door = other.transform.gameObject;
-                if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen)
+            float angle = Vector3.Angle(other.transform.position, facingDirection);
+            if (angle < 45.0f)
+            { 
+                if (activeOrderQueue.Count > 0)
                 {
-                    checkCarrying();
-                    queueOrder(other.gameObject, data.unitAction.OPENDOOR);
-                }
+                    if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) < unitStoppingDistance + 7.0f)
+                    {
+                        door = other.transform.gameObject;
+                        if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen && activeOrderQueue.Count == 0)
+                        {
+                            checkCarrying();
+                            queueOrder(other.gameObject, data.unitAction.OPENDOOR);
 
+                        }
+                    }
+                }
             }
         }*/
     }

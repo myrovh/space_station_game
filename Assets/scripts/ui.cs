@@ -86,6 +86,8 @@ public class ui : MonoBehaviour
         generateOrders();
 
         CameraOrders();
+
+        shuttleCommands();
     }
 
     //Drawing the selection box to the screen
@@ -245,6 +247,10 @@ public class ui : MonoBehaviour
                 {
                     unit.GetComponent<unit>().selectionStatus(true);
                 }
+                else
+                {
+                    unit.GetComponent<unit>().selectionStatus(false);
+                }
             }
         }
 
@@ -256,9 +262,9 @@ public class ui : MonoBehaviour
             {
                 foreach (GameObject unit in allPlayerUnits)
                 {
-                    unit.GetComponent<unit>().selectionStatus(false);
+                   // unit.GetComponent<unit>().selectionStatus(false);
                 }
-                hit.rigidbody.GetComponent<unit>().selectionStatus(true);
+               // hit.rigidbody.GetComponent<unit>().selectionStatus(true);
                 showOrders(false);
             }
             //Deselects all units that are not hit by raycast
@@ -420,5 +426,13 @@ public class ui : MonoBehaviour
         #region Camera Zoom
         _cameraScript.ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
         #endregion
+    }
+
+    private void shuttleCommands()
+    {
+        if (Input.GetKey("m"))
+        {
+            GameObject.FindGameObjectWithTag("shuttle").GetComponent<shuttle>().exitLevel();
+        }
     }
 }

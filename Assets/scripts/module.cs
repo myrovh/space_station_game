@@ -46,7 +46,7 @@ public class module : MonoBehaviour
     }
     #endregion
 
-    void Start()
+    public void Start()
     {
         // Add slot_# empties to the resourceSlots list
         Transform hardpointList = transform.Find("hardpoints");
