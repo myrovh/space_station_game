@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f79a43a7fe4746147be34df8eb44073d
-timeCreated: 1432094340
+guid: fb0fec2a4982a1348a7963ec0027357e
+timeCreated: 1432791359
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -17,12 +17,10 @@ ModelImporter:
     3300002: polySurface3
     4300000: polySurface2
     4300002: polySurface3
-    6400000: polySurface2
-    6400002: polySurface3
-    7400000: DoorOpen
-    7400002: DoorClose
-    7400004: DoorOpen-Idle
-    7400006: DoorClosed-Idle
+    7400000: DoorClose
+    7400002: DoorOpen
+    7400004: DoorClosed-Idle
+    7400006: DoorOpen-Idle
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -40,6 +38,38 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations:
+    - serializedVersion: 16
+      name: DoorClose
+      takeName: Take 001
+      firstFrame: 6
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: polySurface2
+        weight: 1
+      - path: polySurface3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     - serializedVersion: 16
       name: DoorOpen
       takeName: Take 001
@@ -73,9 +103,9 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: DoorClose
+      name: DoorClosed-Idle
       takeName: Take 001
-      firstFrame: 6
+      firstFrame: 10
       lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
@@ -136,44 +166,12 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
-    - serializedVersion: 16
-      name: DoorClosed-Idle
-      takeName: Take 001
-      firstFrame: 10
-      lastFrame: 10
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: polySurface2
-        weight: 1
-      - path: polySurface3
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
