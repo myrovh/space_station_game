@@ -241,7 +241,7 @@ Transform:
   - {fileID: 1570752053}
   - {fileID: 1989466644}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!1001 &5729863
 Prefab:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 489344, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 157896, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_IsActive
@@ -13589,7 +13589,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 489344, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 101966, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_Name
@@ -14628,7 +14628,7 @@ Transform:
   - {fileID: 982537071}
   - {fileID: 1224356254}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &674250657
 GameObject:
   m_ObjectHideFlags: 0
@@ -18558,12 +18558,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441488, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 132676, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11452872, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
+      propertyPath: selectionGlowPrefab
+      value: 
+      objectReference: {fileID: 123428, guid: f8affc74541e36946bbbcf12a6b8d580, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
   m_IsPrefabParent: 0
@@ -18613,7 +18617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOpen: 0
   UnitUsingDoor: 0
-  progressBarPrefab: {fileID: 0}
+  progressBarPrefab: {fileID: 11471858, guid: f9c39f127ee96da4dafa343dec62864b, type: 2}
 --- !u!65 &868516646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21153,7 +21157,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 489344, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 101966, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_Name
@@ -24748,7 +24752,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 406068, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 102352, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}
       propertyPath: m_Name
@@ -31454,7 +31458,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 489344, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 101966, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_Name
@@ -34434,7 +34438,7 @@ Transform:
   - {fileID: 840342040}
   - {fileID: 1085656747}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &1585629065 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 155286, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
@@ -37813,7 +37817,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 404616, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3313876, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
       propertyPath: m_Mesh
@@ -39562,7 +39566,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 489344, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 101966, guid: b99d3c0e139c844458f0507aae5b664e, type: 2}
       propertyPath: m_Name

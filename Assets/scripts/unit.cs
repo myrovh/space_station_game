@@ -40,6 +40,8 @@ public class unit : MonoBehaviour
     //State Tracking Variables
     public bool isSelected = false;
     private NavMeshAgent _agent;
+    public GameObject selectionGlowPrefab = null;
+    private GameObject glowClone = null;
 
     //Order Queue Variables
     private List<unitOrder> activeOrderQueue = new List<unitOrder>();
@@ -297,14 +299,17 @@ public class unit : MonoBehaviour
     //Later these functions will be removed and selection tracking will be handled by the UI
     public void selectionStatus(bool select)
     {
-        if (select)
+        if (select && glowClone == null)
         {
-            GetComponent<Renderer>().material.color = Color.red;
+            glowClone = (GameObject)GameObject.Instantiate(selectionGlowPrefab);
+            glowClone.transform.parent = transform;
+            glowClone.transform.localPosition = new Vector3(0, -GetComponent<MeshFilter>().mesh.bounds.extents.y, 0);
             isSelected = true;
         }
-        else
+        else if (!select && glowClone != null)
         {
-            GetComponent<Renderer>().material.color = Color.white;
+            GameObject.Destroy(glowClone);
+            glowClone = null;
             isSelected = false;
         }
     }
