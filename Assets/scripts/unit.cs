@@ -64,8 +64,9 @@ public class unit : MonoBehaviour
     private Vector3 randomPoint;
 
     //Vision Cone Variables
-    Vector3 facingDirection = Vector3.forward;
-    float coneLength = 3.0f;
+    Vector3 facingDirection;
+    float coneLength = 1.0f;
+    public Collider[] hitColliders;
 
     //Sound Variables
     private AudioSource _audioSource;
@@ -229,10 +230,6 @@ public class unit : MonoBehaviour
                 isCarrying = false;
                 _agent.destination = transform.position;
             }
-            else
-            {
-                checkCarrying();
-            }
         }
     }
 
@@ -243,6 +240,7 @@ public class unit : MonoBehaviour
             door.GetComponent<Door>().UnitUsingDoor = true;
             _agent.destination = transform.position;
         }
+
     }
 
     void closeDoor(GameObject door)
@@ -279,24 +277,38 @@ public class unit : MonoBehaviour
     }
 
     void visionCone()
-    {/*
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, coneLength);
+    {
+        hitColliders = Physics.OverlapSphere(transform.position, coneLength);
         facingDirection = Vector3.forward;
-
-        foreach (Collider other in hitColliders)
+        if ((transform.position - currentDestination).magnitude > unitStoppingDistance)
         {
-
-            if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
+            foreach (Collider other in hitColliders)
             {
-                    door = other.transform.gameObject;
-                if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen)
-                {
-                    checkCarrying();
-                    queueOrder(other.gameObject, data.unitAction.OPENDOOR);
-                }
+                float angle = Vector3.Angle(other.transform.position, facingDirection);
 
+                if (angle > 45.0f)
+                {
+                    if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f && currentDestination != null)
+                    {
+                        door = other.transform.parent.gameObject;
+                        
+                        if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen)
+                        {
+                            _agent.destination = other.transform.position;
+                            StartCoroutine(wait(other.gameObject));
+                            
+                        }
+                    }
+                }
             }
-        }*/
+        }
+    }
+
+    public IEnumerator wait(GameObject other)
+    {
+        queueOrder(other.gameObject, data.unitAction.OPENDOOR);
+        yield return new WaitForSeconds(6);
+        queueOrder(currentDestination, data.unitAction.STAND);
     }
     #endregion
 
@@ -341,5 +353,5 @@ public class unit : MonoBehaviour
         _audioSource.Play();
         yield return new WaitForSeconds(_audioSource.clip.length);
         _audioSource.Stop();
-    } 
+    }
 }

@@ -186,6 +186,7 @@ public class ui : MonoBehaviour
                             currentUnit = unit;
                             currentDoor = hit.transform.parent.gameObject;
                             currentUnit.GetComponent<unit>().door = currentDoor;
+                            currentUnit.GetComponent<unit>().currentDestination = hit.point;
                             currentDestination = hit.point;
 
                             action1 = 1;
@@ -196,6 +197,7 @@ public class ui : MonoBehaviour
                     }
                     else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                     {
+                        unit.GetComponent<unit>().currentDestination = hit.point;
                         addToQueue(hit.point, data.unitAction.STAND, null, unit);
                         currentUnit = null;
                     }

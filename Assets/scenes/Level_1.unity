@@ -79,7 +79,7 @@ NavMeshSettings:
     agentRadius: .400000006
     agentHeight: 2
     agentSlope: 50
-    agentClimb: .5
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
@@ -18649,6 +18649,14 @@ Prefab:
       propertyPath: selectionGlowPrefab
       value: 
       objectReference: {fileID: 123428, guid: f8affc74541e36946bbbcf12a6b8d580, type: 2}
+    - target: {fileID: 19529890, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
+      propertyPath: m_Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19529890, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ccd809c0014d1942857ba17ff282b42, type: 2}
   m_IsPrefabParent: 0
