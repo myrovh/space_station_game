@@ -3,11 +3,13 @@ using System.Collections;
 
 public class Surface : MonoBehaviour {
     private MeshRenderer _renderer;
+    private Rigidbody _rigidbody;
     private data.cardinalPoints cardinalLocation;
 
     void Start()
     {
         _renderer = GetComponent<MeshRenderer>();
+        _rigidbody = GetComponent<Rigidbody>();
         if (_renderer == null)
         {
             Destroy(this);
@@ -48,20 +50,27 @@ public class Surface : MonoBehaviour {
 	}
 
     void OnCameraChange(CameraChange e) {
-        if (cardinalLocation == data.cardinalPoints.UPPR)
+        if (_rigidbody.isKinematic)
         {
-            _renderer.enabled = false;
-            gameObject.layer = 2;
-        }
-        else if (cardinalLocation == e.LeftEdge || cardinalLocation == e.RightEdge)
-        {
-            _renderer.enabled = false;
-            gameObject.layer = 2;
+            if (cardinalLocation == data.cardinalPoints.UPPR)
+            {
+                _renderer.enabled = false;
+                gameObject.layer = 2;
+            }
+            else if (cardinalLocation == e.LeftEdge || cardinalLocation == e.RightEdge)
+            {
+                _renderer.enabled = false;
+                gameObject.layer = 2;
+            }
+            else
+            {
+                _renderer.enabled = true;
+                gameObject.layer = 0;
+            }
         }
         else
         {
             _renderer.enabled = true;
-            gameObject.layer = 0;
         }
     }
 }

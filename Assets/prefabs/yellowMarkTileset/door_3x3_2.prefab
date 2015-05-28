@@ -51,6 +51,7 @@ GameObject:
   - 95: {fileID: 9551978}
   - 65: {fileID: 6536936}
   - 114: {fileID: 11425914}
+  - 54: {fileID: 5498936}
   m_Layer: 8
   m_Name: door_3x3_2
   m_TagString: door
@@ -89,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -.200000003}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children:
   - {fileID: 411870}
@@ -179,6 +180,21 @@ Rigidbody:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147496}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5498936
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176184}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
