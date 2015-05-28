@@ -2063,10 +2063,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
   buttonClick: 0
-  button1: {fileID: 0}
-  button2: {fileID: 0}
-  button3: {fileID: 0}
+  currentDestination: {x: 0, y: 0, z: 0}
+  button1: {fileID: 1109972316}
+  button2: {fileID: 1293602567}
+  button3: {fileID: 1439351483}
   popup: {fileID: 406039678}
+  currentUnit: {fileID: 0}
   LevelCamera: {fileID: 222933314}
   currentDoor: {fileID: 0}
   dialoguePrefab: {fileID: 169768, guid: bbf7dade28d850144a3b0b1f629abf2e, type: 2}
@@ -4465,8 +4467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa76fd68c373c345b88955d935652e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanSpeed: 25
-  ZoomSpeed: 15
+  PanSpeed: 10
+  ZoomSpeed: 10
 --- !u!81 &222933317
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5094,15 +5096,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
-    m_Font: {fileID: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -8389,7 +8391,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -8402,7 +8404,7 @@ CanvasGroup:
   m_GameObject: {fileID: 406039678}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 0
+  m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &406039681
@@ -8452,8 +8454,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 23.9689999, y: 24.5569992}
-  m_SizeDelta: {x: 606, y: 271}
+  m_AnchoredPosition: {x: 24, y: 25}
+  m_SizeDelta: {x: 638, y: 345}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &407695649
 GameObject:
@@ -18611,7 +18613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOpen: 0
   UnitUsingDoor: 0
-  progressBarPrefab: {fileID: 11471858, guid: f9c39f127ee96da4dafa343dec62864b, type: 2}
+  progressBarPrefab: {fileID: 0}
 --- !u!65 &868516646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23766,6 +23768,7 @@ GameObject:
   - 222: {fileID: 1109972318}
   - 114: {fileID: 1109972317}
   - 114: {fileID: 1109972316}
+  - 225: {fileID: 1109972319}
   m_Layer: 5
   m_Name: button1
   m_TagString: PopupMenu
@@ -23782,7 +23785,7 @@ RectTransform:
   m_GameObject: {fileID: 1109972314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.02236068, y: 1.02236068, z: 1.02236068}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1616277564}
   m_Father: {fileID: 406039683}
@@ -23848,8 +23851,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -23863,6 +23866,17 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1109972314}
+--- !u!225 &1109972319
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1109972314}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1 &1110013936 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 180744, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
@@ -28163,6 +28177,7 @@ GameObject:
   - 222: {fileID: 1293602569}
   - 114: {fileID: 1293602568}
   - 114: {fileID: 1293602567}
+  - 225: {fileID: 1293602570}
   m_Layer: 5
   m_Name: button2
   m_TagString: PopupMenu
@@ -28225,7 +28240,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1293602568}
+  m_TargetGraphic: {fileID: 1109972317}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -28245,8 +28260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -28260,6 +28275,17 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1293602565}
+--- !u!225 &1293602570
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1293602565}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1 &1300845599
 GameObject:
   m_ObjectHideFlags: 0
@@ -29556,15 +29582,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
-    m_Font: {fileID: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -31226,6 +31252,7 @@ GameObject:
   - 222: {fileID: 1439351485}
   - 114: {fileID: 1439351484}
   - 114: {fileID: 1439351483}
+  - 225: {fileID: 1439351486}
   m_Layer: 5
   m_Name: button3
   m_TagString: PopupMenu
@@ -31288,7 +31315,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1439351484}
+  m_TargetGraphic: {fileID: 1109972317}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -31308,8 +31335,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -31323,6 +31350,17 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1439351481}
+--- !u!225 &1439351486
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1439351481}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1 &1439791385
 GameObject:
   m_ObjectHideFlags: 0
@@ -34911,15 +34949,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
-    m_Font: {fileID: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
