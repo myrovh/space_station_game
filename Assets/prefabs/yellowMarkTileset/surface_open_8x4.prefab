@@ -14,6 +14,7 @@ GameObject:
   - 65: {fileID: 6532150}
   - 65: {fileID: 6542896}
   - 114: {fileID: 11400626}
+  - 54: {fileID: 5416380}
   m_Layer: 0
   m_Name: surface_open_8x4
   m_TagString: surface
@@ -64,6 +65,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193448}
   m_Mesh: {fileID: 4300000, guid: 9be115d8aefa7984bb1ae045467cb8ac, type: 3}
+--- !u!54 &5416380
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193448}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6532150
 BoxCollider:
   m_ObjectHideFlags: 1
