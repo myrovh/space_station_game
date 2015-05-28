@@ -40,6 +40,8 @@ public class unit : MonoBehaviour
     //State Tracking Variables
     public bool isSelected = false;
     private NavMeshAgent _agent;
+    public GameObject selectionGlowPrefab = null;
+    private GameObject glowClone = null;
 
     //Order Queue Variables
     private List<unitOrder> activeOrderQueue = new List<unitOrder>();
@@ -51,7 +53,7 @@ public class unit : MonoBehaviour
     public GameObject target;
     public bool isCarrying = false;
     private GameObject inventory;
-    private Vector3 currentDestination = Vector3.zero;
+    public Vector3 currentDestination = Vector3.zero;
 
     //Door Manipulation Variables
     public GameObject door;
@@ -61,13 +63,16 @@ public class unit : MonoBehaviour
     private float timer = 0.0f;
     private Quaternion qto;
     private Vector3 randomPoint;
+    private bool willIdle = true;
 
     //Vision Cone Variables
-    Vector3 facingDirection = Vector3.forward;
-    float coneLength = 5.0f;
+    Vector3 facingDirection;
+    float coneLength = 1.0f;
+    public Collider[] hitColliders;
 
     //Sound Variables
     private AudioSource _audioSource;
+
     #endregion
 
     #region MonoBehaviour Functions
@@ -83,6 +88,7 @@ public class unit : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _agent = GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = unitStoppingDistance - 0.75f;
+
     }
 
     void Update()
@@ -224,12 +230,16 @@ public class unit : MonoBehaviour
     {
         if (inventory != null)
         {
-            if ((transform.position - currentDestination).magnitude + unitStoppingDistance <= (transform.position - _agent.destination).magnitude + unitStoppingDistance)
+            if ((transform.position - currentDestination).magnitude <= unitStoppingDistance + 1)
             {
                 inventory.GetComponent<resource>().Dropped();
                 inventory = null;
                 isCarrying = false;
                 _agent.destination = transform.position;
+            }
+            else
+            {
+                checkCarrying();
             }
         }
     }
@@ -241,6 +251,7 @@ public class unit : MonoBehaviour
             door.GetComponent<Door>().UnitUsingDoor = true;
             _agent.destination = transform.position;
         }
+
     }
 
     void closeDoor(GameObject door)
@@ -253,48 +264,66 @@ public class unit : MonoBehaviour
     #region Passive Queue Manipulation
     void idle()
     {
-        if (activeOrderQueue.Count == 0)
+        if (willIdle)
         {
-            _agent.updateRotation = false;
-
-            timer += Time.deltaTime;
-
-            if (timer > 2)
+            if (activeOrderQueue.Count == 0)
             {
-                qto = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
-                randomPoint = Random.insideUnitSphere * 0.001f;
-                timer = 0.0f;
+                _agent.updateRotation = false;
+
+                timer += Time.deltaTime;
+
+                if (timer > 2)
+                {
+                    qto = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
+                    randomPoint = Random.insideUnitSphere * 0.001f;
+                    timer = 0.0f;
+                }
+                transform.rotation = Quaternion.Slerp(transform.rotation, qto, Time.deltaTime * rotateSpeed);
+                transform.Translate(randomPoint);
             }
-            transform.rotation = Quaternion.Slerp(transform.rotation, qto, Time.deltaTime * rotateSpeed);
-            transform.Translate(randomPoint);
         }
     }
 
     void visionCone()
-    {/*
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, coneLength);
+    {
+        hitColliders = Physics.OverlapSphere(transform.position, coneLength);
         facingDirection = Vector3.forward;
-
-        foreach (Collider other in hitColliders)
+        if ((transform.position - currentDestination).magnitude > unitStoppingDistance)
         {
-            float angle = Vector3.Angle(other.transform.position, facingDirection);
+            foreach (Collider other in hitColliders)
+            {
+                float angle = Vector3.Angle(other.transform.position, facingDirection);
             if (angle < 45.0f)
-            { 
+
+                if (angle > 45.0f)
+            if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
                 if (activeOrderQueue.Count > 0)
                 {
                     if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) < unitStoppingDistance + 7.0f)
+                {
+                    if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f && currentDestination != null)
                     {
-                        door = other.transform.gameObject;
-                        if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen && activeOrderQueue.Count == 0)
+                        door = other.transform.parent.gameObject;
+                        
+                        if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen)
                         {
-                            checkCarrying();
-                            queueOrder(other.gameObject, data.unitAction.OPENDOOR);
-
+                            _agent.destination = other.transform.position;
+                            StartCoroutine(wait(other.gameObject));
+                            
                         }
                     }
                 }
             }
-        }*/
+        }
+    }
+
+    public IEnumerator wait(GameObject other)
+    {
+        queueOrder(other.gameObject, data.unitAction.OPENDOOR);
+        willIdle = false;
+        yield return new WaitForSeconds(6);
+        queueOrder(currentDestination, data.unitAction.STAND);
+        willIdle = true;
     }
     #endregion
 
@@ -303,14 +332,17 @@ public class unit : MonoBehaviour
     //Later these functions will be removed and selection tracking will be handled by the UI
     public void selectionStatus(bool select)
     {
-        if (select)
+        if (select && glowClone == null)
         {
-            GetComponent<Renderer>().material.color = Color.red;
+            glowClone = (GameObject)GameObject.Instantiate(selectionGlowPrefab);
+            glowClone.transform.parent = transform;
+            glowClone.transform.localPosition = new Vector3(0, -GetComponent<MeshFilter>().mesh.bounds.extents.y, 0);
             isSelected = true;
         }
-        else
+        else if (!select && glowClone != null)
         {
-            GetComponent<Renderer>().material.color = Color.white;
+            GameObject.Destroy(glowClone);
+            glowClone = null;
             isSelected = false;
         }
     }
@@ -348,5 +380,5 @@ public class unit : MonoBehaviour
         _audioSource.Play();
         yield return new WaitForSeconds(_audioSource.clip.length);
         _audioSource.Stop();
-    } 
+    }
 }
