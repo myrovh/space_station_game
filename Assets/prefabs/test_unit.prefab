@@ -74,7 +74,7 @@ Rigidbody:
   m_GameObject: {fileID: 132676}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: .5
   m_AngularDrag: .0500000007
   m_UseGravity: 0
   m_IsKinematic: 1
@@ -209,9 +209,12 @@ MonoBehaviour:
   unitStoppingDistance: 2
   health: 100
   isSelected: 0
+  selectionGlowPrefab: {fileID: 0}
   target: {fileID: 0}
   isCarrying: 0
+  currentDestination: {x: 0, y: 0, z: 0}
   door: {fileID: 0}
+  hitColliders: []
 --- !u!195 &19529890
 NavMeshAgent:
   m_ObjectHideFlags: 1
