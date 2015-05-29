@@ -284,8 +284,9 @@ public class unit : MonoBehaviour
         }
     }
 
-    void visionCone()
+    private void visionCone()
     {
+        /*
         hitColliders = Physics.OverlapSphere(transform.position, coneLength);
         facingDirection = Vector3.forward;
         if ((transform.position - currentDestination).magnitude > unitStoppingDistance)
@@ -293,28 +294,37 @@ public class unit : MonoBehaviour
             foreach (Collider other in hitColliders)
             {
                 float angle = Vector3.Angle(other.transform.position, facingDirection);
-            if (angle < 45.0f)
+                if (angle < 45.0f)
 
-                if (angle > 45.0f)
-            if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f)
-                if (activeOrderQueue.Count > 0)
-                {
-                    if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) < unitStoppingDistance + 7.0f)
-                {
-                    if (other.tag == "door" && Vector3.Distance(transform.position, other.transform.position) <= unitStoppingDistance + 3.0f && currentDestination != null)
-                    {
-                        door = other.transform.parent.gameObject;
-                        
-                        if (!door.GetComponent<Door>().UnitUsingDoor && !door.GetComponent<Door>().IsOpen)
-                        {
-                            _agent.destination = other.transform.position;
-                            StartCoroutine(wait(other.gameObject));
-                            
-                        }
-                    }
-                }
+                    if (angle > 45.0f)
+                        if (other.tag == "door" &&
+                            Vector3.Distance(transform.position, other.transform.position) <=
+                            unitStoppingDistance + 3.0f)
+                            if (activeOrderQueue.Count > 0)
+                            {
+                                if (other.tag == "door" &&
+                                    Vector3.Distance(transform.position, other.transform.position) <
+                                    unitStoppingDistance + 7.0f)
+                                {
+                                    if (other.tag == "door" &&
+                                        Vector3.Distance(transform.position, other.transform.position) <=
+                                        unitStoppingDistance + 3.0f && currentDestination != null)
+                                    {
+                                        door = other.transform.parent.gameObject;
+
+                                        if (!door.GetComponent<Door>().UnitUsingDoor &&
+                                            !door.GetComponent<Door>().IsOpen)
+                                        {
+                                            _agent.destination = other.transform.position;
+                                            StartCoroutine(wait(other.gameObject));
+
+                                        }
+                                    }
+                                }
+                            }
             }
         }
+        */
     }
 
     public IEnumerator wait(GameObject other)

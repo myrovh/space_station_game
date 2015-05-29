@@ -36,7 +36,7 @@ public class module : MonoBehaviour
             }
         }
 
-        if (_offLights.activeInHierarchy)
+        if (_offLights.activeInHierarchy && _offLights != null)
         {
             _offLights.transform.rotation = _offLights.transform.rotation*Quaternion.Euler(0, 50*Time.deltaTime, 0);
         }
@@ -106,8 +106,11 @@ public class module : MonoBehaviour
 
     public void SetPowerState(bool isPower)
     {
-        _onLights.SetActive(isPower);
-        _offLights.SetActive(!isPower);
+        if (_onLights != null && _offLights != null)
+        {
+            _onLights.SetActive(isPower);
+            _offLights.SetActive(!isPower);
+        }
     }
 
     #region Unit List Manipulation
