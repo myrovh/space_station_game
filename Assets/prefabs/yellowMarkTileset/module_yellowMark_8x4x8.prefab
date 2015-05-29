@@ -1274,6 +1274,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439962}
+  - 114: {fileID: 11426592}
   m_Layer: 0
   m_Name: module_yellowMark_8x4x8
   m_TagString: module
@@ -1644,7 +1645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &179494
 GameObject:
   m_ObjectHideFlags: 1
@@ -2615,7 +2616,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 15.6000004, y: 0, z: -15.6000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 402510}
@@ -5794,8 +5795,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: .5
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -7082,6 +7083,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a09c966a662b3429e2df90eb1b8261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11426592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34c8efccc599df49bda360404540c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResourceSlots: []
+  SlotSize: 1
+  unitsInModule: []
+  HasHardpoints: 1
+  noAir: 0
 --- !u!114 &11427132
 MonoBehaviour:
   m_ObjectHideFlags: 1

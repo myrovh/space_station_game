@@ -3803,7 +3803,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 304510328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.33000004, y: .850000024, z: .709999979}
+  m_LocalPosition: {x: -1.33000004, y: .850000024, z: -4.38999987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1776533684}
@@ -3819,8 +3819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa5936e0f88f3f4aa1291f8e3cb018e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplosionRange: 5
-  ExplosionForce: 15
+  ExplosionRange: 16
+  ExplosionForce: 20
   Lifetime: 1
 --- !u!23 &304510331
 MeshRenderer:
@@ -24504,6 +24504,14 @@ Prefab:
     - target: {fileID: 126706, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 175654, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
+      propertyPath: m_Name
+      value: east
+      objectReference: {fileID: 0}
+    - target: {fileID: 149764, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
+      propertyPath: m_Name
+      value: west
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 916c375ebf43aec49ba6c09e46cad665, type: 2}
