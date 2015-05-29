@@ -900,7 +900,7 @@ CanvasGroup:
   m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
+  m_IgnoreParentGroups: 1
 --- !u!225 &22586484
 CanvasGroup:
   m_ObjectHideFlags: 1
@@ -911,7 +911,7 @@ CanvasGroup:
   m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
+  m_IgnoreParentGroups: 1
 --- !u!225 &22589820
 CanvasGroup:
   m_ObjectHideFlags: 1
@@ -922,7 +922,7 @@ CanvasGroup:
   m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
+  m_IgnoreParentGroups: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

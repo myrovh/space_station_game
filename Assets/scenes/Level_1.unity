@@ -259,6 +259,7 @@ MonoBehaviour:
   ResourceSlots: []
   SlotSize: 1
   unitsInModule: []
+  HasHardpoints: 1
   noAir: 0
 --- !u!1001 &5729863
 Prefab:
@@ -5179,6 +5180,7 @@ MonoBehaviour:
   ResourceSlots: []
   SlotSize: 1
   unitsInModule: []
+  HasHardpoints: 1
   noAir: 0
 --- !u!1 &264974041
 GameObject:
@@ -6223,6 +6225,7 @@ MonoBehaviour:
   ResourceSlots: []
   SlotSize: 1
   unitsInModule: []
+  HasHardpoints: 1
   noAir: 0
 --- !u!1 &316305797
 GameObject:
@@ -14446,6 +14449,7 @@ MonoBehaviour:
   ResourceSlots: []
   SlotSize: 1
   unitsInModule: []
+  HasHardpoints: 1
   noAir: 0
 --- !u!1 &674250657
 GameObject:
@@ -25308,6 +25312,7 @@ MonoBehaviour:
   ResourceSlots: []
   SlotSize: 1
   unitsInModule: []
+  HasHardpoints: 1
   noAir: 0
 --- !u!1001 &1153738006
 Prefab:
@@ -34446,6 +34451,7 @@ MonoBehaviour:
   ResourceSlots: []
   SlotSize: 1
   unitsInModule: []
+  HasHardpoints: 1
   noAir: 0
 --- !u!1 &1585629065 stripped
 GameObject:
@@ -38513,6 +38519,7 @@ MonoBehaviour:
   ResourceSlots: []
   SlotSize: 1
   unitsInModule: []
+  HasHardpoints: 1
   noAir: 0
 --- !u!1 &1777169240 stripped
 GameObject:
@@ -40686,6 +40693,7 @@ MonoBehaviour:
   ResourceSlots: []
   SlotSize: 1
   unitsInModule: []
+  HasHardpoints: 1
   noAir: 0
 --- !u!1 &1862690113
 GameObject:
