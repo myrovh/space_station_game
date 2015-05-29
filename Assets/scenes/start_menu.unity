@@ -3584,6 +3584,7 @@ MonoBehaviour:
   ResourceSlots: []
   SlotSize: 1
   unitsInModule: []
+  HasHardpoints: 1
   noAir: 0
 --- !u!1 &728117719
 GameObject:
