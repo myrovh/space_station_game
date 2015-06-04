@@ -18,6 +18,11 @@ public class ui : MonoBehaviour
     private GameObject targetResource;
     private bool haulOrder = false;
     private List<GameObject> freeSlots;
+    private int interactablesMask = (1 << 8);
+    public Vector3 currentDestination;
+    public GameObject moduleSelectionPrefab = null;
+    private GameObject glowClone = null;
+    private GameObject thisModule = null;
 
     //Popup Variables
     [SerializeField]
@@ -27,7 +32,12 @@ public class ui : MonoBehaviour
     [SerializeField]
     public UnityEngine.UI.Button button3 = null;
     public GameObject popup;
-    private GameObject currentUnit;
+    public GameObject currentUnit;
+    private bool menuOpen = false;
+
+    private int action1 = 0;
+    private int action2 = 0;
+    private int action3 = 0;
 
     //Camera Variables
     public GameObject LevelCamera;
@@ -36,10 +46,12 @@ public class ui : MonoBehaviour
 
     // Door Variables
     public GameObject currentDoor;
-    public Image progressBar;
 
     //Dialogue Variables
     public GameObject dialoguePrefab;
+
+    //Textures
+    public Texture2D cursorTexture;
     #endregion
 
     #region Monobehaviour Functions
@@ -47,9 +59,9 @@ public class ui : MonoBehaviour
     {
         //Adding listeners for each of the buttons
 
-        //button1.onClick.AddListener(() => { button1Action(); });
-        //button2.onClick.AddListener(() => { button2Action(); });
-        //button3.onClick.AddListener(() => { button3Action(); });
+        button1.onClick.AddListener(() => { button1Action(); });
+        button2.onClick.AddListener(() => { button2Action(); });
+        button3.onClick.AddListener(() => { button3Action(); });
 
         allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
 
@@ -59,6 +71,8 @@ public class ui : MonoBehaviour
 
         //Adds dialogue to the data list variable
         Dialogue.BuildDialogue();
+
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
     void OnEnable()
@@ -79,6 +93,9 @@ public class ui : MonoBehaviour
             _cameraScript.RotateCamera(data.cardinalPoints.SOUTH, data.cardinalPoints.EAST);
             _cameraInit = true;
         }
+
+            checkMouse();
+
         checkSelectionBox();
 
         selecionCheck();
@@ -86,6 +103,8 @@ public class ui : MonoBehaviour
         generateOrders();
 
         CameraOrders();
+
+        shuttleCommands();
     }
 
     //Drawing the selection box to the screen
@@ -102,12 +121,12 @@ public class ui : MonoBehaviour
     #region Event Handelers
     private void OnDialogueEvent(DialogueEvent e)
     {
-        GameObject dialogueObject = (GameObject) Instantiate(dialoguePrefab, Vector3.zero, Quaternion.identity);
+        GameObject dialogueObject = (GameObject)Instantiate(dialoguePrefab, Vector3.zero, Quaternion.identity);
         DialoguePopup dialogueScript = dialogueObject.GetComponentInChildren<DialoguePopup>();
         dialogueScript.CameraTarget = LevelCamera.transform;
         dialogueScript.ObjectTarget = e.MessageTarget;
         dialogueScript.Text = e.MessageText.DialogueContents;
-        dialogueScript.LifeTime = e.MessageText.DialogueContents.Length*0.3f;
+        dialogueScript.LifeTime = e.MessageLifetime;
     }
     #endregion
 
@@ -121,7 +140,7 @@ public class ui : MonoBehaviour
             {
                 if (Input.GetButtonDown("Interact") && Input.GetButton("Queue") && unit.GetComponent<unit>().isSelected)
                 {
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask))
                     {
                         if (hit.collider.tag == "Resource")
                         {
@@ -143,21 +162,22 @@ public class ui : MonoBehaviour
                                 addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
                             }
                         }
-                        else
-                        {
-                            addToQueue(hit.point, data.unitAction.STAND, null, unit);
-                        }
+                    }
+                    else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                    {
+                        addToQueue(hit.point, data.unitAction.STAND, null, unit);
                     }
                 }
                 else if (Input.GetButtonDown("Interact") && unit.GetComponent<unit>().isSelected)
                 {
                     unit.GetComponent<unit>().clearQueue();
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask))
                     {
                         if (hit.collider.tag == "Resource")
                         {
                             currentUnit = unit;
                             targetResource = hit.collider.gameObject;
+                            currentUnit.GetComponent<unit>().currentDestination = hit.point;
                             if (targetResource.GetComponent<resource>().interactions.Count <= 1)
                             {
                                 haulOrder = true;
@@ -168,19 +188,20 @@ public class ui : MonoBehaviour
                             currentUnit = unit;
                             currentDoor = hit.transform.parent.gameObject;
                             currentUnit.GetComponent<unit>().door = currentDoor;
-                            if (!currentDoor.GetComponent<Door>().IsOpen)
-                            {
-                                addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
-                            }
-                            else
-                            {
-                                addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
-                            }
+                            currentUnit.GetComponent<unit>().currentDestination = hit.point;
+                            currentDestination = hit.point;
+
+                            action1 = 1;
+                            action2 = 1;
+                            menuOpen = true;
+                            showOrders(true, true, false, 1);
                         }
-                        else
-                        {
-                            addToQueue(hit.point, data.unitAction.STAND, null, unit);
-                        }
+                    }
+                    else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                    {
+                        unit.GetComponent<unit>().currentDestination = hit.point;
+                        addToQueue(hit.point, data.unitAction.STAND, null, unit);
+                        currentUnit = null;
                     }
                 }
             }
@@ -192,21 +213,28 @@ public class ui : MonoBehaviour
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    freeSlots = hit.transform.root.GetComponent<Module>().GetFreeSlots();
-                    targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
-                    addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
-                    addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
-                    haulOrder = false;
+                    freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
+                    if (freeSlots.Count != 0)
+                    {
+                        targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
+
+                        addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
+                        addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
+                        haulOrder = false;
+                    }
                 }
             }
             else if (Input.GetButtonDown("Interact"))
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-                    freeSlots = hit.transform.root.GetComponent<Module>().GetFreeSlots();
-                    targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
-                    addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
-                    addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
+                    freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
+                    if (freeSlots.Count != 0)
+                    {
+                        targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
+                        addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
+                        addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
+                    }
                     haulOrder = false;
                 }
             }
@@ -225,6 +253,8 @@ public class ui : MonoBehaviour
             currentUnit.GetComponent<unit>().target = targetResource;
             unit.GetComponent<unit>().queueOrder(actAtObject, actAt);
         }
+
+        currentDestination = new Vector3(0, 10, 0);
 
     }
     #endregion
@@ -245,6 +275,10 @@ public class ui : MonoBehaviour
                 {
                     unit.GetComponent<unit>().selectionStatus(true);
                 }
+                else
+                {
+                    unit.GetComponent<unit>().selectionStatus(false);
+                }
             }
         }
 
@@ -256,23 +290,23 @@ public class ui : MonoBehaviour
             {
                 foreach (GameObject unit in allPlayerUnits)
                 {
-                    unit.GetComponent<unit>().selectionStatus(false);
+                   // unit.GetComponent<unit>().selectionStatus(false);
                 }
-                hit.rigidbody.GetComponent<unit>().selectionStatus(true);
-                showOrders(false);
+               // hit.rigidbody.GetComponent<unit>().selectionStatus(true);
+                showOrders(false, false, false,0);
             }
             //Deselects all units that are not hit by raycast
             else
             {
                 //Check to see if the mouse pointer is over a ui object
-               // if (!EventSystem.current.IsPointerOverGameObject())
-               // {
-                    foreach (GameObject unit in allPlayerUnits)
-                    {
-                        unit.GetComponent<unit>().selectionStatus(false);
-                        showOrders(false);
-                    }
-                //}
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                foreach (GameObject unit in allPlayerUnits)
+                {
+                    unit.GetComponent<unit>().selectionStatus(false);
+                    showOrders(false, false, false,0);
+                }
+                }
             }
         }
 
@@ -321,11 +355,29 @@ public class ui : MonoBehaviour
     #region Context Popup Functions
     void button1Action()
     {
-
+        if (action1 == 1)
+        {
+            addToQueue(currentDestination, data.unitAction.STAND, null, currentUnit);
+        }
+        showOrders(false, false, false, 0);
+        menuOpen = false;
     }
 
     void button2Action()
     {
+        if (action2 == 1)
+        {
+            if (!currentDoor.GetComponent<Door>().IsOpen)
+            {
+                addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
+            }
+            else
+            {
+                addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
+            }
+        }
+        showOrders(false, false, false, 0);
+        menuOpen = false;
 
     }
 
@@ -335,24 +387,138 @@ public class ui : MonoBehaviour
     }
 
     //Enables or disables unit order popup based on parameter given
-    void showOrders(bool isVisible)
+    void showOrders(bool button1Visible, bool button2Visible, bool button3Visible, float showAlpha)
     {
-        if (isVisible)
+        popup.GetComponent<RectTransform>().position = Input.mousePosition;
+        popup.GetComponent<RectTransform>().position += new Vector3(10,0,0);
+
+        if (button1Visible)
         {
-            popup.GetComponent<CanvasGroup>().alpha = 1;
-            popup.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            popup.GetComponent<RectTransform>().position = Input.mousePosition;
+            if (action1 == 1)
+            {
+                button1.GetComponentInChildren<Text>().text = "Move";
+            }
+            button1.GetComponent<CanvasGroup>().alpha = showAlpha;
+            if(showAlpha == 0.5f)
+            {
+                button1.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+            else
+            {
+                button1.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            }
+
         }
         else
         {
-            popup.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            popup.GetComponent<CanvasGroup>().alpha = 0;
+            button1.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            button1.GetComponent<CanvasGroup>().alpha = 0;
+        }
+        if (button2Visible)
+        {
+            if (action2 == 1)
+            {
+                button2.GetComponentInChildren<Text>().text = "Use Door";
+            }
+            button2.GetComponent<CanvasGroup>().alpha = showAlpha;
+            button2.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else
+        {
+            button2.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            button2.GetComponent<CanvasGroup>().alpha = 0;
+        }
+        if (button3Visible)
+        {
+            button3.GetComponent<CanvasGroup>().alpha = showAlpha;
+            button3.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else
+        {
+            button3.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            button3.GetComponent<CanvasGroup>().alpha = 0;
         }
 
-        popup.GetComponent<CanvasGroup>().interactable = isVisible;
+        if (showAlpha == 0.5f)
+        {
+            button1.GetComponent<CanvasGroup>().interactable = false;
+        }
+        else
+        {
+            button1.GetComponent<CanvasGroup>().interactable = true;
+        }
+
+        button2.GetComponent<CanvasGroup>().interactable = button2Visible;
+        button3.GetComponent<CanvasGroup>().interactable = button3Visible;
+    }
+
+    void checkMouse()
+    {
+        if (!menuOpen && !haulOrder)
+        {
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask) && hit.collider.tag == "door")
+            {
+                foreach (GameObject unit in allPlayerUnits)
+                {
+                    if (unit.GetComponent<unit>().isSelected)
+                    {
+                        action1 = 1;
+                        action2 = 1;
+                        showOrders(true, true, false, 0.5f);
+                    }
+                }
+
+            }
+            else
+            {
+                showOrders(false, false, false, 0);
+            }
+        }
+
+        if (haulOrder)
+        {
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.transform.root.tag == "module" && glowClone == null && thisModule == null)
+            {
+                thisModule = hit.transform.root.gameObject;
+
+                if (thisModule.GetComponent<module>().GetFreeSlots().Count != 0)
+                {
+                    glowClone = (GameObject)GameObject.Instantiate(moduleSelectionPrefab);
+                    glowClone.transform.parent = hit.transform.root;
+                    glowClone.transform.localPosition = new Vector3(0, 1, 0);
+                }
+                else
+                {
+                    glowClone = (GameObject)GameObject.Instantiate(moduleSelectionPrefab);
+                    glowClone.transform.parent = hit.transform.root;
+                    glowClone.transform.localPosition = new Vector3(0, 1, 0);
+                    glowClone.GetComponent<ParticleSystem>().startColor = new Color(1, 0, 0, 1);
+                }
+
+            }
+            else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && glowClone != null && hit.transform.root.gameObject != thisModule)
+            {
+                GameObject.Destroy(glowClone);
+                glowClone = null;
+                thisModule = null;
+            }
+            else if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            {
+                GameObject.Destroy(glowClone);
+                glowClone = null;
+                thisModule = null;
+            }
+        }
+        else if (glowClone != null)
+        {
+            GameObject.Destroy(glowClone);
+            glowClone = null;
+            thisModule = null;
+        }
     }
     #endregion
 
+    #region Camera Orders
     private void CameraOrders()
     {
         #region Camera Pan
@@ -375,7 +541,7 @@ public class ui : MonoBehaviour
         #endregion
 
         #region Camera Rotate
-        if(Input.GetKeyDown((KeyCode.Q)))
+        if (Input.GetKeyDown((KeyCode.Q)))
         {
             data.cardinalPoints currentRotation = _cameraScript.GetCurrentRotation();
             if (currentRotation == data.cardinalPoints.SOUTH)
@@ -395,7 +561,7 @@ public class ui : MonoBehaviour
                 _cameraScript.RotateCamera(data.cardinalPoints.EAST, data.cardinalPoints.NORTH);
             }
         }
-        if(Input.GetKeyDown((KeyCode.E)))
+        if (Input.GetKeyDown((KeyCode.E)))
         {
             data.cardinalPoints currentRotation = _cameraScript.GetCurrentRotation();
             if (currentRotation == data.cardinalPoints.SOUTH)
@@ -421,4 +587,13 @@ public class ui : MonoBehaviour
         _cameraScript.ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
         #endregion
     }
+
+    private void shuttleCommands()
+    {
+        if (Input.GetKey("m"))
+        {
+            GameObject.FindGameObjectWithTag("shuttle").GetComponent<shuttle>().exitLevel();
+        }
+    }
+    #endregion
 }

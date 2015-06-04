@@ -13,9 +13,9 @@ GameObject:
   - 54: {fileID: 5428060}
   - 208: {fileID: 20809350}
   - 65: {fileID: 6502032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface2
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,9 +33,9 @@ GameObject:
   - 54: {fileID: 5480906}
   - 208: {fileID: 20801208}
   - 65: {fileID: 6558542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface3
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,8 @@ GameObject:
   - 95: {fileID: 9551978}
   - 65: {fileID: 6536936}
   - 114: {fileID: 11425914}
-  m_Layer: 0
+  - 54: {fileID: 5498936}
+  m_Layer: 8
   m_Name: door_3x3_2
   m_TagString: door
   m_Icon: {fileID: 0}
@@ -89,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -.200000003}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children:
   - {fileID: 411870}
@@ -188,6 +189,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &5498936
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176184}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6502032
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -232,7 +248,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176184}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f79a43a7fe4746147be34df8eb44073d, type: 3}
+  m_Avatar: {fileID: 9000000, guid: fb0fec2a4982a1348a7963ec0027357e, type: 3}
   m_Controller: {fileID: 9100000, guid: 3ba4fd9e4fd7f7a4bb4fda08d1e416ac, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -254,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsOpen: 0
   UnitUsingDoor: 0
-  ProgressBar: {fileID: 0}
+  progressBarPrefab: {fileID: 11471858, guid: f9c39f127ee96da4dafa343dec62864b, type: 2}
 --- !u!208 &20801208
 NavMeshObstacle:
   m_ObjectHideFlags: 1

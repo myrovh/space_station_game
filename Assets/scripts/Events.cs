@@ -22,11 +22,13 @@ public class DialogueEvent : GameEvent
 {
     public DialogueText MessageText;
     public Transform MessageTarget;
+    public float MessageLifetime;
 
-    public DialogueEvent(Transform target, DialogueText text)
+    public DialogueEvent(Transform target, DialogueText text, float lifetime)
     {
         MessageText = text;
         MessageTarget = target;
+        MessageLifetime = lifetime;
     }
 }
 
