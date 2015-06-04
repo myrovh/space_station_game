@@ -41,8 +41,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 405422}
   - 95: {fileID: 9534122}
-  - 65: {fileID: 6526822}
-  - 54: {fileID: 5462420}
   m_Layer: 0
   m_Name: PowerModule-LargeRoom
   m_TagString: Untagged
@@ -108,7 +106,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.9432507, y: 9.21240234, z: 4.65593672}
+  m_LocalPosition: {x: 22.4009438, y: 3.93651915, z: -16.1430645}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children:
   - {fileID: 443492}
@@ -302,33 +300,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141524}
   m_Mesh: {fileID: 4300000, guid: 3ef444cf1d9459d47b41b96fd9ebb838, type: 3}
---- !u!54 &5462420
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133110}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &6526822
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133110}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9534122
 Animator:
   serializedVersion: 3
@@ -338,7 +309,7 @@ Animator:
   m_GameObject: {fileID: 133110}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3ef444cf1d9459d47b41b96fd9ebb838, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adeab84aa2030d649adc745cd2abf71f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

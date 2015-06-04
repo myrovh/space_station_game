@@ -42,9 +42,9 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0
+    animationPositionError: 0
+    animationScaleError: 0
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations:
@@ -124,7 +124,7 @@ ModelImporter:
       name: PowerModule-OpenIdle
       takeName: Take 001
       firstFrame: 5
-      lastFrame: 5
+      lastFrame: 6
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -159,7 +159,7 @@ ModelImporter:
     - serializedVersion: 16
       name: PowerModule-CloseIdle
       takeName: Take 001
-      firstFrame: 11
+      firstFrame: 10
       lastFrame: 11
       wrapMode: 0
       orientationOffsetY: 0
