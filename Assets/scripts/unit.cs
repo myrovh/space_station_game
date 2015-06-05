@@ -32,8 +32,8 @@ public class unit : MonoBehaviour
 
     #region Variables
     //Setting Variables
-    public float unitMoveSpeed = 1;
-    public float unitStoppingDistance = 1.5f;
+    private float unitMoveSpeed = 1;
+    private float unitStoppingDistance = 1.5f;
     private int baseAvoidance = 89;
     public float health = 100;
 
@@ -66,9 +66,6 @@ public class unit : MonoBehaviour
     private bool willIdle = true;
 
     //Vision Cone Variables
-    Vector3 facingDirection;
-    float coneLength = 1.0f;
-    public Collider[] hitColliders;
 
     //Sound Variables
     private AudioSource _audioSource;
@@ -109,6 +106,7 @@ public class unit : MonoBehaviour
         passiveOrderQueue = null;
     }
 
+    //Checks if the unit was selected by a click and sets the selection status to true
     void OnMouseUp()
     {
         selectionStatus(true);
@@ -116,7 +114,7 @@ public class unit : MonoBehaviour
     #endregion
 
     #region Active Queue Manipulation
-    //Adds new order to the bottom of the queue
+    //Adds new order to the bottom of the queue when given a vector3 and a unitAction
     public void queueOrder(Vector3 moveTo, data.unitAction actAt)
     {
         if (door != null)
@@ -129,7 +127,7 @@ public class unit : MonoBehaviour
         activeOrderQueue.Add(new unitOrder(moveTo, actAt));
         SpeakDialogue(Dialogue.GetRandomDialogueType(Dialogue.DialogueType.MOVEORDER));
     }
-
+    //Adds new order to the bottom of the queue when given a GameObject and a unitAction
     public void queueOrder(GameObject actAtObject, data.unitAction actAt)
     {
         if (door != null)
@@ -147,7 +145,8 @@ public class unit : MonoBehaviour
     {
         activeOrderQueue.Clear();
     }
-
+    //Called when we want the unit to drop what they are carrying in front of them
+    //For example when their haul order was interupted
     void checkCarrying()
     {
         if (isCarrying)
@@ -217,7 +216,7 @@ public class unit : MonoBehaviour
         }
         return isComplete;
     }
-
+    //Function to make unit pick up the object passed as a parameter
     void pickUp(GameObject newObject)
     {
         inventory = newObject;
@@ -225,7 +224,9 @@ public class unit : MonoBehaviour
         isCarrying = true;
         _agent.destination = transform.position;
     }
-
+    //Function to make the unit drop the resource object they are carrying
+    //If the unit has not reached its destination i.e: the path is blocked
+    //it will drop the resource object in front of it
     void drop()
     {
         if (inventory != null)
@@ -243,7 +244,7 @@ public class unit : MonoBehaviour
             }
         }
     }
-
+    //Function that tells the unit to open the door that was passed as a parameter
     void openDoor(GameObject door)
     {
         if (!door.GetComponent<Door>().IsDoorOpen())
@@ -253,7 +254,7 @@ public class unit : MonoBehaviour
         }
 
     }
-
+    //Function that tells the unit to close the door that was passed as a parameter
     void closeDoor(GameObject door)
     {
         door.GetComponent<Door>().UnitUsingDoor = true;
@@ -262,6 +263,8 @@ public class unit : MonoBehaviour
     #endregion
 
     #region Passive Queue Manipulation
+    //Idle function which gets a random point around the object within a certain radius
+    //every 2 seconds and rotates the unit to face that direction and moves them slightly towards that point
     void idle()
     {
         if (willIdle)
@@ -283,50 +286,11 @@ public class unit : MonoBehaviour
             }
         }
     }
-
+    //This is where the new vision cone code will most likely be
     private void visionCone()
     {
-        /*
-        hitColliders = Physics.OverlapSphere(transform.position, coneLength);
-        facingDirection = Vector3.forward;
-        if ((transform.position - currentDestination).magnitude > unitStoppingDistance)
-        {
-            foreach (Collider other in hitColliders)
-            {
-                float angle = Vector3.Angle(other.transform.position, facingDirection);
-                if (angle < 45.0f)
 
-                    if (angle > 45.0f)
-                        if (other.tag == "door" &&
-                            Vector3.Distance(transform.position, other.transform.position) <=
-                            unitStoppingDistance + 3.0f)
-                            if (activeOrderQueue.Count > 0)
-                            {
-                                if (other.tag == "door" &&
-                                    Vector3.Distance(transform.position, other.transform.position) <
-                                    unitStoppingDistance + 7.0f)
-                                {
-                                    if (other.tag == "door" &&
-                                        Vector3.Distance(transform.position, other.transform.position) <=
-                                        unitStoppingDistance + 3.0f && currentDestination != null)
-                                    {
-                                        door = other.transform.parent.gameObject;
-
-                                        if (!door.GetComponent<Door>().UnitUsingDoor &&
-                                            !door.GetComponent<Door>().IsOpen)
-                                        {
-                                            _agent.destination = other.transform.position;
-                                            StartCoroutine(wait(other.gameObject));
-
-                                        }
-                                    }
-                                }
-                            }
-            }
-        }
-        */
     }
-
     public IEnumerator wait(GameObject other)
     {
         queueOrder(other.gameObject, data.unitAction.OPENDOOR);
@@ -356,13 +320,15 @@ public class unit : MonoBehaviour
             isSelected = false;
         }
     }
-
+    //Simple function which makes the units health lower by 1 each second
+    //Used for event system testing
     public void takeDamage()
     {
         health = health - 1 * Time.deltaTime;
     }
     #endregion
 
+    #region Dialogue Functions
     public void RaiseDialogue(DialogueText text)
     {
         //TODO add test to make sure that unit will not raise a new dialogue when already talking
@@ -391,4 +357,5 @@ public class unit : MonoBehaviour
         yield return new WaitForSeconds(_audioSource.clip.length);
         _audioSource.Stop();
     }
+    #endregion
 }
