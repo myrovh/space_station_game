@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149118}
   m_LocalRotation: {x: .70710659, y: 0, z: 0, w: -.707106948}
-  m_LocalPosition: {x: -24.1499996, y: 1.87, z: 13.8400002}
+  m_LocalPosition: {x: -4.17999983, y: 1.57000005, z: .119999997}
   m_LocalScale: {x: 1, y: 1.09374988, z: .222375184}
   m_Children:
   - {fileID: 407712}
@@ -262,7 +262,7 @@ ParticleSystem:
         rgba: 4278190080
       minMaxState: 1
     startSize:
-      scalar: 1
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -420,9 +420,9 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 1
   RotationModule:
-    enabled: 0
+    enabled: 1
     curve:
-      scalar: .785398185
+      scalar: .785398126
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1106,7 +1106,7 @@ ParticleSystem:
       minMaxState: 1
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     type: 1
     plane0: {fileID: 0}
     plane1: {fileID: 0}
@@ -1115,9 +1115,9 @@ ParticleSystem:
     plane4: {fileID: 0}
     plane5: {fileID: 0}
     dampen: 0
-    bounce: 1
-    energyLossOnCollision: 0
-    minKillSpeed: 0
+    bounce: .910000026
+    energyLossOnCollision: .529999971
+    minKillSpeed: -2.05999994
     particleRadius: .00999999978
     collidesWith:
       serializedVersion: 2
@@ -1150,7 +1150,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 1
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1468,9 +1468,9 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 1
   RotationModule:
-    enabled: 0
+    enabled: 1
     curve:
-      scalar: .785398185
+      scalar: .785398126
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2154,7 +2154,7 @@ ParticleSystem:
       minMaxState: 1
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     type: 1
     plane0: {fileID: 0}
     plane1: {fileID: 0}
@@ -2163,9 +2163,9 @@ ParticleSystem:
     plane4: {fileID: 0}
     plane5: {fileID: 0}
     dampen: 0
-    bounce: 1
-    energyLossOnCollision: 0
-    minKillSpeed: 0
+    bounce: .910000026
+    energyLossOnCollision: .529999971
+    minKillSpeed: -2.05999994
     particleRadius: .00999999978
     collidesWith:
       serializedVersion: 2
