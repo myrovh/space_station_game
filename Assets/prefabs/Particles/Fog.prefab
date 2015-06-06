@@ -24,8 +24,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188122}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: .150000006, y: .25, z: .709999979}
-  m_LocalScale: {x: .484029949, y: .484030485, z: .484030485}
+  m_LocalPosition: {x: -12.6800003, y: 0, z: .800000012}
+  m_LocalScale: {x: .312753469, y: .312753826, z: .312753826}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -203,10 +203,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 352321535
       minMaxState: 0
     startSize:
-      scalar: 5
+      scalar: 2.44000006
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -271,7 +271,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
       minMaxState: 0
-    gravityModifier: 0
+    gravityModifier: .00200000009
     inheritVelocity: 0
     maxNumParticles: 1000
   ShapeModule:
@@ -292,7 +292,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 2
+      scalar: 100
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -334,16 +334,16 @@ ParticleSystem:
     time3: 0
     m_BurstCount: 0
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
+          value: 0
+          inSlope: 2
+          outSlope: 2
           tangentMode: 0
         - time: 1
           value: 1
@@ -1063,8 +1063,8 @@ ParticleSystem:
     plane3: {fileID: 0}
     plane4: {fileID: 0}
     plane5: {fileID: 0}
-    dampen: 1
-    bounce: 0
+    dampen: .5
+    bounce: 1
     energyLossOnCollision: 1
     minKillSpeed: 0
     particleRadius: .00999999978
