@@ -63,6 +63,7 @@ GameObject:
   - 222: {fileID: 22253496}
   - 114: {fileID: 11469744}
   - 114: {fileID: 11455558}
+  - 225: {fileID: 22576446}
   m_Layer: 5
   m_Name: button1
   m_TagString: PopupMenu
@@ -81,6 +82,7 @@ GameObject:
   - 222: {fileID: 22278510}
   - 114: {fileID: 11455686}
   - 114: {fileID: 11447286}
+  - 225: {fileID: 22586484}
   m_Layer: 5
   m_Name: button2
   m_TagString: PopupMenu
@@ -99,6 +101,7 @@ GameObject:
   - 222: {fileID: 22216736}
   - 114: {fileID: 11474600}
   - 114: {fileID: 11496036}
+  - 225: {fileID: 22589820}
   m_Layer: 5
   m_Name: button3
   m_TagString: PopupMenu
@@ -316,13 +319,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
   buttonClick: 0
-  button1: {fileID: 0}
-  button2: {fileID: 0}
-  button3: {fileID: 0}
+  currentDestination: {x: 0, y: 0, z: 0}
+  moduleSelectionPrefab: {fileID: 139560, guid: 7cdae13500241434e90581821e73973d,
+    type: 2}
+  button1: {fileID: 11455558}
+  button2: {fileID: 11447286}
+  button3: {fileID: 11496036}
   popup: {fileID: 163028}
+  currentUnit: {fileID: 0}
   LevelCamera: {fileID: 0}
   currentDoor: {fileID: 0}
-  progressBar: {fileID: 11494838}
+  dialoguePrefab: {fileID: 169768, guid: bbf7dade28d850144a3b0b1f629abf2e, type: 2}
+  cursorTexture: {fileID: 2800000, guid: 7cfec451afbb7f8418d521011ba5d3ee, type: 3}
 --- !u!114 &11445712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -595,9 +603,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Color: {r: .339046896, g: 1, b: .0220588446, a: 1}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -882,6 +890,39 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!225 &22576446
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133044}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 1
+--- !u!225 &22586484
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140000}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 1
+--- !u!225 &22589820
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141986}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

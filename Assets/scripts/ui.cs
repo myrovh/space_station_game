@@ -7,9 +7,9 @@ public class ui : MonoBehaviour
     #region Variables
 
     //Unit Selection Variables
-    public Texture2D selectionHighlight = null;
-    public static Rect selection = new Rect(0, 0, 0, 0);
-    public bool buttonClick = false;
+    public Texture2D SelectionHighlight = null;
+    private static Rect selection = new Rect(0, 0, 0, 0);
+    private bool buttonClick = false;
     private List<GameObject> allPlayerUnits = new List<GameObject>();
     private RaycastHit hit;
     private Vector3 startClick = -Vector3.one;
@@ -19,7 +19,7 @@ public class ui : MonoBehaviour
     private bool haulOrder = false;
     private List<GameObject> freeSlots;
     private int interactablesMask = (1 << 8);
-    public Vector3 currentDestination;
+    private Vector3 currentDestination;
     public GameObject moduleSelectionPrefab = null;
     private GameObject glowClone = null;
     private GameObject thisModule = null;
@@ -32,12 +32,10 @@ public class ui : MonoBehaviour
     [SerializeField]
     public UnityEngine.UI.Button button3 = null;
     public GameObject popup;
-    public GameObject currentUnit;
+    private GameObject currentUnit;
     private bool menuOpen = false;
-
     private int action1 = 0;
     private int action2 = 0;
-    private int action3 = 0;
 
     //Camera Variables
     public GameObject LevelCamera;
@@ -45,7 +43,7 @@ public class ui : MonoBehaviour
     private bool _cameraInit;
 
     // Door Variables
-    public GameObject currentDoor;
+    private GameObject currentDoor;
 
     //Dialogue Variables
     public GameObject dialoguePrefab;
@@ -61,7 +59,6 @@ public class ui : MonoBehaviour
 
         button1.onClick.AddListener(() => { button1Action(); });
         button2.onClick.AddListener(() => { button2Action(); });
-        button3.onClick.AddListener(() => { button3Action(); });
 
         allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
 
@@ -94,7 +91,7 @@ public class ui : MonoBehaviour
             _cameraInit = true;
         }
 
-            checkMouse();
+        checkMouse();
 
         checkSelectionBox();
 
@@ -113,7 +110,7 @@ public class ui : MonoBehaviour
         if (startClick != -Vector3.one)
         {
             GUI.color = new Color(1, 1, 1, 0.5f);
-            GUI.DrawTexture(selection, selectionHighlight);
+            GUI.DrawTexture(selection, SelectionHighlight);
         }
     }
     #endregion
@@ -134,7 +131,7 @@ public class ui : MonoBehaviour
     //Generates orders for currently selected units
     void generateOrders()
     {
-        if (!haulOrder)
+        if (!haulOrder && !menuOpen)
         {
             foreach (GameObject unit in allPlayerUnits)
             {
@@ -144,23 +141,11 @@ public class ui : MonoBehaviour
                     {
                         if (hit.collider.tag == "Resource")
                         {
-                            currentUnit = unit;
-                            targetResource = hit.collider.gameObject;
-                            haulOrder = true;
+                            beginHaulOrder(unit, hit.collider.gameObject);
                         }
                         else if (hit.collider.tag == "door")
                         {
-                            currentUnit = unit;
-                            currentDoor = hit.transform.parent.gameObject;
-                            currentUnit.GetComponent<unit>().door = currentDoor;
-                            if (!currentDoor.GetComponent<Door>().IsOpen)
-                            {
-                                addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
-                            }
-                            else
-                            {
-                                addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
-                            }
+                            interactWithDoor(unit, hit.transform.parent.gameObject);
                         }
                     }
                     else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
@@ -175,26 +160,11 @@ public class ui : MonoBehaviour
                     {
                         if (hit.collider.tag == "Resource")
                         {
-                            currentUnit = unit;
-                            targetResource = hit.collider.gameObject;
-                            currentUnit.GetComponent<unit>().currentDestination = hit.point;
-                            if (targetResource.GetComponent<resource>().interactions.Count <= 1)
-                            {
-                                haulOrder = true;
-                            }
+                            beginHaulOrder(unit, hit.collider.gameObject);
                         }
                         else if (hit.collider.tag == "door")
                         {
-                            currentUnit = unit;
-                            currentDoor = hit.transform.parent.gameObject;
-                            currentUnit.GetComponent<unit>().door = currentDoor;
-                            currentUnit.GetComponent<unit>().currentDestination = hit.point;
-                            currentDestination = hit.point;
-
-                            action1 = 1;
-                            action2 = 1;
-                            menuOpen = true;
-                            showOrders(true, true, false, 1);
+                            interactWithDoor(unit, hit.transform.parent.gameObject);
                         }
                     }
                     else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
@@ -208,37 +178,69 @@ public class ui : MonoBehaviour
         }
         else
         {
+            haulOrderSecondStep();
+        }
 
-            if (Input.GetButtonDown("Interact") && Input.GetButton("Queue"))
-            {
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
-                {
-                    freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
-                    if (freeSlots.Count != 0)
-                    {
-                        targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
+    }
 
-                        addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
-                        addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
-                        haulOrder = false;
-                    }
-                }
-            }
-            else if (Input.GetButtonDown("Interact"))
+    //Function that takes a unit and a door object then shows the player the context menu
+    //detailing all the interactions available for the door objects
+    void interactWithDoor(GameObject unit, GameObject door)
+    {
+        currentUnit = unit;
+        currentDoor = hit.transform.parent.gameObject;
+        currentUnit.GetComponent<unit>().door = currentDoor;
+        currentUnit.GetComponent<unit>().currentDestination = hit.point;
+        currentDestination = hit.point;
+
+        action1 = 1;
+        action2 = 1;
+        menuOpen = true;
+        showOrders(true, true, 1);
+    }
+
+    //Function called when the user clicks on a resource object with at least one unit currently selected
+    //Begins the 2 step haul order process
+    void beginHaulOrder(GameObject unit, GameObject resource)
+    {
+        currentUnit = unit;
+        targetResource = resource;
+        haulOrder = true;
+    }
+
+    //Contains code for the second step of the haul order process
+    void haulOrderSecondStep()
+    {
+        if (Input.GetButtonDown("Interact") && Input.GetButton("Queue"))
+        {
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+                freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
+                if (freeSlots.Count != 0)
                 {
-                    freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
-                    if (freeSlots.Count != 0)
-                    {
-                        targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
-                        addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
-                        addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
-                    }
+                    targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
+                    addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
+                    addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
                     haulOrder = false;
                 }
             }
         }
+        else if (Input.GetButtonDown("Interact"))
+        {
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            {
+                freeSlots = hit.transform.root.GetComponent<module>().GetFreeSlots();
+                if (freeSlots.Count != 0)
+                {
+                    targetResource.GetComponent<resource>().dropPosition = freeSlots[0].transform.position;
+                    addToQueue(Vector3.zero, data.unitAction.PICKUP, targetResource, currentUnit);
+                    addToQueue(hit.point, data.unitAction.DROP, null, currentUnit);
+                    haulOrder = false;
+                }
+            }
+        }
+
+        currentUnit.GetComponent<unit>().currentDestination = hit.point;
     }
 
     //Takes an order as a parameter and adds it to the units queue
@@ -290,10 +292,10 @@ public class ui : MonoBehaviour
             {
                 foreach (GameObject unit in allPlayerUnits)
                 {
-                   // unit.GetComponent<unit>().selectionStatus(false);
+                    // unit.GetComponent<unit>().selectionStatus(false);
                 }
-               // hit.rigidbody.GetComponent<unit>().selectionStatus(true);
-                showOrders(false, false, false,0);
+                // hit.rigidbody.GetComponent<unit>().selectionStatus(true);
+                showOrders(false, false, 0);
             }
             //Deselects all units that are not hit by raycast
             else
@@ -301,11 +303,11 @@ public class ui : MonoBehaviour
                 //Check to see if the mouse pointer is over a ui object
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                foreach (GameObject unit in allPlayerUnits)
-                {
-                    unit.GetComponent<unit>().selectionStatus(false);
-                    showOrders(false, false, false,0);
-                }
+                    foreach (GameObject unit in allPlayerUnits)
+                    {
+                        unit.GetComponent<unit>().selectionStatus(false);
+                        showOrders(false, false, 0);
+                    }
                 }
             }
         }
@@ -353,16 +355,19 @@ public class ui : MonoBehaviour
     #endregion
 
     #region Context Popup Functions
+    //The function that is called when the first button in the context menu is called
     void button1Action()
     {
         if (action1 == 1)
         {
             addToQueue(currentDestination, data.unitAction.STAND, null, currentUnit);
         }
-        showOrders(false, false, false, 0);
+        showOrders(false, false, 0);
         menuOpen = false;
     }
-
+    //The function that is called when the second button in the context menu is called
+    //The action2 variable determines what this button does e.g: action2 = 1, gives the current unit the order
+    //to open the current door
     void button2Action()
     {
         if (action2 == 1)
@@ -376,21 +381,16 @@ public class ui : MonoBehaviour
                 addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
             }
         }
-        showOrders(false, false, false, 0);
+        showOrders(false, false, 0);
         menuOpen = false;
 
     }
 
-    void button3Action()
-    {
-
-    }
-
-    //Enables or disables unit order popup based on parameter given
-    void showOrders(bool button1Visible, bool button2Visible, bool button3Visible, float showAlpha)
+    //Determines what buttons are shown and what text is displayed based on parameters given and the action1 and action2 variables
+    void showOrders(bool button1Visible, bool button2Visible, float showAlpha)
     {
         popup.GetComponent<RectTransform>().position = Input.mousePosition;
-        popup.GetComponent<RectTransform>().position += new Vector3(10,0,0);
+        popup.GetComponent<RectTransform>().position += new Vector3(10, 0, 0);
 
         if (button1Visible)
         {
@@ -399,7 +399,7 @@ public class ui : MonoBehaviour
                 button1.GetComponentInChildren<Text>().text = "Move";
             }
             button1.GetComponent<CanvasGroup>().alpha = showAlpha;
-            if(showAlpha == 0.5f)
+            if (showAlpha == 0.5f)
             {
                 button1.GetComponent<CanvasGroup>().blocksRaycasts = false;
             }
@@ -428,16 +428,6 @@ public class ui : MonoBehaviour
             button2.GetComponent<CanvasGroup>().blocksRaycasts = false;
             button2.GetComponent<CanvasGroup>().alpha = 0;
         }
-        if (button3Visible)
-        {
-            button3.GetComponent<CanvasGroup>().alpha = showAlpha;
-            button3.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        }
-        else
-        {
-            button3.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            button3.GetComponent<CanvasGroup>().alpha = 0;
-        }
 
         if (showAlpha == 0.5f)
         {
@@ -449,7 +439,6 @@ public class ui : MonoBehaviour
         }
 
         button2.GetComponent<CanvasGroup>().interactable = button2Visible;
-        button3.GetComponent<CanvasGroup>().interactable = button3Visible;
     }
 
     void checkMouse()
@@ -464,14 +453,14 @@ public class ui : MonoBehaviour
                     {
                         action1 = 1;
                         action2 = 1;
-                        showOrders(true, true, false, 0.5f);
+                        showOrders(true, true, 0.5f);
                     }
                 }
 
             }
             else
             {
-                showOrders(false, false, false, 0);
+                showOrders(false, false, 0);
             }
         }
 

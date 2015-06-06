@@ -8,6 +8,7 @@ public class module : MonoBehaviour
     public List<GameObject> ResourceSlots;
     public float SlotSize = 1.0f;
     public List<GameObject> unitsInModule;
+    public bool HasHardpoints = true;
     private Color startcolor;
 
     public bool noAir = false;
@@ -23,7 +24,7 @@ public class module : MonoBehaviour
 
     void depressurizeModule()
     {
-            noAir = true;
+        noAir = true;
     }
 
     void Update()
@@ -38,11 +39,11 @@ public class module : MonoBehaviour
 
         if (_offLights.activeInHierarchy && _offLights != null)
         {
-            _offLights.transform.rotation = _offLights.transform.rotation*Quaternion.Euler(0, 50*Time.deltaTime, 0);
+            _offLights.transform.rotation = _offLights.transform.rotation * Quaternion.Euler(0, 50 * Time.deltaTime, 0);
         }
 
 
-        if(Input.GetKey("space"))
+        if (Input.GetKey("space"))
         {
             eventManager.depressurizeModule();
         }
@@ -69,11 +70,14 @@ public class module : MonoBehaviour
         _onLights = transform.Find("on").gameObject;
         _offLights = transform.Find("off").gameObject;
 
-        // Add slot_# empties to the resourceSlots list
-        Transform hardpointList = transform.Find("hardpoints");
-        foreach (Transform child in hardpointList)
+        if (HasHardpoints)
         {
-            ResourceSlots.Add(child.gameObject);
+            // Add slot_# empties to the resourceSlots list
+            Transform hardpointList = transform.Find("hardpoints");
+            foreach (Transform child in hardpointList)
+            {
+                ResourceSlots.Add(child.gameObject);
+            }
         }
     }
 
@@ -81,23 +85,26 @@ public class module : MonoBehaviour
     public List<GameObject> GetFreeSlots()
     {
         List<GameObject> freeSlots = new List<GameObject>();
-        GameObject[] allResources = GameObject.FindGameObjectsWithTag("Resource");
-
-        foreach (GameObject slot in ResourceSlots)
+        if (HasHardpoints)
         {
-            bool isFree = true;
-            for (int i = 0; i < allResources.Length; i++)
-            {
-                float magnitudeCheck = (slot.transform.position - allResources[i].transform.position).magnitude;
-                if (magnitudeCheck < SlotSize) 
-                {
-                    isFree = false;
-                }
-            }
+            GameObject[] allResources = GameObject.FindGameObjectsWithTag("Resource");
 
-            if (isFree)
+            foreach (GameObject slot in ResourceSlots)
             {
-                freeSlots.Add(slot);
+                bool isFree = true;
+                for (int i = 0; i < allResources.Length; i++)
+                {
+                    float magnitudeCheck = (slot.transform.position - allResources[i].transform.position).magnitude;
+                    if (magnitudeCheck < SlotSize)
+                    {
+                        isFree = false;
+                    }
+                }
+
+                if (isFree)
+                {
+                    freeSlots.Add(slot);
+                }
             }
         }
 

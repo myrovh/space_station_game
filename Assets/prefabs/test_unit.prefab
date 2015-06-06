@@ -60,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.3599997, y: 1.22000003, z: -18.1200008}
+  m_LocalPosition: {x: 15.3599997, y: 1.22000003, z: -24.1599998}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 434926}
@@ -239,7 +239,7 @@ MonoBehaviour:
   unitMoveSpeed: 20
   unitStoppingDistance: 2
   health: 100
-  isSelected: 1
+  isSelected: 0
   selectionGlowPrefab: {fileID: 132014, guid: 982578a2d6cff8245bfc5aafa60e5273, type: 2}
   target: {fileID: 0}
   isCarrying: 0
