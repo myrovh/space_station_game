@@ -11381,6 +11381,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19897692, guid: 626341229833e1e458878376e4173556, type: 2}
+      propertyPath: ShapeModule.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19897692, guid: 626341229833e1e458878376e4173556, type: 2}
+      propertyPath: ShapeModule.boxX
+      value: 26.6900005
+      objectReference: {fileID: 0}
+    - target: {fileID: 19897692, guid: 626341229833e1e458878376e4173556, type: 2}
+      propertyPath: ShapeModule.boxY
+      value: 24.6399994
+      objectReference: {fileID: 0}
+    - target: {fileID: 19897692, guid: 626341229833e1e458878376e4173556, type: 2}
+      propertyPath: InitialModule.gravityModifier
+      value: .00400000019
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 626341229833e1e458878376e4173556, type: 2}
   m_IsPrefabParent: 0
