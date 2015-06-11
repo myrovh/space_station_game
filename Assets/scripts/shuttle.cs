@@ -98,9 +98,11 @@ public class shuttle : module
     void levelEnd()
     {
         resetLengthAndTime();
-        currentDestination = new Vector3(-25.0f, 0.0f, -2.0f);
+        currentDestination = new Vector3(-30.0f, -2.76f, -41.73f);
         shuttleMove = true;
         shuttleDocked = false;
+        StartCoroutine(levelTransition());
+        //Application.LoadLevel("start_menu");
     }
 
     void resetLengthAndTime()
@@ -120,5 +122,12 @@ public class shuttle : module
         currentDestination.z = currentPosition.z - 2.0f;
         yield return new WaitForSeconds(2);
         shuttleDocked = false;
+    }
+
+
+    IEnumerator levelTransition()
+    {
+        yield return new WaitForSeconds(3);
+        Application.LoadLevel("start_menu");
     }
 }
