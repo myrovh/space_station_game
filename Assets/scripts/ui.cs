@@ -385,7 +385,10 @@ public class ui : MonoBehaviour
         }
         else if (action2 == 2)
         {
-            GameObject.Find("master_control_program").GetComponent<level1_Script>().endLevel();
+            if (GameObject.Find("master_control_program").GetComponent<level1_Script>() != null)
+                GameObject.Find("master_control_program").GetComponent<level1_Script>().endLevel();
+            else
+                GameObject.Find("master_control_program").GetComponent<level2_Script>().endLevel();
         }
         showOrders(false, false, 0);
         menuOpen = false;

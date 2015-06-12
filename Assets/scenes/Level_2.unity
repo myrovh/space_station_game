@@ -3302,7 +3302,7 @@ Transform:
   m_Children:
   - {fileID: 1055538889}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
 --- !u!1 &681379815 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 151828, guid: abc7d788ac9788a49a06e78c066abbb5, type: 2}
@@ -6721,7 +6721,7 @@ Transform:
   - {fileID: 1512743520}
   - {fileID: 1991138643}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
 --- !u!4 &1417985715 stripped
 Transform:
   m_PrefabParentObject: {fileID: 406068, guid: 6f8bc96145295e54da0a863f6ffe22b9, type: 2}

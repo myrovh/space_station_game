@@ -30,7 +30,7 @@ public class level1_Script : MonoBehaviour
         }
         else if (e.locationName == "endPosition")
         {
-            Application.LoadLevel("start_menu");
+            Application.LoadLevel("level_2");
         }
     }
 
