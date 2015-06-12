@@ -102,6 +102,11 @@ public class ui : MonoBehaviour
         CameraOrders();
 
         shuttleCommands();
+
+        if (Input.GetKeyDown("escape")) 
+        { 
+          Application.Quit(); 
+        }
     }
 
     //Drawing the selection box to the screen
@@ -294,22 +299,13 @@ public class ui : MonoBehaviour
         if (Input.GetButtonDown("Select") && !buttonClick)
         {
             buttonClick = true;
-            //Selects unit if is clicked while underneath mouse cursor
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag == "PlayerUnit")
+
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                showOrders(false, false, 0);
-            }
-            //Deselects all units that are not hit by raycast
-            else
-            {
-                //Check to see if the mouse pointer is over a ui object
-                if (!EventSystem.current.IsPointerOverGameObject())
+                foreach (GameObject unit in allPlayerUnits)
                 {
-                    foreach (GameObject unit in allPlayerUnits)
-                    {
-                        unit.GetComponent<unit>().selectionStatus(false);
-                        showOrders(false, false, 0);
-                    }
+                    unit.GetComponent<unit>().selectionStatus(false);
+                    showOrders(false, false, 0);
                 }
             }
         }
