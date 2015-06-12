@@ -166,6 +166,13 @@ public class ui : MonoBehaviour
                         {
                             interactWithDoor(unit, hit.transform.parent.gameObject);
                         }
+                        else if (hit.collider.tag == "command")
+                        {
+                            action1 = 1;
+                            action2 = 2;
+                            menuOpen = true;
+                            showOrders(true, true, 1);
+                        }
                     }
                     else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                     {
@@ -290,11 +297,6 @@ public class ui : MonoBehaviour
             //Selects unit if is clicked while underneath mouse cursor
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag == "PlayerUnit")
             {
-                foreach (GameObject unit in allPlayerUnits)
-                {
-                    // unit.GetComponent<unit>().selectionStatus(false);
-                }
-                // hit.rigidbody.GetComponent<unit>().selectionStatus(true);
                 showOrders(false, false, 0);
             }
             //Deselects all units that are not hit by raycast
@@ -381,6 +383,10 @@ public class ui : MonoBehaviour
                 addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
             }
         }
+        else if (action2 == 2)
+        {
+            GameObject.Find("master_control_program").GetComponent<level1_Script>().endLevel();
+        }
         showOrders(false, false, 0);
         menuOpen = false;
 
@@ -419,6 +425,10 @@ public class ui : MonoBehaviour
             if (action2 == 1)
             {
                 button2.GetComponentInChildren<Text>().text = "Use Door";
+            }
+            else if (action2 == 2)
+            {
+                button2.GetComponentInChildren<Text>().text = "Leave Station";
             }
             button2.GetComponent<CanvasGroup>().alpha = showAlpha;
             button2.GetComponent<CanvasGroup>().blocksRaycasts = true;

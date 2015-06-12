@@ -67,8 +67,13 @@ public class module : MonoBehaviour
 
     public void Start()
     {
-        _onLights = transform.Find("on").gameObject;
-        _offLights = transform.Find("off").gameObject;
+        if (transform.tag != "shuttle")
+        {
+            _onLights = transform.Find("on").gameObject;
+
+            _offLights = transform.Find("off").gameObject;
+        }
+
 
         if (HasHardpoints)
         {

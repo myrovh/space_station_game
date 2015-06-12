@@ -32,6 +32,18 @@ public class DialogueEvent : GameEvent
     }
 }
 
+public class ShuttleLocation : GameEvent
+{
+    public string locationName;
+    public Vector3 location;
+    public ShuttleLocation(string locationName, Vector3 location)
+    {
+        this.locationName = locationName;
+        this.location = location;
+    }
+
+}
+
  public class Events
 {
 	static Events instanceInternal = null;
