@@ -6,6 +6,6 @@ public class StartMenu : MonoBehaviour {
 
     public void TransitionLevel()
     {
-        Application.LoadLevel("Level_1_hardpoints");
+        Application.LoadLevel("control_menu");
     }
 }

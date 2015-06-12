@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/scenes/start_menu.unity
   - enabled: 1
     path: Assets/scenes/Level_2.unity
+  - enabled: 1
+    path: Assets/scenes/control_menu.unity
