@@ -101,8 +101,7 @@ public class shuttle : module
         currentDestination = new Vector3(-30.0f, -2.76f, -41.73f);
         shuttleMove = true;
         shuttleDocked = false;
-        StartCoroutine(levelTransition());
-        //Application.LoadLevel("start_menu");
+        StartCoroutine(endLevel());
     }
 
     void resetLengthAndTime()
@@ -124,10 +123,9 @@ public class shuttle : module
         shuttleDocked = false;
     }
 
-
-    IEnumerator levelTransition()
+    IEnumerator endLevel()
     {
-        yield return new WaitForSeconds(3);
-        Application.LoadLevel("start_menu");
+        yield return new WaitForSeconds(2);
+        Events.instance.Raise(new SceneChange());
     }
 }

@@ -36,4 +36,9 @@ public class level1_Script : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void levelTransition()
+    {
+        Application.LoadLevel("start_menu");
+    }
+
 }

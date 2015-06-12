@@ -32,6 +32,16 @@ public class DialogueEvent : GameEvent
     }
 }
 
+public class SceneChange : GameEvent
+{
+
+    public SceneChange()
+    {
+        GameObject.Find("master_control_program").GetComponent<level1_Script>().levelTransition();
+    }
+
+}
+
  public class Events
 {
 	static Events instanceInternal = null;
