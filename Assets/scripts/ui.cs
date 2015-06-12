@@ -297,11 +297,6 @@ public class ui : MonoBehaviour
             //Selects unit if is clicked while underneath mouse cursor
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && hit.collider.tag == "PlayerUnit")
             {
-                foreach (GameObject unit in allPlayerUnits)
-                {
-                    // unit.GetComponent<unit>().selectionStatus(false);
-                }
-                // hit.rigidbody.GetComponent<unit>().selectionStatus(true);
                 showOrders(false, false, 0);
             }
             //Deselects all units that are not hit by raycast

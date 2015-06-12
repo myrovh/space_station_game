@@ -1748,6 +1748,10 @@ MeshFilter:
 GameObject:
   m_PrefabParentObject: {fileID: 104242, guid: a9162f85043b52746bdea88349dc1e74, type: 2}
   m_PrefabInternal: {fileID: 271213396}
+--- !u!4 &127893627 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 429496, guid: a9162f85043b52746bdea88349dc1e74, type: 2}
+  m_PrefabInternal: {fileID: 271213396}
 --- !u!1 &135359659
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3054,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PanSpeed: 25
   ZoomSpeed: 15
+  shuttle: {fileID: 127893627}
+  cameraEnabled: 0
 --- !u!81 &222933317
 AudioListener:
   m_ObjectHideFlags: 0

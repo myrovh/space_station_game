@@ -8,6 +8,32 @@ public class level1_Script : MonoBehaviour
     public GameObject unit1;
     public GameObject unit2;
 
+    void OnEnable()
+    {
+        Events.instance.AddListener<ShuttleLocation>(OnShuttleLocationEvent);
+    }
+
+    void OnDisable()
+    {
+        Events.instance.RemoveListener<ShuttleLocation>(OnShuttleLocationEvent);
+    }
+
+    private void OnShuttleLocationEvent(ShuttleLocation e)
+    {
+        if (e.locationName == "shuttleMoving")
+        {
+            GameObject.Find("camera").GetComponent<LevelCamera>().cameraEnabled = false;
+        }
+        else if (e.locationName == "dockPosition")
+        {
+            GameObject.Find("camera").GetComponent<LevelCamera>().cameraEnabled = true;
+        }
+        else if (e.locationName == "endPosition")
+        {
+            Application.LoadLevel("start_menu");
+        }
+    }
+
     void Start()
     {
         shuttle.GetComponent<shuttle>().enterLevel();
@@ -34,11 +60,6 @@ public class level1_Script : MonoBehaviour
         unit2.GetComponent<Light>().enabled = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-    }
-
-    public void levelTransition()
-    {
-        Application.LoadLevel("start_menu");
     }
 
 }

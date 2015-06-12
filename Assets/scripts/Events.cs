@@ -32,12 +32,14 @@ public class DialogueEvent : GameEvent
     }
 }
 
-public class SceneChange : GameEvent
+public class ShuttleLocation : GameEvent
 {
-
-    public SceneChange()
+    public string locationName;
+    public Vector3 location;
+    public ShuttleLocation(string locationName, Vector3 location)
     {
-        GameObject.Find("master_control_program").GetComponent<level1_Script>().levelTransition();
+        this.locationName = locationName;
+        this.location = location;
     }
 
 }

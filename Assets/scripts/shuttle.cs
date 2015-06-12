@@ -17,6 +17,7 @@ public class shuttle : module
     void Start()
     {
         base.Start();
+        Events.instance.Raise(new ShuttleLocation("shuttleMoving", transform.position));
     }
 
     public List<GameObject> GetFreeSlots()
@@ -99,6 +100,7 @@ public class shuttle : module
     {
         resetLengthAndTime();
         currentDestination = new Vector3(-30.0f, -2.76f, -41.73f);
+        Events.instance.Raise(new ShuttleLocation("shuttleMoving", transform.position));
         shuttleMove = true;
         shuttleDocked = false;
         StartCoroutine(endLevel());
@@ -113,6 +115,7 @@ public class shuttle : module
     void dockShuttle()
     {
         currentDestination.z = currentDestination.z + 2;
+        Events.instance.Raise(new ShuttleLocation("dockPosition", transform.position));
     }
 
     IEnumerator unDockShuttle()
@@ -126,6 +129,6 @@ public class shuttle : module
     IEnumerator endLevel()
     {
         yield return new WaitForSeconds(2);
-        Events.instance.Raise(new SceneChange());
+        Events.instance.Raise(new ShuttleLocation("endPosition", transform.position));
     }
 }
