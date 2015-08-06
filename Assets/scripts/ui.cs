@@ -91,7 +91,7 @@ public class ui : MonoBehaviour
             _cameraInit = true;
         }
 
-        checkMouse();
+        //checkMouse();
 
         checkSelectionBox();
 
@@ -140,7 +140,7 @@ public class ui : MonoBehaviour
         {
             foreach (GameObject unit in allPlayerUnits)
             {
-                if (Input.GetButtonDown("Interact") && Input.GetButton("Queue") && unit.GetComponent<unit>().isSelected)
+                if (Input.GetButtonDown("Interact") && Input.GetButton("Queue") && unit.GetComponent<unitController>().isSelected)
                 {
                     if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask))
                     {
@@ -158,9 +158,9 @@ public class ui : MonoBehaviour
                         addToQueue(hit.point, data.unitAction.STAND, null, unit);
                     }
                 }
-                else if (Input.GetButtonDown("Interact") && unit.GetComponent<unit>().isSelected)
+                else if (Input.GetButtonDown("Interact") && unit.GetComponent<unitController>().isSelected)
                 {
-                    unit.GetComponent<unit>().clearQueue();
+                    unit.GetComponent<unitController>().clearQueue();
                     if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, interactablesMask))
                     {
                         if (hit.collider.tag == "Resource")
@@ -181,7 +181,7 @@ public class ui : MonoBehaviour
                     }
                     else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                     {
-                        unit.GetComponent<unit>().currentDestination = hit.point;
+                        unit.GetComponent<unitController>().currentDestination = hit.point;
                         addToQueue(hit.point, data.unitAction.STAND, null, unit);
                         currentUnit = null;
                     }
@@ -201,8 +201,8 @@ public class ui : MonoBehaviour
     {
         currentUnit = unit;
         currentDoor = hit.transform.parent.gameObject;
-        currentUnit.GetComponent<unit>().door = currentDoor;
-        currentUnit.GetComponent<unit>().currentDestination = hit.point;
+        currentUnit.GetComponent<unitController>().door = currentDoor;
+        currentUnit.GetComponent<unitController>().currentDestination = hit.point;
         currentDestination = hit.point;
 
         action1 = 1;
@@ -252,7 +252,7 @@ public class ui : MonoBehaviour
             }
         }
 
-        currentUnit.GetComponent<unit>().currentDestination = hit.point;
+        currentUnit.GetComponent<unitController>().currentDestination = hit.point;
     }
 
     //Takes an order as a parameter and adds it to the units queue
@@ -260,12 +260,12 @@ public class ui : MonoBehaviour
     {
         if (moveTo != Vector3.zero)
         {
-            unit.GetComponent<unit>().queueOrder(moveTo, actAt);
+            unit.GetComponent<unitController>().queueOrder(moveTo, actAt);
         }
         else
         {
-            currentUnit.GetComponent<unit>().target = targetResource;
-            unit.GetComponent<unit>().queueOrder(actAtObject, actAt);
+            currentUnit.GetComponent<unitController>().target = targetResource;
+            unit.GetComponent<unitController>().queueOrder(actAtObject, actAt);
         }
 
         currentDestination = new Vector3(0, 10, 0);
@@ -287,11 +287,11 @@ public class ui : MonoBehaviour
                 //Select unit if unit is inside selection box
                 if (selection.Contains(unitPos))
                 {
-                    unit.GetComponent<unit>().selectionStatus(true);
+                    unit.GetComponent<unitController>().selectionStatus(true);
                 }
                 else
                 {
-                    unit.GetComponent<unit>().selectionStatus(false);
+                    unit.GetComponent<unitController>().selectionStatus(false);
                 }
             }
         }
@@ -304,7 +304,7 @@ public class ui : MonoBehaviour
             {
                 foreach (GameObject unit in allPlayerUnits)
                 {
-                    unit.GetComponent<unit>().selectionStatus(false);
+                    unit.GetComponent<unitController>().selectionStatus(false);
                     showOrders(false, false, 0);
                 }
             }
@@ -458,7 +458,7 @@ public class ui : MonoBehaviour
             {
                 foreach (GameObject unit in allPlayerUnits)
                 {
-                    if (unit.GetComponent<unit>().isSelected)
+                    if (unit.GetComponent<unitController>().isSelected)
                     {
                         action1 = 1;
                         action2 = 1;
