@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<BuildModule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BuildParts>
+    <BuildPart Name="8x4x8_North_Doors_1">
+      <PrefabName>8x4x8_North_Doors_1</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>4.18545675</PositionX>
+      <PositionY>2.69777584</PositionY>
+      <PositionZ>-5.83999825</PositionZ>
+    </BuildPart>
+    <BuildPart Name="8x4x8_North_Doors_1 (1)">
+      <PrefabName>8x4x8_North_Doors_1</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>4.18545675</PositionX>
+      <PositionY>2.69777584</PositionY>
+      <PositionZ>10.7600021</PositionZ>
+    </BuildPart>
+  </BuildParts>
+</BuildModule>
