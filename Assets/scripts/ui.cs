@@ -70,6 +70,7 @@ public class ui : MonoBehaviour
         Dialogue.BuildDialogue();
 
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+
     }
 
     void OnEnable()

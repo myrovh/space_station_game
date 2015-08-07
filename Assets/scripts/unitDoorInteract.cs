@@ -3,7 +3,10 @@ using System.Collections;
 
 public class unitDoorInteract : MonoBehaviour 
 {
+
+ //public String menuText = "Interact With Door";
     public GameObject door;
+
 
     //Function that tells the unit to open the door that was passed as a parameter
     public void openDoor(GameObject door)

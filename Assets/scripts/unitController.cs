@@ -36,7 +36,8 @@ public class unitController : MonoBehaviour
     private float unitStoppingDistance = 1.5f;
     private int baseAvoidance = 89;
     public Vector3 currentDestination = Vector3.zero;
-
+    public Dictionary<String, Component> components;
+    
     //State Tracking Variables
     public bool isSelected = false;
     private NavMeshAgent _agent;
@@ -69,7 +70,6 @@ public class unitController : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = unitStoppingDistance - 0.75f;
-
     }
 
     void Update()
