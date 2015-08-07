@@ -18,7 +18,7 @@ GameObject:
   m_TagString: surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &421392
 Transform:
@@ -62,7 +62,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151202}
-  m_Mesh: {fileID: 4300000, guid: 693a83517429a044d841e5fc1afb34eb, type: 3}
+  m_Mesh: {fileID: 4300000, guid: d66f492678d9ec54ebc58d6a366fe329, type: 3}
 --- !u!54 &5417758
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -71,7 +71,7 @@ Rigidbody:
   m_GameObject: {fileID: 151202}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: .5
+  m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
   m_IsKinematic: 1

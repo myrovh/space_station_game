@@ -238,6 +238,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &11418634
 MonoBehaviour:
@@ -317,18 +318,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8106a54555b23b41af0ccfa5ca36848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionHighlight: {fileID: 2800000, guid: 58a4042d24eaab942ade25ae8a261835, type: 3}
-  buttonClick: 0
-  currentDestination: {x: 0, y: 0, z: 0}
+  SelectionHighlight: {fileID: 0}
   moduleSelectionPrefab: {fileID: 139560, guid: 7cdae13500241434e90581821e73973d,
     type: 2}
   button1: {fileID: 11455558}
   button2: {fileID: 11447286}
   button3: {fileID: 11496036}
   popup: {fileID: 163028}
-  currentUnit: {fileID: 0}
   LevelCamera: {fileID: 0}
-  currentDoor: {fileID: 0}
   dialoguePrefab: {fileID: 169768, guid: bbf7dade28d850144a3b0b1f629abf2e, type: 2}
   cursorTexture: {fileID: 2800000, guid: 7cfec451afbb7f8418d521011ba5d3ee, type: 3}
 --- !u!114 &11445712
