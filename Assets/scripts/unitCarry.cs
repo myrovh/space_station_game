@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class unitCarry : MonoBehaviour 
+public class unitCarry : unitController 
 {
     public bool isCarrying = false;
     private GameObject inventory;
+    
+    void Stat()
+    {
+        orderDescription = "carry";
+    }
 
     //Function to make unit pick up the object passed as a parameter
     public void pickUp(GameObject newObject)
