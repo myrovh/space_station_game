@@ -1,6 +1,3 @@
-[submodule "XMLBuild"]
-	path = XMLBuild
-	url = https://github.com/myrovh/XMLBuilder.git
 [submodule "Assets/XMLBuild"]
 	path = Assets/XMLBuild
 	url = https://github.com/myrovh/XMLBuilder.git
