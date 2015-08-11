@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<BuildModule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BuildParts>
+    <BuildPart Name="surface_floor_4x4">
+      <PrefabName>surface_floor_4x4</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>2</PositionX>
+      <PositionY>0</PositionY>
+      <PositionZ>10</PositionZ>
+    </BuildPart>
+    <BuildPart Name="door_3x3_revised">
+      <PrefabName>door_3x3_revised</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>0</PositionX>
+      <PositionY>1.7</PositionY>
+      <PositionZ>8.2</PositionZ>
+    </BuildPart>
+    <BuildPart Name="surface_floor_4x4 (1)">
+      <PrefabName>surface_floor_4x4</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>-2</PositionX>
+      <PositionY>0</PositionY>
+      <PositionZ>10</PositionZ>
+    </BuildPart>
+    <BuildPart Name="surface_floor_4x4 (2)">
+      <PrefabName>surface_floor_4x4</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>2</PositionX>
+      <PositionY>0</PositionY>
+      <PositionZ>14</PositionZ>
+    </BuildPart>
+    <BuildPart Name="surface_floor_4x4 (3)">
+      <PrefabName>surface_floor_4x4</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>-2</PositionX>
+      <PositionY>0</PositionY>
+      <PositionZ>14</PositionZ>
+    </BuildPart>
+    <BuildPart Name="door_3x3_revised (1)">
+      <PrefabName>door_3x3_revised</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>0</PositionX>
+      <PositionY>1.7</PositionY>
+      <PositionZ>15.8</PositionZ>
+    </BuildPart>
+  </BuildParts>
+</BuildModule>

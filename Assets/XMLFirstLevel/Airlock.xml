@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<BuildModule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BuildParts>
+    <BuildPart Name="door_3x3_revised">
+      <PrefabName>door_3x3_revised</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>0</PositionX>
+      <PositionY>1.7</PositionY>
+      <PositionZ>1.8</PositionZ>
+    </BuildPart>
+    <BuildPart Name="surface_floor_4x4">
+      <PrefabName>surface_floor_4x4</PrefabName>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
+      <RotationZ>0</RotationZ>
+      <PositionX>0</PositionX>
+      <PositionY>0</PositionY>
+      <PositionZ>0</PositionZ>
+    </BuildPart>
+  </BuildParts>
+</BuildModule>
