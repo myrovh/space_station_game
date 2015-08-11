@@ -37,9 +37,8 @@ public class unitController : MonoBehaviour
     private int baseAvoidance = 89;
     public Vector3 currentDestination = Vector3.zero;
     //public Dictionary<String, Component> components;
-    public unitController[] allComponents;
+    public orderComponent[] allComponents;
     public List<string> componentStrings = new List<string>();
-    private string orderDescription;
 
     //State Tracking Variables
     public bool isSelected = false;
@@ -74,24 +73,21 @@ public class unitController : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = unitStoppingDistance - 0.75f;
 
+        getComponents();
+        getComponentString();
     }
 
     void getComponents()
     {
-        allComponents = this.GetComponents<unitController>();
-    }
-    
-    void getComponentString()
-    {
-        foreach (unitController component in allComponents)
-        {
-            componentStrings.Add(component.getDescription);
-        }
+        allComponents = this.GetComponents<orderComponent>();
     }
 
-    string getDescription()
+    void getComponentString()
     {
-        return orderDescription;
+        foreach (orderComponent component in allComponents)
+        {
+            componentStrings.Add(component.getDescription());
+        }
     }
 
     void Update()
