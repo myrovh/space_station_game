@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class unitDoorInteract : MonoBehaviour 
+public class unitDoorInteract : orderComponent 
 {
 
  //public String menuText = "Interact With Door";
     public GameObject door;
 
+
+    public override string getDescription()
+    {
+        return "interact with door";
+    }
 
     //Function that tells the unit to open the door that was passed as a parameter
     public void openDoor(GameObject door)
