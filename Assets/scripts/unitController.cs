@@ -77,18 +77,6 @@ public class unitController : MonoBehaviour
         getComponentString();
     }
 
-    void getComponents()
-    {
-        allComponents = this.GetComponents<orderComponent>();
-    }
-
-    void getComponentString()
-    {
-        foreach (orderComponent component in allComponents)
-        {
-            componentStrings.Add(component.getDescription());
-        }
-    }
 
     void Update()
     {
@@ -112,6 +100,33 @@ public class unitController : MonoBehaviour
     void OnMouseUp()
     {
         selectionStatus(true);
+    }
+    #endregion
+
+    #region Component Control Functions
+    void getComponents()
+    {
+        allComponents = GetComponents<orderComponent>();
+    }
+
+    void getComponentString()
+    {
+        componentStrings.Clear();
+        Debug.Log("string search started");
+        foreach (orderComponent component in allComponents)
+        {
+            componentStrings.Add(component.getDescription());
+        }
+
+        testStringList();
+    }
+
+    void testStringList()
+    {
+        foreach (string s in componentStrings)
+        {
+            Debug.Log("Component: " + s);
+        }
     }
     #endregion
 

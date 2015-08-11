@@ -5,10 +5,10 @@ public class unitCarry : orderComponent
 {
     public bool isCarrying = false;
     private GameObject inventory;
-    
-    void Stat()
+
+    public override string getDescription()
     {
-        orderDescription = "carry";
+        return "carry";
     }
 
     //Function to make unit pick up the object passed as a parameter
