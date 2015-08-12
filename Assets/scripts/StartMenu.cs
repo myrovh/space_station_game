@@ -8,4 +8,10 @@ public class StartMenu : MonoBehaviour {
     {
         Application.LoadLevel("control_menu");
     }
+
+	public void TransitionOptions()
+	{
+		Application.LoadLevel("options_menu");
+
+	}
 }
