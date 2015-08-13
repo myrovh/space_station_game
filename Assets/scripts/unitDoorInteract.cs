@@ -10,7 +10,7 @@ public class unitDoorInteract : orderComponent
 
     public override string getDescription()
     {
-        return "interact with door";
+        return "Interact";
     }
 
     //Function that tells the unit to open the door that was passed as a parameter

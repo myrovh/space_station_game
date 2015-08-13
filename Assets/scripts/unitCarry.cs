@@ -8,7 +8,7 @@ public class unitCarry : orderComponent
 
     public override string getDescription()
     {
-        return "carry";
+        return "Carry";
     }
 
     //Function to make unit pick up the object passed as a parameter

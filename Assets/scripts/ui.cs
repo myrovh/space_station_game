@@ -36,6 +36,7 @@ public class ui : MonoBehaviour
     private bool menuOpen = false;
     private int action1 = 0;
     private int action2 = 0;
+    public List<string> componentString = new List<string>();
 
     //Camera Variables
     public GameObject LevelCamera;
@@ -55,11 +56,6 @@ public class ui : MonoBehaviour
     #region Monobehaviour Functions
     void Start()
     {
-        //Adding listeners for each of the buttons
-
-        button1.onClick.AddListener(() => { button1Action(); });
-        button2.onClick.AddListener(() => { button2Action(); });
-
         allPlayerUnits.AddRange(GameObject.FindGameObjectsWithTag("PlayerUnit"));
 
         //Get camera script
@@ -364,39 +360,13 @@ public class ui : MonoBehaviour
         showOrders(false, false, 0);
         menuOpen = false;
     }
-    //The function that is called when the second button in the context menu is called
-    //The action2 variable determines what this button does e.g: action2 = 1, gives the current unit the order
-    //to open the current door
-    void button2Action()
-    {
-        if (action2 == 1)
-        {
-            if (!currentDoor.GetComponent<Door>().IsOpen)
-            {
-                addToQueue(Vector3.zero, data.unitAction.OPENDOOR, currentDoor, currentUnit);
-            }
-            else
-            {
-                addToQueue(Vector3.zero, data.unitAction.CLOSEDOOR, currentDoor, currentUnit);
-            }
-        }
-        else if (action2 == 2)
-        {
-            if (GameObject.Find("master_control_program").GetComponent<level1_Script>() != null)
-                GameObject.Find("master_control_program").GetComponent<level1_Script>().endLevel();
-            else
-                GameObject.Find("master_control_program").GetComponent<level2_Script>().endLevel();
-        }
-        showOrders(false, false, 0);
-        menuOpen = false;
-
-    }
 
     //Determines what buttons are shown and what text is displayed based on parameters given and the action1 and action2 variables
     void showOrders(bool button1Visible, bool button2Visible, float showAlpha)
     {
         popup.GetComponent<RectTransform>().position = Input.mousePosition;
         popup.GetComponent<RectTransform>().position += new Vector3(10, 0, 0);
+        componentString = currentUnit.GetComponent<unitController>().componentStrings;
 
         if (button1Visible)
         {
@@ -424,7 +394,11 @@ public class ui : MonoBehaviour
         {
             if (action2 == 1)
             {
-                button2.GetComponentInChildren<Text>().text = "Use Door";
+                button2.GetComponentInChildren<Text>().text = componentString[0];
+                button2.onClick.AddListener(() =>
+                {
+
+                });
             }
             else if (action2 == 2)
             {
@@ -447,10 +421,10 @@ public class ui : MonoBehaviour
         {
             button1.GetComponent<CanvasGroup>().interactable = true;
         }
-
+        
         button2.GetComponent<CanvasGroup>().interactable = button2Visible;
     }
-
+        
     void checkMouse()
     {
         if (!menuOpen && !haulOrder)
