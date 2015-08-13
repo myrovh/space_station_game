@@ -116,11 +116,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 935571418}
-  m_Father: {fileID: 1667117717}
-  m_RootOrder: 4
+  m_Father: {fileID: 351673111}
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 6.10351562e-05, y: -18}
+  m_AnchoredPosition: {x: 6.10351562e-05, y: -393.599945}
   m_SizeDelta: {x: 266.769989, y: 88.8000031}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &55397662
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 553360065}
         m_MethodName: TransitionMainMenu
         m_Mode: 1
         m_Arguments:
@@ -202,6 +202,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 55397660}
+--- !u!1 &351673110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 351673111}
+  m_Layer: 5
+  m_Name: GUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &351673111
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 351673110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1592018685}
+  - {fileID: 466362044}
+  - {fileID: 1268369749}
+  - {fileID: 55397661}
+  m_Father: {fileID: 1667117717}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 375.600006}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &397987909
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,11 +333,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1944659046}
-  m_Father: {fileID: 1667117717}
-  m_RootOrder: 2
+  m_Father: {fileID: 351673111}
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 227.110001}
+  m_AnchoredPosition: {x: 0, y: -148.489975}
   m_SizeDelta: {x: 266.769989, y: 88.8000031}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &466362045
@@ -618,7 +654,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 553360065}
         m_MethodName: TransitionControlsMenu
         m_Mode: 1
         m_Arguments:
@@ -669,11 +705,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 397987910}
-  m_Father: {fileID: 1667117717}
-  m_RootOrder: 3
+  m_Father: {fileID: 351673111}
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 3.05175781e-05, y: 105}
+  m_AnchoredPosition: {x: 3.05175781e-05, y: -270.599976}
   m_SizeDelta: {x: 266.769989, y: 88.8000031}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1297735087
@@ -862,11 +898,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1667117717}
-  m_RootOrder: 1
+  m_Father: {fileID: 351673111}
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 375.600006}
+  m_AnchoredPosition: {x: 0, y: -3.05175781e-05}
   m_SizeDelta: {x: 229.820007, y: 104.660004}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1592018686
@@ -987,10 +1023,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1320738077}
-  - {fileID: 1592018685}
-  - {fileID: 466362044}
-  - {fileID: 1268369749}
-  - {fileID: 55397661}
+  - {fileID: 351673111}
   m_Father: {fileID: 553360064}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
